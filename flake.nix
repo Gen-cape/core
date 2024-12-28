@@ -12,7 +12,6 @@
       ];
       systems = [
         "x86_64-linux"
-        # "aarch64-linux" "aarch64-darwin" "x86_64-darwin"
       ];
     };
 
@@ -31,7 +30,6 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.05";
     nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
 
     systems.url = "github:nix-systems/default";
@@ -89,16 +87,6 @@
         systems.follows = "systems";
       };
     };
-    # hyprpaper = {
-    #   url = "github:hyprwm/hyprpaper";
-    #   inputs = {
-    #     hyprlang.follows = "hyprland";
-    #     hyprutils.follows = "hyprland";
-    #     nixpkgs.follows = "nixpkgs-small";
-    #     hyprwayland-scanner.follows = "hyprland";
-    #     systems.follows = "systems";
-    #   };
-    # };
 
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
@@ -116,22 +104,5 @@
         nixpkgs.follows = "nixpkgs-small";
       };
     };
-
-    # treemft-nix.url = "github:numtide/treefmt-nix";
-    # treemft-nix.inputs.nixpkgs.follows = "nixpkgs-small";
-    # nixfmt.url = "github:nixos/nixfmt";
-    # nvf.url = "github:NotAShelf/nvf";
-    # anyrun.url = "github:anyrun-org/anyrun";
-    # anyrun-nixos-options.url = "github:n3oney/anyrun-nixos-options";
-
-    # ags.url = "github:Aylur/ags";
-    # ags.inputs.nixpkgs.follows = "nixpkgs";
-    # schizofox.url = "github:schizofox/schizofox";
-    # nil.url = "github:oxalica/nil";
-    # nixpak.url = "github:nixpak/nixpak";
-    # nh = {
-    #   url = "github:viperML/nh";
-    #   inputs.nixpkgs.follows = "nixpkgs-small";
-    # };
   };
 }
