@@ -16,7 +16,7 @@ in {
     pkgs.libreoffice
     #pkgs.webcord
     #pkgs.webcord-vencord
-    self'.packages.spoof-dpi
+    # self'.packages.spoof-dpi
     spoofed-chrome
   ];
 }

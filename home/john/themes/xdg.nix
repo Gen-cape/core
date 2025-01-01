@@ -38,9 +38,9 @@
     "x-scheme-handler/discord" = ["WebCord.desktop"];
     "x-scheme-handler/mailto" = mailer;
   };
-  template = import self.qol.xdgTemplate "home-manager";
+  # template = import self.qol.xdgTemplate "home-manager";
 in {
-  home.sessionVariables = template.sysEnv;
+  # home.sessionVariables = template.sysEnv;
   xdg = {
     enable = true;
     cacheHome = "${config.home.homeDirectory}/.cache";
@@ -49,8 +49,8 @@ in {
     stateHome = "${config.home.homeDirectory}/.local/state";
 
     configFile = {
-      "npm/npmrc" = template.npmrc;
-      "python/pythonrc" = template.pythonrc;
+      # "npm/npmrc" = template.npmrc;
+      # "python/pythonrc" = template.pythonrc;
     };
 
     userDirs = {

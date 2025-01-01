@@ -1,9 +1,10 @@
 {
   lib,
   self,
+  inputs,
   ...
 }: let
-  template = import self.qol.xdgTemplate "nixos";
+  template = import inputs.riptide.mimics.xdgTemplate "nixos";
 in {
   environment = {
     variables = template.glEnv;

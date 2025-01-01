@@ -4,10 +4,11 @@
   lib,
   pkgs,
   self,
+  inputs,
   ...
 }: let
   inherit (lib.options) mkOption;
-  inherit (self.qol.themes) serializeTheme;
+  inherit (inputs.riptide.mimics.themes) serializeTheme;
   inherit (lib.types) str nullOr enum mkOptionType path attrsOf coercedTo;
   inherit (lib.strings) removePrefix hasPrefix isString trim;
 

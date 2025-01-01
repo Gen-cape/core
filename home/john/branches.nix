@@ -1,9 +1,10 @@
 {
   self,
   lib,
+  inputs,
   ...
 }: let
-  inherit (self.qol) getModulesFzf;
+  inherit (inputs.riptide.mimics) getModulesFzf;
   inherit (lib.lists) concatLists;
   mod = requests: dropExpr:
     getModulesFzf {

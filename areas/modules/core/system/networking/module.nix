@@ -19,17 +19,6 @@ in {
     traceroute
   ];
 
-  networking = {
-    # Explicitly configure DNS
-    nameservers = ["8.8.8.8" "8.8.4.4"];
-
-    # Ensure systemd-resolved is properly configured
-    resolvconf.enable = true;
-
-    # Or use networkmanager's DNS handling
-    networkmanager.enable = true;
-  };
-
   # Ensure systemd-resolved service is properly enabled
   systemd.services.systemd-resolved.enable = true;
 

@@ -1,14 +1,18 @@
 {
-  lib,
   withSystem,
   inputs,
+  self,
+  lib,
   ...
 }: {
   flake.nixosConfigurations = let
-    inherit (inputs.self) qol;
-    inherit (qol.builders) mkSystem;
-    inherit (qol.modules) getModules;
-    inherit (lib.lists) concatLists flatten singleton;
+    inherit (inputs.riptide.mimics) getModules;
+    inherit (lib.lists) singleton concatLists flatten;
+
+    mkSystem = inputs.riptide.mimics.mkSystem {
+      inherit withSystem self inputs;
+      inherit (inputs.nixpkgs) outPath;
+    };
 
     rootModules = ../areas/modules;
 
@@ -45,7 +49,6 @@
       );
   in {
     skald = mkSystem {
-      inherit withSystem;
       hostname = "skald";
       system = "x86_64-linux";
       modules = getHostModules "skald" {

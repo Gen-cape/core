@@ -1,4 +1,4 @@
-{inputs, ...}:{
+{inputs, ...}: {
   perSystem = {
     config,
     system,
@@ -19,7 +19,7 @@
         allowUnsupportedSystem = true;
       };
 
-      overlays = [inputs.self.overlays.default];
+      # overlays = [inputs.self.overlays.default];
     };
   };
 
