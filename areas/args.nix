@@ -4,20 +4,13 @@
     system,
     ...
   }: {
-    imports = [
-      {
-        _module.args = {
-          pkgs = config.legacyPackages;
-        };
-      }
-    ];
-
     legacyPackages = import inputs.nixpkgs {
       inherit system;
       config = {
         allowUnfree = true;
         allowUnsupportedSystem = true;
       };
+      _module.args.pkgs = config.legacyPackages;
 
       # overlays = [inputs.self.overlays.default];
     };

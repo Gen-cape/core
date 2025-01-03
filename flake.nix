@@ -7,7 +7,7 @@
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./hosts
+        # ./hosts
         ./areas
       ];
       systems = [
