@@ -8,6 +8,7 @@
   inherit (inputs.riptide) mimics;
   inherit (mimics) getModules fzf;
   inherit (lib.lists) singleton concatLists flatten;
+  selfPath = (builtins.unsafeDiscardStringContext "${self}") + /areas;
   systemSet = {
     inherit withSystem;
     basicArgs = {
@@ -16,6 +17,12 @@
     };
   };
 
+  augmentsRoot = selfPath + /augments;
+  homeModulesRoot = selfPath + /home;
+
+  baseAugments = fzf augmentsRoot "\.nix !__";
+  baseHomeModules = name: fzf (homeModulesRoot + /${name}) "\.nix !__";
+
   mkSystem = inputs.riptide.mimics.mkSystem systemSet;
   mkHome = inputs.riptide.mimics.mkHome systemSet;
 in {
@@ -23,13 +30,16 @@ in {
     nixosConfigurations = {
       skald = mkSystem {
         system = "x86_64-linux";
-        modules = [];
+        modules = [
+          baseAugments
+        ];
       };
     };
     homeConfigurations = {
       "john@skald" = mkHome {
         system = "x86_64-linux";
         modules = [
+          (baseHomeModules "john")
         ];
       };
     };
