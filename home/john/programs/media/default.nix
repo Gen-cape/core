@@ -1,6 +1,0 @@
-{
-  imports = [
-    ./mpv
-    ./packages.nix
-  ];
-}

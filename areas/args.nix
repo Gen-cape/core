@@ -11,10 +11,6 @@
         allowUnsupportedSystem = true;
       };
       _module.args.pkgs = config.legacyPackages;
-
-      # overlays = [inputs.self.overlays.default];
     };
   };
-
-  flake = {};
 }
