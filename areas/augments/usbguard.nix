@@ -1,17 +1,8 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
-  inherit (lib) mkIf;
-
-  sys = config.modules.system;
-  env = config.modules.usrEnv;
+{pkgs, ...}: let
 in {
-  config = mkIf sys.security.usbguard.enable {
+  config = {
     services.usbguard = {
-      IPCAllowedUsers = ["root" "${env.mainUser}"];
+      IPCAllowedUsers = ["root" "${"john"}"];
       presentDevicePolicy = "allow";
       rules = ''
         allow with-interface equals { 08:*:* }

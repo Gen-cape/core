@@ -27,6 +27,16 @@ in {
         timeout = mkForce 1;
         generationsDir.copyKernels = true;
         efi.canTouchEfiVariables = true;
+        grub = {
+          enable = mkDefault true;
+          useOSProber = true;
+          efiSupport = true;
+          device = "nodev";
+          configurationLimit = 2;
+          timeoutStyle = "hidden";
+          theme = "${grubThemePkg}/${grubTheme}}";
+          splashImage = "${grubThemePkg}/${grubTheme}/background.png";
+        };
       };
 
       kernelParams = [
@@ -43,28 +53,15 @@ in {
 
         "vt.global_cursor_default=0"
       ];
-    };
-
-    loader = {
-      grub = {
-        enable = mkDefault true;
-        useOSProber = true;
-        efiSupport = true;
-        device = "nodev";
-        configurationLimit = 2;
-        timeoutStyle = "hidden";
-        theme = "${grubThemePkg}/${grubTheme}}";
-        splashImage = "${grubThemePkg}/${grubTheme}/background.png";
+      plymouth = {
+        enable = true;
+        theme = plymouthTheme;
+        themePackages = with pkgs; [
+          (adi1090x-plymouth-themes.override {
+            selected_themes = [plymouthTheme]; # By default we would install all themes
+          })
+        ];
       };
-    };
-    plymouth = {
-      enable = true;
-      theme = plymouthTheme;
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [plymouthTheme]; # By default we would install all themes
-        })
-      ];
     };
 
     # make plymouth work with sleep

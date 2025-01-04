@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  inputs',
   ...
 }: let
   inherit (lib) mkOption mkMerge mkIf;
@@ -26,6 +27,10 @@ in {
         initrd.kernelModules = ["amdgpu"];
         kernelModules = ["kvm-amd"];
       };
+
+      environment.systemPackages = [
+        # inputs'.chaotic.legacyPackages.mesa_git
+      ];
 
       chaotic.mesa-git.enable = true;
 

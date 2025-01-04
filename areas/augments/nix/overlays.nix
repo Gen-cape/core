@@ -2,6 +2,7 @@
   config,
   lib,
   mimics,
+  inputs,
   ...
 }: let
   inherit (lib.trivial) const;

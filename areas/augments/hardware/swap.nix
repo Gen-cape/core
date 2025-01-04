@@ -4,9 +4,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption mkIf;
-  cfg = config.core.swap;
+  cfg = config.core.swapFile;
 in {
-  options.swapFile = {
+  options.core.swapFile = {
     enable = mkEnableOption "Whether to enable swap file";
     size = mkOption {
       type = lib.types.int;

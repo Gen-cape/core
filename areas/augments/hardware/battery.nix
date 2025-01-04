@@ -1,10 +1,10 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
-  inherit (lib.types) mkEnableOption mkIf mkOption;
-  inherit (lib) mkMerge;
+  inherit (lib) mkMerge mkEnableOption mkIf mkOption;
   cfg = config.core.batteryThreshold;
 in {
   options.core = {
@@ -16,7 +16,7 @@ in {
     };
   };
   config = mkMerge [
-    (mkIf (lib.powerManagement.enable) {
+    (mkIf (cfg.enable) {
       systemd.sleep.extraConfig = ''
         AllowSuspend=yes
       '';
@@ -30,20 +30,20 @@ in {
           Type = "oneshot";
           User = "root";
           Restart = "on-failure";
-          ExecStart = "/bin/sh -c 'echo ${cfg.value} > /sys/class/power_supply/BAT0/charge_control_end_threshold'";
+          ExecStart = "/bin/sh -c 'echo ${builtins.toString cfg.value} > /sys/class/power_supply/BAT0/charge_control_end_threshold'";
         };
       };
     })
     {
-      upower = {
+      services.upower = {
         enable = true;
         percentageLow = 15;
         percentageCritical = 5;
         percentageAction = 3;
         criticalPowerAction = "Hibernate";
       };
-      environment.systemPackages = with lib.pkgs; [
-        cpupower
+      environment.systemPackages = with pkgs; [
+        cpupower-gui
       ];
     }
   ];
