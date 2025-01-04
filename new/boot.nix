@@ -1,11 +1,20 @@
 {
-  config,
   lib,
   pkgs,
   ...
 }: let
   inherit (lib) mkDefault mkIf mkEnableOption mkOption types mkMerge mkOverride mkForce;
   inherit (pkgs) plymouth;
+  grubThemePkg = pkgs.fetchFromGitHub {
+    owner = "olivethepuffin";
+    repo = "yorha-grub-theme";
+    rev = "4d9cd37baf56c4f5510cc4ff61be278f11077c81";
+    hash = "sha256-XVzYDwJM7Q9DvdF4ZOqayjiYpasUeMhAWWcXtnhJ0WQ=";
+  };
+  grubSize = "2560x1440"; # also /yorha-3840x2160/" or /yorha-1920x1080/"
+
+  grubTheme = "yorha-${grubSize}";
+  plymouthTheme = "deus_ex";
 in {
   config = {
     boot = {
@@ -13,13 +22,10 @@ in {
       consoleLogLevel = 0;
       initrd.verbose = false;
       tmp.cleanOnBoot = true;
-      kernelPackages = mkOverride 500 pkgs.linuxPackages_latest;
 
       loader = {
         timeout = mkForce 1;
-
         generationsDir.copyKernels = true;
-
         efi.canTouchEfiVariables = true;
       };
 
@@ -45,37 +51,17 @@ in {
         useOSProber = true;
         efiSupport = true;
         device = "nodev";
-        theme = "${
-          pkgs.fetchFromGitHub {
-            owner = "olivethepuffin";
-            repo = "yorha-grub-theme";
-            rev = "4d9cd37baf56c4f5510cc4ff61be278f11077c81";
-            hash = "sha256-XVzYDwJM7Q9DvdF4ZOqayjiYpasUeMhAWWcXtnhJ0WQ=";
-          }
-          #}/yorha-3840x2160/";
-          #}/yorha-1920x1080/";
-        }/yorha-2560x1440/";
-
-        splashImage = "${
-          pkgs.fetchFromGitHub {
-            owner = "olivethepuffin";
-            repo = "yorha-grub-theme";
-            rev = "4d9cd37baf56c4f5510cc4ff61be278f11077c81";
-            hash = "sha256-XVzYDwJM7Q9DvdF4ZOqayjiYpasUeMhAWWcXtnhJ0WQ=";
-          }
-        }/yorha-2560x1440/background.png";
         configurationLimit = 2;
+        theme = "${grubThemePkg}/${grubTheme}}";
+        splashImage = "${grubThemePkg}/${grubTheme}/background.png";
       };
     };
-    plymouth = let
-      themeName = "deus_ex";
-    in {
+    plymouth = {
       enable = true;
-      theme = themeName;
+      theme = plymouthTheme;
       themePackages = with pkgs; [
-        # By default we would install all themes
         (adi1090x-plymouth-themes.override {
-          selected_themes = [themeName];
+          selected_themes = [plymouthTheme]; # By default we would install all themes
         })
       ];
     };
