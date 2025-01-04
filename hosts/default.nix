@@ -4,57 +4,35 @@
   self,
   lib,
   ...
-}: {
-  flake.nixosConfigurations = let
-    inherit (inputs.riptide.mimics) getModules;
-    inherit (lib.lists) singleton concatLists flatten;
-
-    mkSystem = inputs.riptide.mimics.mkSystem {
-      inherit withSystem self inputs;
-      inherit (inputs.nixpkgs) outPath;
+}: let
+  inherit (inputs.riptide) mimics;
+  inherit (mimics) getModules fzf;
+  inherit (lib.lists) singleton concatLists flatten;
+  systemSet = {
+    inherit withSystem;
+    basicArgs = {
+      inherit self inputs;
+      inherit (inputs.riptide) mimics;
     };
+  };
 
-    rootModules = ../areas/modules;
-
-    heartModules = rootModules + /core;
-
-    equipment = heartModules + /equipment;
-
-    laptop = equipment + /laptop;
-    graphical = equipment + /graphical;
-    workstation = equipment + /workstation;
-    experimental = equipment + /experimental;
-
-    options = rootModules + /options;
-    baseSystem = heartModules + /system;
-
-    hm = inputs.home-manager.nixosModules.home-manager;
-    homePath = ../home;
-
-    homes = [hm homePath];
-
-    getHostModules = hostname: {
-      modules ? [options baseSystem],
-      roles ? [],
-      extraModules ? [],
-    } @ otherArgs:
-      flatten (
-        concatLists [
-          (singleton ./${hostname}/host.nix)
-
-          (map (path: getModules {inherit path;}) (concatLists [modules roles]))
-
-          otherArgs.extraModules
-        ]
-      );
-  in {
-    skald = mkSystem {
-      hostname = "skald";
-      system = "x86_64-linux";
-      modules = getHostModules "skald" {
-        roles = [laptop graphical workstation experimental];
-        extraModules = [homes];
+  mkSystem = inputs.riptide.mimics.mkSystem systemSet;
+  mkHome = inputs.riptide.mimics.mkHome systemSet;
+in {
+  flake = {
+    nixosConfigurations = {
+      skald = mkSystem {
+        system = "x86_64-linux";
+        modules = [];
       };
     };
+    homeConfigurations = {
+      "john@skald" = mkHome {
+        system = "x86_64-linux";
+        modules = [
+        ];
+      };
+    };
+    # thats some wicked things, binds each home-system (in case home-manager acts standalone)
   };
 }

@@ -105,5 +105,14 @@
         nixpkgs.follows = "nixpkgs-small";
       };
     };
+
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    nur.url = "github:nix-community/NUR";
+    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
   };
 }
