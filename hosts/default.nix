@@ -2,13 +2,12 @@
   withSystem,
   inputs,
   self,
-  lib,
   ...
 }: let
   inherit (inputs.riptide) mimics;
-  inherit (mimics) getModules fzf;
-  inherit (lib.lists) singleton concatLists flatten;
+  inherit (mimics) fzf;
   selfPath = (builtins.unsafeDiscardStringContext "${self}") + /areas;
+
   systemSet = {
     inherit withSystem;
     basicArgs = {
@@ -20,8 +19,10 @@
   augmentsRoot = selfPath + /augments;
   homeModulesRoot = selfPath + /home;
 
-  baseAugments = fzf augmentsRoot "\.nix !__";
-  baseHomeModules = name: fzf (homeModulesRoot + /${name}) "\.nix !__";
+  defaultRule = "\.nix !__";
+  baseAugments = fzf augmentsRoot defaultRule;
+  mkForUser = name: fzf (homeModulesRoot + /${name}) defaultRule;
+  mkForHost = host: fzf (selfPath + /hosts + /${host}) defaultRule;
 
   mkSystem = inputs.riptide.mimics.mkSystem systemSet;
   mkHome = inputs.riptide.mimics.mkHome systemSet;
@@ -29,17 +30,25 @@ in {
   flake = {
     nixosConfigurations = {
       skald = mkSystem {
+        hostName = "skald";
         system = "x86_64-linux";
         modules = [
+          (mkForHost "skald")
           baseAugments
+          inputs.nix-gaming.nixosModules.pipewireLowLatency
+          inputs.chaotic.nixosModules.default
+          inputs.nur.nixosModules.nur
+          # inputs.home-manager.nixosModules.home-manager one day, when ill tinker less
         ];
       };
     };
     homeConfigurations = {
       "john@skald" = mkHome {
+        username = "john";
         system = "x86_64-linux";
         modules = [
-          (baseHomeModules "john")
+          (mkForUser "john")
+          inputs.chaotic.homeManagerModules.default
         ];
       };
     };
