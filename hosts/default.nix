@@ -10,6 +10,7 @@
 
   systemSet = {
     inherit withSystem;
+    inherit (inputs.home-manager.lib) homeManagerConfiguration;
     basicArgs = {
       inherit self inputs;
       inherit (inputs.riptide) mimics;

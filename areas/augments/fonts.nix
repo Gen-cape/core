@@ -4,7 +4,6 @@
     enableDefaultPackages = true;
     packages = with pkgs; [
       jetbrains-mono
-      nerdfonts
       noto-fonts
       vistafonts
       corefonts

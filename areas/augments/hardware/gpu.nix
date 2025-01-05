@@ -32,12 +32,13 @@ in {
         # inputs'.chaotic.legacyPackages.mesa_git
       ];
 
-      chaotic.mesa-git.enable = true;
+      # chaotic.mesa-git.enable = true;
 
       # Vulkan and opengl stuff
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
+        package = inputs'.chaotic.packages.mesa_git.drivers;
 
         extraPackages = with pkgs; [
           vaapiVdpau
@@ -55,17 +56,17 @@ in {
         ];
       };
 
-      environment.variables = {
-        VDPAU_DRIVER = "radeonsi";
-        LIBVA_DRIVER_NAME = "radeonsi";
-        AMD_VULKAN_ICD = "RADV";
-        OCL_ICD_VENDORS = "${pkgs.rocmPackages.clr.icd}/etc/OpenCL/vendors";
-        VK_ICD_FILENAMES = "${pkgs.mesa_git.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json";
-      };
+      # environment.variables = {
+      #   VDPAU_DRIVER = "radeonsi";
+      #   LIBVA_DRIVER_NAME = "radeonsi";
+      #   AMD_VULKAN_ICD = "RADV";
+      #   OCL_ICD_VENDORS = "${pkgs.rocmPackages.clr.icd}/etc/OpenCL/vendors";
+      #   VK_ICD_FILENAMES = "${pkgs.mesa_git.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json";
+      # };
 
-      systemd.tmpfiles.rules = [
-        "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-      ];
+      # systemd.tmpfiles.rules = [
+      #   "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+      # ];
     })
 
     (mkIf (cfg.type == "nvidia") {

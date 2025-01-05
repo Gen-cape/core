@@ -8,7 +8,7 @@
 
   cfg = config.core.cpu;
 in {
-  options.core.system.hardware.cpu = {
+  options.core.cpu = {
     type = mkOption {
       type = enum ["amd"];
       description = "The type of CPU the host system uses.";

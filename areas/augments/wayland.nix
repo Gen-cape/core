@@ -11,6 +11,7 @@
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
       ];
+      config.common.default = "*";
     };
     programs.xwayland.enable = true;
   };

@@ -10,7 +10,7 @@
         allowUnfree = true;
         allowUnsupportedSystem = true;
       };
-      _module.args.pkgs = config.legacyPackages;
     };
+    _module.args.pkgs = config.legacyPackages;
   };
 }

@@ -10,12 +10,13 @@
   scaling = "1.6";
   debug = false;
 in {
-  config = mkIf {
+  config = {
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [
         xdg-desktop-portal-gtk
       ];
+      config.common.default = "*";
     };
 
     programs.hyprland = {
