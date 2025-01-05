@@ -8,6 +8,7 @@
   inherit (lib) mkIf optionals concatLists;
   scaling = "1.6";
   # debug = false;
+  system = pkgs.system;
   debug = true;
   mod = "SUPER";
 in {
@@ -37,7 +38,7 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+      package = inputs'.hyprland.packages.hyprland;
       xwayland.enable = true;
 
       systemd = {
@@ -117,7 +118,7 @@ in {
         ];
 
         layerrule = [
-          "noanim,^(selection)$"
+          # "noanim,^(selection)$"
         ];
 
         input = {
@@ -158,10 +159,12 @@ in {
             vibrancy = 0.22;
           };
 
-          # drop_shadow = true;
-          # shadow_range = 4;
-          # shadow_render_power = 3;
-          # "col.shadow" = "rgba(1a1a1aee)";
+          shadow = {
+            enabled = true;
+            range = 4;
+            render_power = 3;
+            color = "rgba(1a1a1aee)";
+          };
         };
 
         animations = {
