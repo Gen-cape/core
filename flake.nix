@@ -77,7 +77,7 @@
       };
     };
 
-    xdg-portal-hyprland = {
+    xdg-desktop-portal-hyprland = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs = {
         hyprlang.follows = "hyprland";
@@ -108,6 +108,10 @@
 
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprcursor = {
+      url = "github:hyprwm/hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

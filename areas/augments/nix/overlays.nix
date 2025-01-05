@@ -3,6 +3,7 @@
   lib,
   mimics,
   inputs,
+  pkgs,
   ...
 }: let
   inherit (lib.trivial) const;

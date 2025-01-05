@@ -1,9 +1,15 @@
 {
-  imports = [
-    ./branches.nix
-  ];
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkForce;
+in {
+  imports = [];
 
   config = {
+    nix.package = mkForce pkgs.lix;
     home = {
       username = "john";
       homeDirectory = "/home/john";

@@ -6,7 +6,7 @@
   inherit (lib) concatLists;
 in {
   config = {
-    home-manager.users.john.home.packages = concatLists [
+    home.packages = concatLists [
       ## Will add more packages if I find out there are some apps that do not work.
       (with pkgs; [
         libsForQt5.ffmpegthumbs #kdePackages are buggy, use libsForQt5 instead
@@ -32,7 +32,5 @@ in {
         ark
       ])
     ];
-
-    services.udisks2.enable = true;
   };
 }

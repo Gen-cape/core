@@ -25,6 +25,7 @@
   mkForUser = name: fzf (/. + (homeModulesRoot + "/${name}")) defaultRule;
   mkForHost = host: fzf (./. + /${host}) defaultRule;
 
+  # https://github.com/nix-community/home-manager/issues/5980 sigh...
   mkSystem = inputs.riptide.mimics.mkSystem systemSet;
   mkHome = inputs.riptide.mimics.mkHome systemSet;
 in {

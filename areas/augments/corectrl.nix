@@ -1,5 +1,4 @@
-_: let
-in {
+_: {
   config = {
     programs.corectrl = {
       enable = true;
