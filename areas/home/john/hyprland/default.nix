@@ -9,6 +9,7 @@
   scaling = "1.6";
   # debug = false;
   debug = true;
+  mod = "SUPER";
 in {
   config = {
     xdg.portal = {
@@ -247,25 +248,40 @@ in {
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
-        binde = [
-          # volume controls
-          ",XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
-          ",XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
-
-          # brightness controls
-          '',XF86MonBrightnessUp,exec, brightnessctl -c backlight s 5%+''
-          '',XF86MonBrightnessDown,exec, brightnessctl -c backlight s 5%-''
+        # binde = [
+        #   # volume controls
+        #   ",XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
+        #   ",XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+        #
+        #   # brightness controls
+        #   '',XF86MonBrightnessUp,exec, brightnessctl -c backlight s 5%+''
+        #   '',XF86MonBrightnessDown,exec, brightnessctl -c backlight s 5%-''
+        # ];
+        bindle = [
+          ", XF86AudioRaiseVolume, exec, ${pkgs.pamixer}/bin/pamixer -i 5 --allow-boost --set-limit 200"
+          ", XF86AudioLowerVolume, exec, ${pkgs.pamixer}/bin/pamixer -d 5 --allow-boost --set-limit 200"
+          ", XF86AudioMute, exec, ${pkgs.pamixer}/bin/pamixer -t"
+          ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c backlight s 5%-"
+          "SHIFT, XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c backlight s 0%"
+          ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c backlight s 5%+"
+          "SHIFT, XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl -c backlight s 100%"
         ];
 
         # binds that are locked, a.k.a will activate even while an input inhibitor is active
+        # bindl = [
+        #   # media controls
+        #   ",XF86AudioPlay,exec,playerctl play-pause"
+        #   ",XF86AudioPrev,exec,playerctl previous"
+        #   ",XF86AudioNext,exec,playerctl next"
+        #
+        #   ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        #   ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        # ];
         bindl = [
-          # media controls
-          ",XF86AudioPlay,exec,playerctl play-pause"
-          ",XF86AudioPrev,exec,playerctl previous"
-          ",XF86AudioNext,exec,playerctl next"
-
-          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+          "${mod}, SPACE, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          "${mod}, C, exec, ${pkgs.playerctl}/bin/playerctl next"
+          "${mod}, X, exec, ${pkgs.playerctl}/bin/playerctl previous"
+          ", Print, exec, ${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard}/bin/wl-copy"
         ];
       };
     };

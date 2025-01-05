@@ -24,7 +24,7 @@ in {
       tmp.cleanOnBoot = true;
 
       loader = {
-        timeout = mkForce 1;
+        timeout = mkForce 3;
         generationsDir.copyKernels = true;
         efi.canTouchEfiVariables = true;
         grub = {
@@ -33,7 +33,7 @@ in {
           efiSupport = true;
           device = "nodev";
           configurationLimit = 2;
-          timeoutStyle = "hidden";
+          # timeoutStyle = "hidden";
           theme = "${grubThemePkg}/${grubTheme}";
           splashImage = "${grubThemePkg}/${grubTheme}/background.png";
         };
