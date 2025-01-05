@@ -20,13 +20,13 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.type == "amd") {
-      hardware.amdgpu.opencl.enable = true;
-      services.xserver.videoDrivers = ["modesetting"];
+      # hardware.amdgpu.opencl.enable = true;
+      # services.xserver.videoDrivers = ["modesetting"];
 
-      boot = {
-        initrd.kernelModules = ["amdgpu"];
-        kernelModules = ["kvm-amd"];
-      };
+      # boot = {
+      #   initrd.kernelModules = ["amdgpu"];
+      #   kernelModules = ["kvm-amd"];
+      # };
 
       environment.systemPackages = [
         # inputs'.chaotic.legacyPackages.mesa_git
@@ -38,22 +38,22 @@ in {
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
-        package = inputs'.chaotic.packages.mesa_git.drivers;
-
-        extraPackages = with pkgs; [
-          vaapiVdpau
-          libvdpau-va-gl
-          inputs.chaotic.packages."${pkgs.system}".libdrm_git
-          libva
-          rocmPackages.clr
-          rocmPackages.clr.icd
-          rocmPackages.rocminfo
-          rocmPackages.rocm-runtime
-        ];
-
-        extraPackages32 = with pkgs; [
-          driversi686Linux.libvdpau-va-gl
-        ];
+        # package = inputs'.chaotic.packages.mesa_git.drivers;
+        #
+        # extraPackages = with pkgs; [
+        #   vaapiVdpau
+        #   libvdpau-va-gl
+        #   inputs.chaotic.packages."${pkgs.system}".libdrm_git
+        #   libva
+        #   rocmPackages.clr
+        #   rocmPackages.clr.icd
+        #   rocmPackages.rocminfo
+        #   rocmPackages.rocm-runtime
+        # ];
+        #
+        # extraPackages32 = with pkgs; [
+        #   driversi686Linux.libvdpau-va-gl
+        # ];
       };
 
       # environment.variables = {

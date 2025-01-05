@@ -8,6 +8,7 @@
     inputs'.rose-pine-hyprcursor.packages.default
     inputs'.search-flake-inputs.packages.default
     inputs'.zen-browser.packages.default
+    inputs'.neovim-riptide.packages.default
     qbittorrent
     obs-studio
     krita
@@ -25,6 +26,7 @@
     gamemode
     bottles
     nomacs
+    ripgrep
 
     pkgs.qimgv
     pkgs.pqiv

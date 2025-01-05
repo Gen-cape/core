@@ -34,7 +34,7 @@ in {
           device = "nodev";
           configurationLimit = 2;
           timeoutStyle = "hidden";
-          theme = "${grubThemePkg}/${grubTheme}}";
+          theme = "${grubThemePkg}/${grubTheme}";
           splashImage = "${grubThemePkg}/${grubTheme}/background.png";
         };
       };

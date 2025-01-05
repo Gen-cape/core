@@ -1,6 +1,6 @@
 {inputs', ...}: {
   programs.firefox = {
-    enable = false;
+    enable = true;
     package = inputs'.chaotic.packages.firefox_nightly;
 
     profiles = {
@@ -14,7 +14,7 @@
           keepassxc-browser
           return-youtube-dislikes
           translate-web-pages
-          enhancer-for-youtube
+          # enhancer-for-youtube
           user-agent-string-switcher
         ];
 

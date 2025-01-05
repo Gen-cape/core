@@ -32,6 +32,8 @@ in {
   flake = {
     DEBUG = {
       inherit baseAugments;
+      debug =
+        mkForUser "john";
     };
     nixosConfigurations = {
       skald = mkSystem {

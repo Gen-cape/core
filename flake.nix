@@ -24,6 +24,8 @@
         flake-parts.follows = "flake-parts";
       };
     };
+    neovim-riptide.url = "path:/home/john/neovim";
+
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };

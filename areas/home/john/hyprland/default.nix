@@ -7,7 +7,8 @@
 }: let
   inherit (lib) mkIf optionals concatLists;
   scaling = "1.6";
-  debug = false;
+  # debug = false;
+  debug = true;
 in {
   config = {
     xdg.portal = {
@@ -35,8 +36,8 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-      xwayland.enable = true;
+      # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+      # xwayland.enable = true;
 
       systemd = {
         enable = true;
@@ -75,7 +76,7 @@ in {
           key_press_enables_dpms = true; # Enable DPMS on keyboard action
           disable_autoreload = true; # Autoreload is unnecessary on NixOS, because the configuration file is read-only link
         };
-        xwayland.force_zero_scaling = true;
+        # xwayland.force_zero_scaling = true;
 
         env = concatLists [
           [
@@ -156,10 +157,10 @@ in {
             vibrancy = 0.22;
           };
 
-          drop_shadow = true;
-          shadow_range = 4;
-          shadow_render_power = 3;
-          "col.shadow" = "rgba(1a1a1aee)";
+          # drop_shadow = true;
+          # shadow_range = 4;
+          # shadow_render_power = 3;
+          # "col.shadow" = "rgba(1a1a1aee)";
         };
 
         animations = {
@@ -195,6 +196,7 @@ in {
           "$MODSHIFT,Q,killactive," # kill focused window
           "$MOD,T,togglegroup," # group focused window
           "$MODSHIFT,G,changegroupactive," # switch within the active group
+          ''$MOD,R,exec, killall tofi || run-as-service $(tofi-drun)'' # alternative app launcher
 
           "$mainMod, C, killactive,"
           "$mainMod, M, exit,"

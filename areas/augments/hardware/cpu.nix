@@ -17,7 +17,7 @@ in {
 
   config = mkMerge [
     (mkIf (cfg.type == "amd") {
-      hardware.cpu.amd = {updateMicrocode = true;};
+      # hardware.cpu.amd = {updateMicrocode = true;};
     })
   ];
 }

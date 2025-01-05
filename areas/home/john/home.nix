@@ -10,6 +10,9 @@ in {
 
   config = {
     nix.package = mkForce pkgs.lix;
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfreePredicate = _: true;
+
     home = {
       username = "john";
       homeDirectory = "/home/john";

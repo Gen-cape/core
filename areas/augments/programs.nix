@@ -4,7 +4,6 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    inputs'.ghostty.packages.default
     heroic
     npins
     gpu-screen-recorder
