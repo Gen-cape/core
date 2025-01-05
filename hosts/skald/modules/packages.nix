@@ -4,7 +4,7 @@
   ...
 }: {
   environment.systemPackages = with pkgs; [
-    inputs'.quickshell.packages.quickshell
+    # inputs'.quickshell.packages.quickshell
     inputs'.rose-pine-hyprcursor.packages.default
     inputs'.search-flake-inputs.packages.default
     inputs'.zen-browser.packages.default
@@ -32,9 +32,9 @@
     pkgs.pqiv
     pkgs.dooit
     pkgs.r2modman
-    pkgs.lazyjj
-    pkgs.gg-jj
-    pkgs.julia_19
+    # pkgs.lazyjj
+    # pkgs.gg-jj
+    # pkgs.julia_19
     pkgs.urn-timer
     pkgs.chromium
     pkgs.nautilus

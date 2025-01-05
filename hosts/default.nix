@@ -20,7 +20,7 @@
   augmentsRoot = selfPath + "/augments";
   homeModulesRoot = selfPath + "/home";
 
-  defaultRule = "\.nix !__ \.nix";
+  defaultRule = "\.nix \.nix !__ ";
   baseAugments = fzf (/. + augmentsRoot) defaultRule;
   mkForUser = name: fzf (/. + (homeModulesRoot + "/${name}")) defaultRule;
   mkForHost = host: fzf (./. + /${host}) defaultRule;
@@ -46,6 +46,7 @@ in {
           inputs.chaotic.nixosModules.default
           inputs.nur.modules.nixos.default
           # inputs.home-manager.nixosModules.home-manager one day, when ill tinker less
+          inputs.stylix.nixosModules.stylix
         ];
       };
     };
@@ -56,6 +57,7 @@ in {
         modules = [
           (mkForUser "john")
           inputs.chaotic.homeManagerModules.default
+          inputs.stylix.homeManagerModules.stylix
         ];
       };
     };

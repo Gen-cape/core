@@ -28,9 +28,9 @@ in {
       #   kernelModules = ["kvm-amd"];
       # };
 
-      environment.systemPackages = [
-        # inputs'.chaotic.legacyPackages.mesa_git
-      ];
+      # environment.systemPackages = [
+      #   inputs'.chaotic.legacyPackages.mesa_git
+      # ];
 
       # chaotic.mesa-git.enable = true;
 
@@ -40,20 +40,20 @@ in {
         enable32Bit = true;
         # package = inputs'.chaotic.packages.mesa_git.drivers;
         #
-        # extraPackages = with pkgs; [
-        #   vaapiVdpau
-        #   libvdpau-va-gl
-        #   inputs.chaotic.packages."${pkgs.system}".libdrm_git
-        #   libva
-        #   rocmPackages.clr
-        #   rocmPackages.clr.icd
-        #   rocmPackages.rocminfo
-        #   rocmPackages.rocm-runtime
-        # ];
-        #
-        # extraPackages32 = with pkgs; [
-        #   driversi686Linux.libvdpau-va-gl
-        # ];
+        extraPackages = with pkgs; [
+          # vaapiVdpau
+          # libvdpau-va-gl
+          inputs.chaotic.packages."${pkgs.system}".libdrm_git
+          # libva
+          # rocmPackages.clr
+          # rocmPackages.clr.icd
+          # rocmPackages.rocminfo
+          # rocmPackages.rocm-runtime
+        ];
+
+        extraPackages32 = with pkgs; [
+          # driversi686Linux.libvdpau-va-gl
+        ];
       };
 
       # environment.variables = {
@@ -61,7 +61,7 @@ in {
       #   LIBVA_DRIVER_NAME = "radeonsi";
       #   AMD_VULKAN_ICD = "RADV";
       #   OCL_ICD_VENDORS = "${pkgs.rocmPackages.clr.icd}/etc/OpenCL/vendors";
-      #   VK_ICD_FILENAMES = "${pkgs.mesa_git.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json";
+      #   VK_ICD_FILENAMES = "${inputs'.chaotic.packages.mesa_git.drivers.drivers}/share/vulkan/icd.d/radeon_icd.x86_64.json";
       # };
 
       # systemd.tmpfiles.rules = [

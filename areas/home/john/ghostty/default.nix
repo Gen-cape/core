@@ -12,5 +12,5 @@ in {
   home.file.".config/ghostty".source =
     config.lib.file.mkOutOfStoreSymlink
     # "${selfPath}/areas/home/john/ghostty";
-    "home/john/areas/home/john/ghostty";
+    "/home/john/constructed-core/areas/home/john/ghostty";
 }

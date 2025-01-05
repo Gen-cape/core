@@ -6,13 +6,13 @@
 }: let
 in {
   home.packages = [
-    (inputs'.quickshell.packages.default.override
-      {
-        withWayland = true;
-        withPipewire = true;
-        withPam = true;
-        withHyprland = true;
-      })
+    # (inputs'.quickshell.packages.default.override
+    # {
+    #   withWayland = true;
+    #   withPipewire = true;
+    #   withPam = true;
+    #   withHyprland = true;
+    # })
     # pkgs.kdePackages.qtmultimedia
 
     # pkgs.kdePackages.qtmultimedia

@@ -37,7 +37,7 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-      # xwayland.enable = true;
+      xwayland.enable = true;
 
       systemd = {
         enable = true;
@@ -76,7 +76,7 @@ in {
           key_press_enables_dpms = true; # Enable DPMS on keyboard action
           disable_autoreload = true; # Autoreload is unnecessary on NixOS, because the configuration file is read-only link
         };
-        # xwayland.force_zero_scaling = true;
+        xwayland.force_zero_scaling = true;
 
         env = concatLists [
           [

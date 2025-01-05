@@ -8,6 +8,14 @@
     programs.gamescope = {
       enable = true;
       package = inputs.chaotic.packages."${pkgs.system}".gamescope_git;
+      capSysNice = true;
+      args = [
+        # "-f"
+        # "-S fsr"
+        "--rt"
+        "--adaptive-sync"
+        "--expose-wayland"
+      ];
     };
 
     #programs.gamescope.capSysNice = true;
