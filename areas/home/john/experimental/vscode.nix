@@ -1,16 +1,4 @@
-{
-  lib,
-  pkgs,
-  osConfig,
-  ...
-}: let
-  inherit (lib) mkIf;
-  inherit (osConfig) modules;
-
-  sys = modules.system;
-  prg = sys.programs;
-in {
-  #config = mkIf prg.vscode.enable {
+{pkgs, ...}: {
   config = {
     home.packages = with pkgs; [
       python3

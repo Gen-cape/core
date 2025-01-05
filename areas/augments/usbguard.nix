@@ -16,6 +16,6 @@ in {
     };
 
     environment.systemPackages = [pkgs.usbguard];
-    udisks2.enable = true;
+    services.udisks2.enable = true;
   };
 }

@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   inputs,
   pkgs,
@@ -7,7 +6,6 @@
   ...
 }: let
   inherit (lib) mkIf optionals concatLists;
-  inherit (config.faery.system) username;
   scaling = "1.6";
   debug = false;
 in {
@@ -23,10 +21,12 @@ in {
     home.packages = with pkgs; [
       xwaylandvideobridge
       rofi-wayland
-      # inputs.hyprcursor.packages."${pkgs.system}".hyprcursor
       inputs'.hyprcursor.packages.hyprcursor
+      inputs'.hyprland-contrib.packages.grimblast
+      inputs'.hyprland-contrib.packages.hdrop
+      inputs'.hyprland-contrib.packages.scratchpad
+      inputs'.hyprpicker.packages.hyprpicker
 
-      # inputs.swww.packages."${pkgs.system}".swww
       swww
       grim
       wl-clipboard
@@ -45,13 +45,15 @@ in {
 
       settings = {
         "$mainMod" = "SUPER";
+        "$MOD" = "SUPER";
 
         monitor = ",preferred,auto,${scaling}";
 
         exec-once = [
           "swww-daemon"
-          "env DRI_PRIME=1 firefox-nightly"
+          # "env DRI_PRIME=1 firefox-nightly"
           "systemctl --user start opentabletdriver.service"
+          "pypr"
         ];
 
         misc = {
@@ -59,11 +61,21 @@ in {
           force_default_wallpaper = -1;
           vrr = 1;
           vfr = true;
-        };
+          # Disable redundant renders
+          disable_hyprland_logo = true; # wallpaper covers it anyway
+          disable_splash_rendering = true; # "
 
-        xwayland = {
-          force_zero_scaling = true;
+          # Window swallowing
+          # (i.e. children window causes parent to be hidden)
+          enable_swallow = true; # Enable window swallowing
+          swallow_regex = "^(Alacritty|kitty|foot|thunar|nemo|wezterm|scratch_term)"; # Windows for which swallowing is applied
+
+          # dpms
+          mouse_move_enables_dpms = true; # Enable DPMS on mouse/touchpad action
+          key_press_enables_dpms = true; # Enable DPMS on keyboard action
+          disable_autoreload = true; # Autoreload is unnecessary on NixOS, because the configuration file is read-only link
         };
+        xwayland.force_zero_scaling = true;
 
         env = concatLists [
           [
@@ -84,24 +96,41 @@ in {
             "HYPRLAND_LOG_WLR, 1"
             "HYPRLAND_TRACE, 1"
           ])
+          [
+            "ELECTRON_OZONE_PLATFORM_HINT,auto"
+            "CLUTTER_BACKEND,wayland"
+            "GDK_BACKEND,wayland,x11"
+            "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+            "QT_QPA_PLATFORM,wayland"
+            "QT_QPA_PLATFORMTHEME,qt5ct"
+            "QT_SCALE_FACTOR,1"
+            "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+            #"SDL_VIDEODRIVER,wayland,x11"
+            "XDG_CURRENT_DESKTOP,Hyprland"
+            "XDG_SESSION_DESKTOP,Hyprland"
+            "XDG_SESSION_TYPE,wayland"
+            "NIXOS_OZONE_WL,1"
+            "MOZ_ENABLE_WAYLAND,1"
+          ]
         ];
 
         layerrule = [
           "noanim,^(selection)$"
-          "blur, ohio"
-          "blurpopups, ohio"
-          "ignorezero, ohio"
         ];
 
         input = {
-          kb_layout = "us";
-          follow_mouse = "1";
-
-          touchpad = {
-            natural_scroll = false;
-          };
-
-          sensitivity = -0.5;
+          sensitivity = 0.6;
+          # keyboard layout
+          kb_layout = "us,ru";
+          kb_options = "grp:win_space_toggle";
+          repeat_rate = 50;
+          repeat_delay = 300;
+          numlock_by_default = true;
+          left_handed = false;
+          follow_mouse = true;
+          float_switch_override_focus = false;
+          touchpad.natural_scroll = "yes";
+          touchpad.scroll_factor = 0.422;
         };
 
         general = {
@@ -152,23 +181,26 @@ in {
           preserve_split = true;
         };
 
-        master = {
-          new_status = "master";
-        };
+        master.new_status = "master";
 
         gestures = {
           workspace_swipe = false;
+          # workspace_swipe = true;
+          # workspace_swipe_forever = true;
         };
-
         bind = [
-          "$mainMod, Q, exec, foot"
+          # "$mainMod, Q, exec, foot"
+          ''$MOD,RETURN,exec,run-as-service $(ghostty)'' # terminal
+          ''$MODSHIFT,RETURN,exec,ghostty -e "sttt doom -d 0.3  -b .8,.3,.87,.47 -c 9; exec fish"'' # terminal
+          "$MODSHIFT,Q,killactive," # kill focused window
+          "$MOD,T,togglegroup," # group focused window
+          "$MODSHIFT,G,changegroupactive," # switch within the active group
+
           "$mainMod, C, killactive,"
           "$mainMod, M, exit,"
-          "$mainMod, E, exec, dolphin"
           "$mainMod, V, togglefloating,"
           "$mainMod, P, pseudo, # dwindle"
           "$mainMod, J, togglesplit," # dwindle
-          "$mainMod, SPACE, exec, rofi -show drun"
           "$mainMod, F, fullscreen"
           ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
           "$mainMod, Print, exec, grim"
@@ -212,6 +244,26 @@ in {
           # Move/resize windows with mainMod + LMB/RMB and dragging
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
+        ];
+        binde = [
+          # volume controls
+          ",XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
+          ",XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+
+          # brightness controls
+          '',XF86MonBrightnessUp,exec, brightnessctl -c backlight s 5%+''
+          '',XF86MonBrightnessDown,exec, brightnessctl -c backlight s 5%-''
+        ];
+
+        # binds that are locked, a.k.a will activate even while an input inhibitor is active
+        bindl = [
+          # media controls
+          ",XF86AudioPlay,exec,playerctl play-pause"
+          ",XF86AudioPrev,exec,playerctl previous"
+          ",XF86AudioNext,exec,playerctl next"
+
+          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         ];
       };
     };

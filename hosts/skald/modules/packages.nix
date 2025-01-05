@@ -6,6 +6,8 @@
   environment.systemPackages = with pkgs; [
     inputs'.quickshell.packages.quickshell
     inputs'.rose-pine-hyprcursor.packages.default
+    inputs'.search-flake-inputs.packages.default
+    inputs'.zen-browser.packages.default
     qbittorrent
     obs-studio
     krita
@@ -20,6 +22,10 @@
 
     helvum
     jujutsu
+    gamemode
+    bottles
+    nomacs
+
     pkgs.qimgv
     pkgs.pqiv
     pkgs.dooit
@@ -28,5 +34,16 @@
     pkgs.gg-jj
     pkgs.julia_19
     pkgs.urn-timer
+    pkgs.chromium
+    pkgs.nautilus
+    pkgs.alacritty
+    pkgs.vesktop
+    pkgs.tor-browser
+    pkgs.libreoffice
+    pkgs.gotop
+    pkgs.activate-linux
+    pkgs.nix-melt
+    pkgs.nix-inspect
+    pkgs.zathura
   ];
 }

@@ -1,9 +1,4 @@
-{
-  pkgs,
-  self',
-  ...
-}: let
-in {
+{...}: {
   programs.tofi = {
     enable = true;
     settings = {

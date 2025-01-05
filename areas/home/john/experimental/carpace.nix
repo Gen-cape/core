@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-} @ autoArgs: {
+{pkgs, ...} @ autoArgs: {
   programs.carapace = {
     enable = true;
     enableFishIntegration = true;
@@ -19,7 +15,6 @@
     };
     flags = [
       "--disable-up-arrow"
-      # "--disable-ctrl-r"
     ];
   };
   programs.nushell = {
