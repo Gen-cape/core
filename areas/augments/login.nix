@@ -31,6 +31,17 @@ in {
       hide_borders = true;
       save = true;
       login_cmd = command + ''exec "$@"'';
+
+      # Input customization
+      asterisk = ">";
+      blank_box = true;
+      input_len = 34;
+      clear_password = true;
+
+      clock = "%H:%M:%S"; # Show time in 24h format
+      box_title = "CONNECT TO SYSTEM";
+
+      text_in_center = true; # Center align text for aesthetic
     };
   };
 
