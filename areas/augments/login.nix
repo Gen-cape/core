@@ -2,7 +2,6 @@
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   command = "Hyprland";
   tuiTheme = ''time=lightred;input=red'';
-  ly = pkgs.ly;
 in {
   security.pam.services = let
     settings = {
@@ -27,7 +26,7 @@ in {
 
   services.displayManager.ly = {
     enable = true;
-    package = ly;
+    package = pkgs.ly;
     settings = {
       hide_borders = true;
       save = true;

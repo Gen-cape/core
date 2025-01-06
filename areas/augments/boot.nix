@@ -24,7 +24,7 @@ in {
       tmp.cleanOnBoot = true;
 
       loader = {
-        timeout = mkForce 3;
+        timeout = mkForce 1;
         generationsDir.copyKernels = true;
         efi.canTouchEfiVariables = true;
         grub = {
