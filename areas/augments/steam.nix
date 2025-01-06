@@ -2,6 +2,7 @@
   lib,
   pkgs,
   inputs,
+  inputs',
   ...
 }: {
   config = {
@@ -17,6 +18,9 @@
         "--expose-wayland"
       ];
     };
+    environment.systemPackages = [
+      inputs'.chaotic.packages.mangohud_git
+    ];
 
     #programs.gamescope.capSysNice = true;
 

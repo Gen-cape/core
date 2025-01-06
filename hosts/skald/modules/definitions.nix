@@ -6,5 +6,6 @@ in {
     swapFile.enable = true;
     batteryThreshold.enable = true;
     batteryThreshold.value = 80;
+    powerManagement.enable = true;
   };
 }
