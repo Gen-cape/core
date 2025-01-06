@@ -16,7 +16,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --asterisks-char \"]\" --time --remember --remember-session --cmd ${command}";
+        command = "${tuigreet} --asterisks --asterisks-char \"]\" --time --remember --remember-session --cmd ${command}";
         user = "greeter";
       };
     };
