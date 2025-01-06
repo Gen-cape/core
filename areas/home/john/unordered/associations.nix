@@ -1,0 +1,61 @@
+{pkgs, ...}: {
+  # System Packages
+  # environment.systemPackages = with pkgs; [];
+
+  home.sessionVariables = {
+    EDITOR = "/home/john/neovim/nvim/bin/nvim +star";
+  };
+  # MIME Associations
+  xdg.mimeApps.enable = true;
+  xdg.mimeApps.defaultApplications = {
+    # Browser handlers
+    "text/html" = "zen.desktop";
+    "x-scheme-handler/http" = "zen.desktop";
+    "x-scheme-handler/https" = "zen.desktop";
+    "x-scheme-handler/about" = "zen.desktop";
+    "x-scheme-handler/unknown" = "zen.desktop";
+
+    # File manager
+    "inode/directory" = "org.gnome.Nautilus.desktop";
+
+    # Documents
+    "application/pdf" = "libreoffice-draw.desktop";
+    "application/doc" = "libreoffice-writer.desktop";
+    "application/docx" = "libreoffice-writer.desktop";
+    "application/msword" = "libreoffice-writer.desktop";
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "libreoffice-writer.desktop";
+    "application/vnd.oasis.opendocument.text" = "libreoffice-writer.desktop";
+    "application/vnd.oasis.opendocument.spreadsheet" = "libreoffice-calc.desktop";
+    "application/vnd.oasis.opendocument.presentation" = "libreoffice-impress.desktop";
+
+    # Images
+    "image/png" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/jpg" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/jpeg" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/webp" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/gif" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/bmp" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/tiff" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+
+    # Video
+    "video/mp4" = "mpv.desktop";
+    "video/x-matroska" = "mpv.desktop";
+    "video/webm" = "mpv.desktop";
+    "video/avi" = "mpv.desktop";
+    "video/msvideo" = "mpv.desktop";
+    "video/x-msvideo" = "mpv.desktop";
+    "video/x-ms-wmv" = "mpv.desktop";
+    "video/quicktime" = "mpv.desktop";
+
+    # Audio
+    "audio/aac" = "mpv.desktop";
+    "audio/mpeg" = "mpv.desktop";
+    "audio/ogg" = "mpv.desktop";
+    "audio/wav" = "mpv.desktop";
+    "audio/webm" = "mpv.desktop";
+    "audio/flac" = "mpv.desktop";
+    "audio/mp4" = "mpv.desktop";
+    "audio/x-m4a" = "mpv.desktop";
+    "audio/opus" = "mpv.desktop";
+  };
+}
