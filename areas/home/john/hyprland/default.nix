@@ -11,6 +11,7 @@
   system = pkgs.system;
   debug = true;
   mod = "SUPER";
+  recordingScripts = pkgs.callPackage ./pkgs/__record.nix {};
 in {
   config = {
     xdg.portal = {
@@ -244,6 +245,17 @@ in {
           # Scroll through existing workspaces with mainMod + scroll
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
+
+          # Replay buffer controls
+          "$mainMod ALT, R, exec, ${recordingScripts.start-replay}/bin/start-replay"
+          "$mainMod ALT, S, exec, ${recordingScripts.save-replay}/bin/save-replay"
+          "$mainMod ALT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
+
+          # Regular recording controls
+          "$mainMod SHIFT, R, exec, ${recordingScripts.start-recording}/bin/start-recording"
+          "$mainMod CTRL, R, exec, ${recordingScripts.start-recording-60}/bin/start-recording-60"
+          "$mainMod SHIFT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
+          "$mainMod SHIFT, P, exec, ${recordingScripts.toggle-pause-recording}/bin/toggle-pause-recording"
         ];
 
         bindm = [
