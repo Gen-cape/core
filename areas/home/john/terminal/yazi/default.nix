@@ -3,12 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./theme/icons.nix
-    ./theme/manager.nix
-    ./theme/status.nix
-  ];
-
   home.packages = [pkgs.exiftool];
 
   programs.yazi = {

@@ -2,6 +2,7 @@
   home.packages = [
     pkgs.fzf
     pkgs.grc
+    pkgs.fd
   ];
   programs.fish = {
     enable = true;

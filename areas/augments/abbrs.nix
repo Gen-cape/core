@@ -55,7 +55,7 @@ in {
     sflake = "search-flake-inputs.nu -f . -i";
 
     flrc = "echo \"use flake\" > .envrc";
-    pyFlake = "nix flake init -t ${templateDir}#pip & echo \"use flake\" > .envrc & direnv allow ";
+    pyFlake = "nix flake init -t ${templateDir}#pip && echo \"use flake\" > .envrc && direnv allow ";
 
     # JJ aliases
 

@@ -1,6 +1,8 @@
 {pkgs, ...}: let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   command = "Hyprland";
+  tuiTheme = ''time=lightred;input=red'';
+  ly = pkgs.ly;
 in {
   security.pam.services = let
     settings = {
@@ -10,15 +12,26 @@ in {
     login = settings;
     greetd = settings;
     tuigreet = settings;
+    ly = settings;
   };
 
   services.greetd = {
-    enable = true;
+    enable = false;
     settings = {
       default_session = {
-        command = "${tuigreet} --asterisks --asterisks-char \"]\" --time --remember --remember-session --cmd ${command}";
+        command = "${tuigreet} --asterisks --asterisks-char \"█\" --theme '${tuiTheme}' --time --remember --remember-session --cmd ${command}";
         user = "greeter";
       };
+    };
+  };
+
+  services.displayManager.ly = {
+    enable = true;
+    package = ly;
+    settings = {
+      hide_borders = true;
+      save = true;
+      login_cmd = command + ''exec "$@"'';
     };
   };
 

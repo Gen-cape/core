@@ -19,7 +19,6 @@
   };
   programs.nushell = {
     enable = true;
-    shellAliases = import ./__nushellAbbrs.nix autoArgs;
     extraEnv =
       # nu
       ''

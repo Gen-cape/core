@@ -2,6 +2,7 @@
   withSystem,
   inputs,
   self,
+  inputs',
   ...
 }: let
   inherit (inputs.riptide) mimics;
@@ -34,6 +35,7 @@ in {
       inherit baseAugments;
       debug =
         mkForUser "john";
+      cursor = inputs'.rose-pine-hyprcursor.packages.default;
     };
     nixosConfigurations = {
       skald = mkSystem {
