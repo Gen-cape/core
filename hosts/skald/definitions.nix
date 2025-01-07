@@ -7,5 +7,7 @@ in {
     batteryThreshold.enable = true;
     batteryThreshold.value = 80;
     powerManagement.enable = true;
+    # webcam = "worky";
+    webcam = "noworky>:(";
   };
 }
