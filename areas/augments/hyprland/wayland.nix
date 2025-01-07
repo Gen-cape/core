@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   config = {
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
@@ -6,13 +10,32 @@
       CLUTTER_BACKEND = "wayland";
       GDK_BACKEND = "wayland";
     };
+    # xdg.portal = {
+    #   enable = true;
+    #   extraPortals = [
+    #     pkgs.xdg-desktop-portal-gtk
+    #   ];
+    #   config.common.default = "*";
+    # };
+    programs.xwayland.enable = true;
+
     xdg.portal = {
       enable = true;
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
       ];
-      config.common.default = "*";
+      config = {
+        common = {
+          default = [
+            "gtk"
+          ];
+        };
+        hyprland = {
+          default = [
+            "hyprland"
+          ];
+        };
+      };
     };
-    programs.xwayland.enable = true;
   };
 }
