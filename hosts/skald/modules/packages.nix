@@ -28,6 +28,9 @@
     nomacs
     ripgrep
 
+    btop
+    gotop
+
     pkgs.qimgv
     pkgs.pqiv
     pkgs.dooit
