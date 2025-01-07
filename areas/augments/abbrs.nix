@@ -56,6 +56,10 @@ in {
 
     flrc = "echo \"use flake\" > .envrc";
     pyFlake = "nix flake init -t ${templateDir}#pip && echo \"use flake\" > .envrc && direnv allow ";
+    rFlake = "nix flake init -t ${templateDir}# && echo \"use flake\" > .envrc && direnv allow ";
+    rfl = "nix flake init -t ${templateDir}# && echo \"use flake\" > .envrc && direnv allow ";
+
+    breb = "nh os boot && nh home switch && reboot";
 
     # JJ aliases
 
@@ -80,7 +84,9 @@ in {
     jgi = "jj git clone --colocate";
     jlog = "jj log -r ::";
     jl = "jj log -r :: --no-pager --limit 5";
-    jll = "jj log -r :: --no-pager";
+    jll = "jj log -r :: --no-pager --limit 10";
+    jlll = "jj log -r :: --no-pager --limit 20";
+    jllll = "jj log -r :: --no-pager";
     jim = "jj log -r \"@ | root() | bookmarks()\" --no-pager";
     jin = "jj git init --colocate";
     book = "jj bookmark move main";
