@@ -1382,8 +1382,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1736101091,
-        "narHash": "sha256-dJW68nLlK08sFK7vPrOK78CI4A60KetLW+sJ42SHdN4=",
+        "lastModified": 1736248537,
+        "narHash": "sha256-H/f+hD80JFdR24xB6cGf1SGPLB/t6bOx636Bz6PYZ6M=",
         "path": "/home/john/riptide",
         "type": "path"
       },
