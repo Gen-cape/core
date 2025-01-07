@@ -11,6 +11,7 @@
   system = pkgs.system;
   debug = true;
   mod = "SUPER";
+  funny = pkgs.callPackage ./pkgs/__funny.nix {};
   recordingScripts = pkgs.callPackage ./pkgs/__record.nix {};
 in {
   config = {
@@ -256,6 +257,14 @@ in {
           "$mainMod CTRL, R, exec, ${recordingScripts.start-recording-60}/bin/start-recording-60"
           "$mainMod SHIFT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
           "$mainMod SHIFT, P, exec, ${recordingScripts.toggle-pause-recording}/bin/toggle-pause-recording"
+
+          # Funny
+          "$mainMod ALT, P, exec, ${funny.spread-propaganda}/bin/spread-propaganda"
+
+          # Replay buffer controls
+          "$mainMod ALT, R, exec, ${recordingScripts.start-replay}/bin/start-replay"
+          "$mainMod ALT, S, exec, ${recordingScripts.save-replay}/bin/save-replay"
+          "$mainMod ALT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
         ];
 
         bindm = [
