@@ -23,6 +23,8 @@
 
     helvum
     jujutsu
+    tmsu
+
     gamemode
     bottles
     nomacs
