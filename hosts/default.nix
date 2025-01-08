@@ -21,7 +21,7 @@
   augmentsRoot = selfPath + "/augments";
   homeModulesRoot = selfPath + "/home";
 
-  defaultRule = "\.nix \.nix !__ ";
+  defaultRule = "\\.nix !__ ";
   baseAugments = fzf (/. + augmentsRoot) defaultRule;
   mkForUser = name: fzf (/. + (homeModulesRoot + "/${name}")) defaultRule;
   mkForHost = host: fzf (./. + /${host}) defaultRule;
