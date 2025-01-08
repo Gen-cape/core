@@ -30,6 +30,13 @@
     nomacs
     ripgrep
 
+    (symlinkJoin {
+      name = "Obsidian";
+      paths = with pkgs; [
+        obsidian
+        pandoc
+      ];
+    })
     btop
     gotop
 
