@@ -47,6 +47,10 @@ in {
     hcalc = ", ghci";
     fcalc = ", ghci";
 
+    tmm = "mkdir -p tmsuMount && tmsu mount tmsuMount";
+    tmu = "tmsu unmount tmsuMount";
+    tt = "tmsu tag";
+
     nvfr = "nix run ~/neovim#default --no-substitute";
 
     nvr = "~/neovim/nvim/bin/nvim";
