@@ -19,7 +19,7 @@
     "inode/directory" = "org.gnome.Nautilus.desktop";
 
     # Documents
-    "application/pdf" = "libreoffice-draw.desktop";
+    "application/pdf" = ["org.pwmt.zathura.desktop" "firefox.desktop"];
     "application/doc" = "libreoffice-writer.desktop";
     "application/docx" = "libreoffice-writer.desktop";
     "application/msword" = "libreoffice-writer.desktop";
