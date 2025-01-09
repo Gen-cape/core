@@ -39,6 +39,7 @@
     })
     btop
     gotop
+    hyperfine
 
     pkgs.qimgv
     pkgs.pqiv
