@@ -50,6 +50,8 @@ in {
     tmm = "mkdir -p tmsuMount && tmsu mount tmsuMount";
     tmu = "tmsu unmount tmsuMount";
     tt = "tmsu tag";
+    tmuu = "sudo umount -f -l ./tmsuMount";
+    cpl = "cp -LR";
 
     nvfr = "nix run ~/neovim#default --no-substitute";
 
