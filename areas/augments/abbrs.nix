@@ -57,6 +57,8 @@ in {
 
     nvr = "~/neovim/nvim/bin/nvim";
 
+    appl = "yazi /run/current-system/sw/share/applications";
+
     melt = "nix-melt";
     sflake = "search-flake-inputs.nu -f . -i";
 
