@@ -29,13 +29,13 @@
     "application/vnd.oasis.opendocument.presentation" = "libreoffice-impress.desktop";
 
     # Images
-    "image/png" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
-    "image/jpg" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
-    "image/jpeg" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
-    "image/webp" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
-    "image/gif" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
-    "image/bmp" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
-    "image/tiff" = ["org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/png" = ["org.nomacs.ImageLounge.desktop" "org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/jpg" = ["org.nomacs.ImageLounge.desktop" "org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/jpeg" = ["org.nomacs.ImageLounge.desktop" "org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/webp" = ["org.nomacs.ImageLounge.desktop" "org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/gif" = ["org.nomacs.ImageLounge.desktop" "org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/bmp" = ["org.nomacs.ImageLounge.desktop" "org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
+    "image/tiff" = ["org.nomacs.ImageLounge.desktop" "org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
 
     # Video
     "video/mp4" = "mpv.desktop";
