@@ -49,6 +49,7 @@ in {
         exec-once = [
           "swww-daemon"
           # "env DRI_PRIME=1 firefox-nightly"
+          "hypridle"
           "systemctl --user start opentabletdriver.service"
           "pypr"
         ];
@@ -296,7 +297,7 @@ in {
         #   ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
         # ];
         bindl = [
-          "${mod}, SPACE, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          "${mod}, O, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
           "${mod}, C, exec, ${pkgs.playerctl}/bin/playerctl next"
           "${mod}, X, exec, ${pkgs.playerctl}/bin/playerctl previous"
           ", Print, exec, ${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard}/bin/wl-copy"
