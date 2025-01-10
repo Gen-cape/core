@@ -3,7 +3,8 @@
   # environment.systemPackages = with pkgs; [];
 
   home.sessionVariables = {
-    EDITOR = "/home/john/neovim/nvim/bin/nvim +star";
+    # EDITOR = "/home/john/neovim/nvim/bin/nvim +star";
+    EDITOR = "nvim";
   };
   # MIME Associations
   xdg.mimeApps.enable = true;

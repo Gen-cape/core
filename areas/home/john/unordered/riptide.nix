@@ -5,6 +5,7 @@
     inputs'.riptide.packages.drvinter
     inputs'.riptide.packages.tmsufolders
     inputs'.riptide.packages.tmsufs
+    inputs'.riptide.packages.quest
 
     inputs'.riptide.packages.ghostty
   ];
