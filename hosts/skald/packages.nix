@@ -29,6 +29,8 @@
     bottles
     nomacs
     ripgrep
+    # television
+    rpg-cli
 
     (symlinkJoin {
       name = "Obsidian";
