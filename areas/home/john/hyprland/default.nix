@@ -13,6 +13,7 @@
   mod = "SUPER";
   funny = pkgs.callPackage ./pkgs/__funny.nix {};
   recordingScripts = pkgs.callPackage ./pkgs/__record.nix {};
+  reload_script = pkgs.callPackage ./pkgs/__reload.nix {};
 in {
   config = {
     home.packages = with pkgs; [
@@ -28,6 +29,8 @@ in {
       grim
       wl-clipboard
       slurp
+      waybar
+      hypridle
     ];
 
     wayland.windowManager.hyprland = {
@@ -49,6 +52,7 @@ in {
         exec-once = [
           "swww-daemon"
           # "env DRI_PRIME=1 firefox-nightly"
+          "waybar"
           "hypridle"
           "systemctl --user start opentabletdriver.service"
           "pypr"
@@ -260,6 +264,7 @@ in {
           "$mainMod ALT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
 
           "$mainMod ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
+          "$mainMod, W,  exec, pkill waybar || waybar"
         ];
 
         bindm = [
