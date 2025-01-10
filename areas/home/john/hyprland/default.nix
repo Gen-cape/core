@@ -257,6 +257,8 @@ in {
           "$mainMod ALT, R, exec, ${recordingScripts.start-replay}/bin/start-replay"
           "$mainMod ALT, S, exec, ${recordingScripts.save-replay}/bin/save-replay"
           "$mainMod ALT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
+
+          "$mainMod ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
         ];
 
         bindm = [

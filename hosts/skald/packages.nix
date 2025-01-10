@@ -42,6 +42,9 @@
     btop
     gotop
     hyperfine
+    timewarrior
+    taskwarrior-tui
+    taskwarrior3
 
     pkgs.qimgv
     pkgs.pqiv

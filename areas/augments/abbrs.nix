@@ -213,5 +213,20 @@ in {
     # # tmux is picky with teminal colors
     #tmux = "TERM=tmux-256color tmux -u";
     #tms = "TERM=tmux-256color tms";
+
+    qs = "quest";
+    qst = "quest";
+    "qsa" = "quest add";
+    "qsc" = "quest complete";
+    "qsl" = "quest list";
+    "qsne" = "quest next";
+    "qsi" = "quest inbox";
+    "qss" = "quest set";
+    "qsseta" = "quest set -a do:today on";
+    "qsto" = "quest today";
+    "qstr" = "quest track";
+    "qso" = "quest open";
+    "qsno" = "quest notes";
+    "qsp" = "quest today set -a do:tomorrow ";
   };
 }
