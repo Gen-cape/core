@@ -13,13 +13,13 @@ in {
     enable = true;
     #package = inputs'.nixpkgs-stable.legacyPackages.kanata;
     keyboards.laptop = {
-      devices = [
-        "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-        "/dev/input/by-path/pci-0000\:04:00.3-usb-0\:2:1.0-event-kbd"
-        "/dev/input/by-path/pci-0000\:04:00.3-usbv2-0\:2:1.0-event-kbd"
-        "/dev/input/by-path/pci-0000\:06:00.3-usb-0\:1.3\:1.0-event-kbd"
-        "/dev/input/by-path/pci-0000\:06:00.3-usbv2-0\:1.3\:1.0-event-kbd"
-      ];
+      # devices = [
+      # "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+      # "/dev/input/by-path/pci-0000\:04:00.3-usb-0\:2:1.0-event-kbd"
+      # "/dev/input/by-path/pci-0000\:04:00.3-usbv2-0\:2:1.0-event-kbd"
+      # "/dev/input/by-path/pci-0000\:06:00.3-usb-0\:1.3\:1.0-event-kbd"
+      # "/dev/input/by-path/pci-0000\:06:00.3-usbv2-0\:1.3\:1.0-event-kbd"
+      # ];
       extraDefCfg = ''
         process-unmapped-keys yes
         concurrent-tap-hold yes
