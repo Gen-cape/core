@@ -258,11 +258,6 @@ in {
           # Funny
           "$mainMod ALT, P, exec, ${funny.spread-propaganda}/bin/spread-propaganda"
 
-          # Replay buffer controls
-          "$mainMod ALT, R, exec, ${recordingScripts.start-replay}/bin/start-replay"
-          "$mainMod ALT, S, exec, ${recordingScripts.save-replay}/bin/save-replay"
-          "$mainMod ALT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
-
           "$mainMod ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
           "$mainMod, W,  exec, pkill waybar || waybar"
         ];
