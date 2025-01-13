@@ -22,6 +22,13 @@
     amdgpu_top
 
     helvum
+
+    qpwgraph
+    easyeffects
+    # raysession
+    # patchance
+    # pw-viz
+
     jujutsu
     tmsu
 
