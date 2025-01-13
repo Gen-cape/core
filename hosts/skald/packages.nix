@@ -31,6 +31,7 @@
     ripgrep
     # television
     rpg-cli
+    confetty
 
     (symlinkJoin {
       name = "Obsidian";
