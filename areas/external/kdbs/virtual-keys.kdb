@@ -1,0 +1,56 @@
+(defvirtualkeys
+  ctl lctl
+  sft lsft
+  met lmet
+  alt lalt
+
+  tal (multi
+        (on-press toggle-virtualkey ctl)
+        (on-press toggle-virtualkey sft)
+        (on-press toggle-virtualkey met)
+        (on-press toggle-virtualkey alt)
+      )
+
+  vkmacro (macro h e l l o spc w o r l d)
+
+  git-status (macro g i t spc s t a t u s)
+
+
+  co-abstract (macro S-. [ S-1 a b s t r a c t ] spc )
+  find-fish (macro y a z i spc C-A-f )
+  loadQol (macro S-; a spc b u i l t i n s ret 1 S-; l f spc n i x p k g s ret 1 S-; a spc l i b ret 1 S-; l f spc . ret 1 S-; a spc q o l ret)
+  loadQol2 (
+    macro S-; a spc b u i l t i n s ret 1 S-; l f spc n i x p k g s ret 1 S-; a spc l i b ret 1 S-; l f spc . ret 1 S-; a spc q o l ret
+    1 S-; a spc q o l . e ret
+    )
+  matchVimStart (macro S-; s / \ S-5 S-v )
+  matchVimEnd (macro / g )
+  vimIncrement (macro  (on-press tap-vkey :)  (on-press tap-vkey s)  (on-press tap-vkey /)  (on-press tap-vkey bsl)  (on-press tap-vkey d)  (on-press tap-vkey bsl)  (on-press tap-vkey +)  (on-press tap-vkey /)  (on-press tap-vkey bsl)  (on-press tap-vkey =)  (on-press tap-vkey s)  (on-press tap-vkey u)  (on-press tap-vkey b)  (on-press tap-vkey m)  (on-press tap-vkey a)  (on-press tap-vkey t)  (on-press tap-vkey c)  (on-press tap-vkey h)  (on-press tap-vkey pl)  (on-press tap-vkey 0)  (on-press tap-vkey pr)  (on-press tap-vkey +)  (on-press tap-vkey 1)  (on-press tap-vkey /)  (on-press tap-vkey g)  )
+  recall (macro S-; l f spc . 1 ret 2 up up ret)
+  zl (macro z e l l i j 110 ret 110 C-t 110 n 110 C-t 110 left 110 ret)
+  lgt (macro ret 2 ret t 1 t 1 i 1 m 1 e 2 spc 2 - 2 spc)
+)
+
+
+(defalias
+  psf (on-press press-virtualkey   sft)
+  rsf (on-press release-virtualkey sft)
+  tsft (on-press toggle-virtualkey sft)
+  ;;releaseSftPressCtrl (multi
+    ;;(on-press press-virtualkey ctl)
+    ;;(on-press press-virtualkey sft)
+    ;; (on-release release-virtualkey ctl)
+    ;;(on-release tap-virtualkey sft)
+  ;;)
+
+)
+
+(defalias
+
+  tal (on-press tap-vkey tal)
+  mac (on-press tap-vkey vkmacro)
+
+  isf (on-idle 1000 tap-vkey sft)
+  hfd (hold-for-duration 1000 met)
+)
+

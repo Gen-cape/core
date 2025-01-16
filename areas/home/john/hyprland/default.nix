@@ -1,11 +1,14 @@
 {
   lib,
   inputs,
+  self,
   pkgs,
   inputs',
   ...
 }: let
   inherit (lib) mkIf optionals concatLists;
+
+  selfPath = (builtins.unsafeDiscardStringContext "${self}") + "/areas";
   scaling = "1.6";
   # debug = false;
   system = pkgs.system;
@@ -31,6 +34,21 @@ in {
       slurp
       waybar
       hypridle
+      (pkgs.kanata.overrideAttrs (oldAttrs: rec {
+        pname = "kanata";
+        version = "1.8.0-prerelease-1";
+        src = pkgs.fetchFromGitHub {
+          owner = "jtroo";
+          repo = pname;
+          rev = "0b25d28fd2e06d82e9e2060f88d57cd3f005c981";
+          sha256 = "sha256-JI+pXRAP8vES3dFLHEbwVd537AmY0cgd8YWE5nN1vJ4=";
+        };
+        cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
+          name = "${pname}-vendor.tar.gz";
+          inherit src;
+          outputHash = "sha256-Iuude62QYVL13NcvQsTznCsRkWF64keWtiKd62otK64=";
+        });
+      }))
     ];
 
     wayland.windowManager.hyprland = {
@@ -56,6 +74,7 @@ in {
           "hypridle"
           "systemctl --user start opentabletdriver.service"
           "pypr"
+          "kanata -c ${selfPath}/external/kanata.kdb"
         ];
 
         misc = {

@@ -1,0 +1,8 @@
+(defcfg
+  process-unmapped-keys yes
+  concurrent-tap-hold yes
+  movemouse-inherit-accel-state yes
+  movemouse-smooth-diagonals yes
+  
+  linux-continue-if-no-devs-found yes
+)

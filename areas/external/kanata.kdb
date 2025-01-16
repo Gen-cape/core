@@ -1,0 +1,19 @@
+;;|==========BASE==================|
+(include kdbs/defcfg.kdb)       ;;=|
+(include kdbs/deflayers.kdb)    ;;=|
+;;|==========BASE==================|
+
+;;|=========MODULES================|
+(include kdbs/aliases.kdb)      ;;=|
+(include kdbs/chords.kdb)       ;;=|
+(include kdbs/deflayermaps.kdb) ;;=|
+(include kdbs/dynamic-macro.kdb);;=|
+(include kdbs/macro-test.kdb)   ;;=|
+(include kdbs/ru-layout.kdb)    ;;=|
+(include kdbs/seq.kdb)          ;;=|
+(include kdbs/templates.kdb)    ;;=|
+(include kdbs/variables.kdb)    ;;=|
+(include kdbs/simple-vkeys.kdb) ;;=|
+(include kdbs/virtual-keys.kdb) ;;=|
+(include kdbs/game-alias.kdb)   ;;=|
+;;|=========MODULES================|

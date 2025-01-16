@@ -1,0 +1,13 @@
+(defseq
+  git-status (g s t)
+  co-abstract (a b s)
+  find-fish (f z f)
+  loadQol (q o l)
+  matchVimStart (v i 1 )
+  matchVimEnd (v i 2 )
+  vimIncrement (v i 3 )
+  recall (q w e )
+  loadQol2 (q o p )
+  zl (z l )
+  lgt (l g t )
+)
