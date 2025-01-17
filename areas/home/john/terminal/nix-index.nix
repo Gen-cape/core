@@ -9,7 +9,7 @@
 
     programs = {
       nix-index-database.comma.enable = true;
-      command-not-found.enable = false; # no nix-channel, using nix-index
+      # command-not-found.enable = false; # no nix-channel, using nix-index
       nix-index = {
         enable = true;
         symlinkToCacheHome = true;

@@ -970,8 +970,8 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1736503585,
-        "narHash": "sha256-1hJGdyaT7zmT8gv5KPHUvtT6bJ7Va91fv29vPAyCohM=",
+        "lastModified": 1737153227,
+        "narHash": "sha256-3+aPEcsLwU5U1upxDEBEuGpYv9IE/kGWABQcLzVYL8o=",
         "path": "/home/john/neovim",
         "type": "path"
       },
@@ -1163,17 +1163,17 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1728161129,
-        "narHash": "sha256-M1KzDilN7/d8knfZuNllqdojdzlFLhlbcXbLGXgn6JQ=",
-        "owner": "nixos",
+        "lastModified": 1737062831,
+        "narHash": "sha256-Tbk1MZbtV2s5aG+iM99U8FqwxU/YNArMcWAv6clcsBc=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a225c7d3073fb5bdef090a1b7986d18a8d557b1a",
+        "rev": "5df43628fdf08d642be8ba5b3625a6c70731c19c",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "rev": "a225c7d3073fb5bdef090a1b7986d18a8d557b1a",
         "type": "github"
       }
     },
@@ -1381,8 +1381,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1736500550,
-        "narHash": "sha256-Gv1snnR235CiYKU85C2zGWnYvhdVKgGncxJccAbiZFE=",
+        "lastModified": 1737204233,
+        "narHash": "sha256-URf4ZeKK9ZMDE5aYZSUVWnuYw9+7woYVwIo0R1WGuU8=",
         "path": "/home/john/riptide",
         "type": "path"
       },

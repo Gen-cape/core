@@ -1,0 +1,16 @@
+(deflayermap (motion)
+  w up
+  a left
+  s down
+  d rght
+
+  i (mwheel-up 50 120)
+  j (mwheel-left 50 120)
+  k (mwheel-down 50 120)
+  l (mwheel-right 50 120)
+
+  p home
+  ; end
+  y pgup
+  h pgdn
+)

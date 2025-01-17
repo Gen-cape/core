@@ -1,0 +1,23 @@
+(deflayermap (vim)
+  q (dynamic-macro-record 0)
+  w (dynamic-macro-record 1)
+  e (dynamic-macro-record 2)
+  r (dynamic-macro-record 3)
+
+  a (dynamic-macro-play 0)
+  s (dynamic-macro-play 1)
+  d (dynamic-macro-play 2)
+  f (dynamic-macro-play 3)
+
+  x dynamic-macro-record-stop
+
+  c C-c
+  v C-v
+
+  h left
+  j down
+  k up
+  l rght
+
+
+)

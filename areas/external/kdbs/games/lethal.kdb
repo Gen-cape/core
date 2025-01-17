@@ -1,0 +1,9 @@
+(deflayermap (lethal)
+  w (macro-repeat mlft 25)
+  a (macro-repeat r 1)
+  q (macro-repeat r mlft 1)
+  ;; lsft @tsft
+  ;;lctrl @releaseSftPressCtrl
+
+
+)

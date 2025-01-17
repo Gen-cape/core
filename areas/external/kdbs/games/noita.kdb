@@ -1,0 +1,11 @@
+(deflayermap (noita)
+  q @first_spell
+  z @tablet
+  x @tablet_2
+  v @tablet_v
+  b @tablet_b
+  t @potion_noita
+  p (macro m 20 o 20 t 20 h 20 e 20 r 20 l 20 o 20 d 20 e)
+  [ (macro s 20 e 20 c 20 o 20 n 20 d 20 a 20 m 20 e 20 n 20 d 20 m 20 e 20 n 20 t)
+
+)

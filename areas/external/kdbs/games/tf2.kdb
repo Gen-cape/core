@@ -1,0 +1,64 @@
+(deflayermap (tf2)
+
+  q (switch
+    ((key-history a 1)) d break
+    () a break
+
+  )
+
+  1 (switch
+    () (tap-hold $tt $ht (tap-dance 200 ( @tf2_1 home . ) ) 1) break
+    ;; spy scout medic
+  )
+  2 (switch
+    () (tap-hold $tt $ht (tap-dance 200 ( @tf2_2 pgup end ) ) 2) break
+    ;; pyro demo soldier
+  )
+  3 (switch
+    () (tap-hold $tt $ht (tap-dance 200 ( / del ) ) 3) break
+    ;; sniper engineer
+  )
+  4 (switch
+    () (tap-hold $tt $ht (tap-dance 200 ( pgdn ' 5 ) ) 4) break
+    ;; heavy fscout manual disguise
+  )
+
+  5 (tap-hold $tt $ht 5 kp4)
+  6 (tap-hold $tt $ht 6 kp2)
+  7 (tap-hold $tt $ht 7 kp6)
+  8 (tap-hold $tt $ht 8 kp5)
+  9 (tap-hold $tt $ht 9 kp7)
+
+  0 (tap-hold $tt $ht 0 f11)
+  - (tap-hold $tt $ht - kp-)
+  spc (switch
+    (e) spc break
+    (q) f10 break
+    () f11 break
+  )
+  caps f24
+  rsft (tap-hold $tt $ht  rsft (layer-toggle numpad))
+  = (tap-hold $tt $ht + (layer-switch tf2-base))
+)
+
+(deflayermap (tf2-base)
+  - (tap-hold $tt $ht - kp-)
+  spc (switch
+    (e) spc break
+    (q) f10 break
+    () f11 break
+  )
+  caps f24
+  rsft (tap-hold $tt $ht  rsft (layer-toggle numpad))
+)
+
+(defalias
+  tf2_1 (chord tf2 tf2_1)
+  tf2_2 (chord tf2 tf2_2)
+)
+(defchords tf2 200
+    (tf2_1 tf2_2) kp-
+    (tf2_1) ;
+    (tf2_2) ins
+)
+

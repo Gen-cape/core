@@ -1,0 +1,10 @@
+(deflayermap (fps)
+  e w
+  s a
+  d s
+  f d
+  caps f24
+  rsft (tap-hold $tt $ht  rsft (layer-toggle numpad))
+  = (tap-hold $tt $ht + (layer-switch tf2-base))
+)
+

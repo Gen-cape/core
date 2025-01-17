@@ -1,0 +1,31 @@
+(defzippy-experimental
+  zippy.txt
+  on-first-press-chord-deadline 500
+  idle-reactivate-time          500
+  smart-space-punctuation (? ! . , ; :)
+  output-character-mappings (
+    ;; This should work for US international.
+    ! S-1
+    ? S-/
+    % S-5
+    "(" S-9
+    ")" S-0
+    "{" S-[
+    "}" S-]
+    : S-;
+    < S-,
+    > S-.
+    r#"""# S-'
+    | S-\
+    _ S--
+    ® AG-r
+    ’ (no-erase `)
+    é (single-output ' e)
+    @ S-2
+    # S-3
+    $ S-4
+    ^ S-6
+    & S-7
+    ~ grv
+  )
+)

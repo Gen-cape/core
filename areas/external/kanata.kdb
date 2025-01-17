@@ -1,19 +1,33 @@
 ;;|==========BASE==================|
-(include kdbs/defcfg.kdb)       ;;=|
-(include kdbs/deflayers.kdb)    ;;=|
+(include kdbs/base/defcfg.kdb )            
+(include kdbs/base/variables.kdb )         
+(include kdbs/base/aliases.kdb )           
+(include kdbs/base/chords.kdb )            
+(include kdbs/base/simple-vkeys.kdb )      
+(include kdbs/base/seq.kdb )               
+(include kdbs/zippy.kdb )               
 ;;|==========BASE==================|
 
-;;|=========MODULES================|
-(include kdbs/aliases.kdb)      ;;=|
-(include kdbs/chords.kdb)       ;;=|
-(include kdbs/deflayermaps.kdb) ;;=|
-(include kdbs/dynamic-macro.kdb);;=|
-(include kdbs/macro-test.kdb)   ;;=|
-(include kdbs/ru-layout.kdb)    ;;=|
-(include kdbs/seq.kdb)          ;;=|
-(include kdbs/templates.kdb)    ;;=|
-(include kdbs/variables.kdb)    ;;=|
-(include kdbs/simple-vkeys.kdb) ;;=|
-(include kdbs/virtual-keys.kdb) ;;=|
-(include kdbs/game-alias.kdb)   ;;=|
-;;|=========MODULES================|
+
+;;|==========LAYOUTS==================|
+(include kdbs/layouts/qwerty.kdb )              
+(include kdbs/layouts/functional/macro-test.kdb )        
+(include kdbs/games/doom.kdb )       
+(include kdbs/games/drg.kdb )        
+(include kdbs/games/fps.kdb )        
+(include kdbs/games/game-alias.kdb ) 
+(include kdbs/games/lethal.kdb )     
+(include kdbs/games/noita.kdb )      
+(include kdbs/games/tf2.kdb )        
+(include kdbs/layouts/functional/arrows.kdb )            
+(include kdbs/layouts/functional/motion.kdb )            
+(include kdbs/layouts/functional/numpad.kdb )            
+(include kdbs/layouts/functional/vim.kdb )               
+(include kdbs/layouts/dvorak.kdb )              
+(include kdbs/layouts/qwerty-clean.kdb )        
+(include kdbs/layouts/ru-layout.kdb )           
+;;|==========LAYOUTS==================|
+
+
+(include kdbs/deflayermaps.kdb )
+

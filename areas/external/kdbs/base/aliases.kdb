@@ -1,0 +1,16 @@
+(defalias
+  0 0
+  1 1
+  2 2
+  3 3
+  4 4
+  5 5
+  6 6
+  7 7
+  8 8
+  9 9
+  grl (tap-hold $tt $ht  ` (layer-toggle layers))
+  cap (switch
+    () (tap-hold $tt $ht (tap-dance 200 ((one-shot 500 (layer-while-held ru-cap)) (layer-switch arrows) ) ) (layer-toggle ru)) break
+  )
+)

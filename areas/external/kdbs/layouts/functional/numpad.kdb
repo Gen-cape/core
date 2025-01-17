@@ -1,0 +1,14 @@
+(deflayermap (numpad)
+  1 kp1
+  2 kp2
+  3 kp3
+  4 kp4
+  5 kp5
+  6 kp6
+  7 kp7
+  8 kp8
+  9 kp9
+  0 kp0
+  - kp-
+  + kp+
+)

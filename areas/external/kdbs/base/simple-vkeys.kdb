@@ -1,4 +1,11 @@
 (defvirtualkeys
+  ctrl lctl
+  ctl lctl
+  sft lsft
+  meta lmet
+  met lmet
+  alt lalt
+
   % S-5
   + S-=
   pl S-9

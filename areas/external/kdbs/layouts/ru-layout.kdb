@@ -1,3 +1,28 @@
+(defalias
+  cap-ru-1 (layer-switch ru-cap)
+  cap-ru-2 (layer-switch ru)
+  ctrl-ru (multi lctl (layer-while-held qwr_clean))
+  shft-ru (multi lsft (layer-while-held ru-cap))
+  spc (tap-hold $tt $ht  spc (layer-toggle vim))
+)
+
+(deflayer ru
+  esc
+  @grl     _     _     _     _     _     _     _     _     _     _     _     _     _
+  tab     @й     @ц     @у     @к     @ru-e     @н     @г     @ш     @щ     @з     @х     @ъ    _
+  @cap-ru-1  @ф     @ы     @в     @а     @п     @р     @о     @л     @д     @ж     @э     _
+  @shft-ru     @я     @ч     @с     @м     @и     @т     @ь     @б     @ю     _     _
+  @ctrl-ru     _     _                 @spc                 _     _     _
+)
+
+(deflayer ru-cap
+  esc
+  @grl     _     _     _     _     _     _     _     _     _     _     _     _     _
+  tab     @Й     @Ц     @У     @К     @ru-E     @Н     @Г     @Ш     @Щ     @З     @Х     @Ъ    _
+  @cap-ru-2  @Ф     @Ы     @В     @А     @П     @Р     @О     @Л     @Д     @Ж     @Э     _
+  _     @Я     @Ч     @С     @М     @И     @Т     @Ь     @Б     @Ю     _     _
+  @ctrl-ru     _     _                 _                 _     _     _
+)
 
 ;;  Define additional keys specific to your keyboard layout for Windows
 (defalias

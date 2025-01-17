@@ -1,11 +1,4 @@
-
-(defalias
-  chtb tab
-  chgrl grv
-  chesc esc
-)
-
-(defchordsv2-experimental
+(defchordsv2
   (tab esc) (layer-switch layers) 100 all-released ()
   (tab grv) (layer-switch layers) 100 all-released ()
 )

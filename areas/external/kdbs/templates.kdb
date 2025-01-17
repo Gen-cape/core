@@ -1,3 +1,0 @@
-(deftemplate th (original-action new-action)
-  (tap-hold 100 200 $original-action $new-action)
-)

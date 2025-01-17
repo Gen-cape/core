@@ -1,21 +1,4 @@
 (defvirtualkeys
-  ctl lctl
-  sft lsft
-  met lmet
-  alt lalt
-
-  tal (multi
-        (on-press toggle-virtualkey ctl)
-        (on-press toggle-virtualkey sft)
-        (on-press toggle-virtualkey met)
-        (on-press toggle-virtualkey alt)
-      )
-
-  vkmacro (macro h e l l o spc w o r l d)
-
-  git-status (macro g i t spc s t a t u s)
-
-
   co-abstract (macro S-. [ S-1 a b s t r a c t ] spc )
   find-fish (macro y a z i spc C-A-f )
   loadQol (macro S-; a spc b u i l t i n s ret 1 S-; l f spc n i x p k g s ret 1 S-; a spc l i b ret 1 S-; l f spc . ret 1 S-; a spc q o l ret)
@@ -31,26 +14,15 @@
   lgt (macro ret 2 ret t 1 t 1 i 1 m 1 e 2 spc 2 - 2 spc)
 )
 
-
-(defalias
-  psf (on-press press-virtualkey   sft)
-  rsf (on-press release-virtualkey sft)
-  tsft (on-press toggle-virtualkey sft)
-  ;;releaseSftPressCtrl (multi
-    ;;(on-press press-virtualkey ctl)
-    ;;(on-press press-virtualkey sft)
-    ;; (on-release release-virtualkey ctl)
-    ;;(on-release tap-virtualkey sft)
-  ;;)
-
+(defseq
+  co-abstract (a b s)
+  find-fish (f z f)
+  loadQol (q o l)
+  matchVimStart (v i 1 )
+  matchVimEnd (v i 2 )
+  vimIncrement (v i 3 )
+  recall (q w e )
+  loadQol2 (q o p )
+  zl (z l )
+  lgt (l g t )
 )
-
-(defalias
-
-  tal (on-press tap-vkey tal)
-  mac (on-press tap-vkey vkmacro)
-
-  isf (on-idle 1000 tap-vkey sft)
-  hfd (hold-for-duration 1000 met)
-)
-

@@ -1,0 +1,12 @@
+(deflayermap (arrows)
+
+  w (unmod up)
+  a (unmod left)
+  s (unmod down)
+  d (unmod rght)
+  alt (unmod alt)
+  e (multi alt tab)
+  q tab
+  caps (layer-switch qwerty)
+
+)

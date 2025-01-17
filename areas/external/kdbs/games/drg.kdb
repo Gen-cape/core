@@ -1,0 +1,16 @@
+(deflayermap (drg)
+  spc @drg-spc
+  q @drg-lm
+  g @nade
+  n @ustck
+  e @drg-e
+  f @drg-zip
+  r @drg-r
+  lsft @lsft-f24
+  caps f24
+  lalt @drg-lalt
+  [ @drg-[
+
+  t (macro-repeat mlft 1 mlft 1 mlft 1 mlft 1 mlft 1 mlft 1 40 lctl 40)
+
+)

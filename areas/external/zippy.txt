@@ -1,0 +1,117 @@
+gi	git
+gi s	git status
+gi c	git checkout 
+gi c b	git checkout -b 
+gi c a	git commit --amend 
+gi c n	git commit --amend --no-edit
+gi c a m	git commit --amend -m 'FIX_THIS_COMMIT_MESSAGE'
+
+ni c	sudo nix-collect-garbage --delete-older-than 3d && nix-collect-garbage -d
+ni b	nix path-info -Sh /run/current-system
+ni g 	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+ni g c	nix-store --gc --print-roots | egrep -v \"^(/nix/var|/run/\w+-system|\{memory|/proc)\"
+ni r 	nix-store --verify --check-contents --repair
+ni m 	nix-melt
+ni f	nix flake
+ni f s	search-flake-inputs.nu -f . -i
+ni f u	nix flake update
+ni p	nix shell nixpkgs#
+ni p p	nix-shell -p
+ni i 	nix-inspect -p ./
+ni a	nh os boot && nh home switch && reboot
+ni w	{lib, pkgs, ...}: let in {}
+ni w e	environment.systemPackages = with pkgs; [];
+ni w h	home.packages = with pkgs; [];
+
+nh o	nh os test
+nh o s	nh os switch
+nh h	nh home switch
+nh a	nh os boot && nh home switch && reboot
+
+rn	nix run
+se 	nix search
+sh 	nix shell
+re 	nix repl
+bu 	nix build $@ --builders \"\"
+dv 	nix develop
+
+bt	acpi --battery --details --thermal
+yz 	yazi
+un 	export NIXPKGS_ALLOW_UNFREE=1
+
+zl	zellij
+zl s	zellij list-sessions
+zl s c	zellij delete-all-sessions
+
+vi	nvim
+
+vi t	nvim /tmp/temp.temp
+su	sudo
+ta u	sudo tailscale up
+ta d 	sudo tailscale down
+ta p	sudo tailscale up
+
+tm m	mkdir -p tmsuMount && tmsu mount tmsuMount
+tm u 	tmsu unmount tmsuMount
+tm t 	tmsu tag
+tm m u	sudo umount -f -l ./tmsuMount
+
+cp l	cp -LR
+ap r 	yazi /run/current-system/sw/share/applications
+fl r 	echo \"use flake\" > .envrc
+
+
+jj a	jj abandon @
+jj n 	jj new
+jj e 	jj edit
+jj n b	jj new -B @ -m
+jj s 	jj squash
+jj s i	jj squash -i
+jj u 	jj undo
+jj d	jj describe
+jj d m	jj describe @ -m
+jj d i	jj diff
+jj d i f	jj diff --from
+jj pa	jj diff --git --from
+jj g	jj git
+jj g c	jj git clone
+jj g c c	jj git clone --colocate
+jj g i	jj git init --colocate
+jj l	jj log
+jj l v	jj log --no-pager
+jj l a	jj log -r ::
+jj l 5	jj log -r :: --no-pager --limit 5
+jj l 10	jj log -r :: --no-pager --limit 10
+jj l 20	jj log -r :: --no-pager --limit 20
+jj l a a	jj log -r :: --no-pager
+jj l b	jj log -r \"@ | root() | bookmarks()\" --no-pager
+jj b	jj bookmark
+jj b m	jj bookmark move main
+jj f	jj-fzf
+
+qs	quest
+qs a	quest add 
+qs c	quest complete 
+qs l	quest list 
+qs i	quest inbox
+qs s	quest set
+qs s s	quest set -a do:today on
+qs t	quest today
+qs t r	quest track
+qs o	quest open
+qs n	quest notes
+qs n e	quest next
+qs t o	quest today set -a do:tomorrow
+
+ag e	eval (ssh-agent -c)
+ag a 	ssh-add
+ag a s	ssh-add ~/.ssh/
+
+cd f	cd $(find -type d | fzf)
+
+mk p	mkdir -p
+mk c	mkcd
+
+ip	dig @resolver4.opendns.com myip.opendns.com +short
+ip 4	dig @resolver4.opendns.com myip.opendns.com +short -4
+ip 6	dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6
