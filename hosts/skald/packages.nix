@@ -18,6 +18,10 @@
     protontricks
     matugen
 
+    networkmanagerapplet
+    pavucontrol
+    easyeffects
+
     git
     amdgpu_top
 

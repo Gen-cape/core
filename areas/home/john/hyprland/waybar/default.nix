@@ -1,34 +1,16 @@
 {
-  #imports = [
-  #  ./hyprland.nix
-  #  ./stats.nix
-  #  ./recorder.nix
-  #  ./backlight.nix
-  #  ./audio.nix
-  #  ./notification.nix
-  #  ./network.nix
-  #  ./general.nix
-  #  ./power.nix
-
-  #  ./style.nix
-  #];
-
-  #stylix.targets.waybar.enable = false;
-
-  wayland.windowManager.hyprland.settings = {
-    bind = ["SUPER,b,exec,killall -SIGUSR1 .waybar-wrapped"];
-    exec = ["systemctl --user restart waybar"];
-  };
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "left";
-        margin = "5 2 5 0";
-        reload_style_on_change = true;
-      };
-    };
-  };
+  inputs',
+  config,
+  self,
+  pkgs,
+  ...
+}: let
+  selfPath = (builtins.unsafeDiscardStringContext "${self}") + "/areas";
+in {
+  stylix.targets.waybar.enable = false;
+  home.packages = [pkgs.waybar];
+  home.file.".config/waybar".source =
+    config.lib.file.mkOutOfStoreSymlink
+    "${selfPath}/home/john/hyprland/waybar";
+  # "/home/john/constructed-core/areas/home/john/ghostty";
 }

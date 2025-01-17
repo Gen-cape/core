@@ -1,0 +1,46 @@
+// __        __          _                 
+// \ \      / /_ _ _   _| |__   __ _ _ __  
+//  \ \ /\ / / _` | | | | '_ \ / _` | '__| 
+//   \ V  V / (_| | |_| | |_) | (_| | |    
+//    \_/\_/ \__,_|\__, |_.__/ \__,_|_|    
+//                 |___/                   
+//  
+//
+// ----------------------------------------------------- 
+//
+{
+    // General Settings
+    "position": "bottom",
+    "layer": "bottom",
+    "margin-bottom": 15,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-top":0,    
+    "spacing": 5,
+
+    // Load Modules
+    "include": [
+        "~/.config/waybar/modules/modules.json"
+    ],
+
+    // Modules Left
+    "modules-left": [
+    
+    ],
+
+    // Modules Center
+    "modules-center": [
+        "hyprland/workspaces",
+        "network",
+        "clock",
+        "battery",
+        "pulseaudio"
+        
+    ],
+
+    // Modules Right    
+    "modules-right": [
+       
+
+    ]
+}
