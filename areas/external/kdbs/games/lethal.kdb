@@ -2,56 +2,76 @@
   w (macro-repeat mlft 25)
   a (macro-repeat r 1)
   q (macro-repeat r mlft 1)
-  i (layer-switch lethal-jump)
-  ;; lsft @tsft
-  ;;lctrl @releaseSftPressCtrl
+  8 (tap-hold 200 200 rsft (layer-switch lethal-jump) )
 )
 
-(deftemplate lethal-jump-movement (
-    chord-group-name
-    chord-timeout
-    forward
-    left
-    backwards
-    right
-    jump
-    forward-alias
-    left-alias
-    backwards-alias
-    right-alias
+
+(deftemplate lethal-jump-movement (direction jump forward brake vkey-name)
+  
+  (defvirtualkeys
+    $vkey-name (macro
+      (on-press release-vkey  $brake    ) 3
+      ;;(hold-for-duration 50 $forward  ) 100
+      (hold-for-duration 60   $direction) 30
+      (hold-for-duration 30   $jump     )
+    )
   )
 
   (defalias
-    $forward-alias   (chord $chord-group-name $forward)
-    $left-alias      (chord $chord-group-name $left)
-    $backwards-alias (chord $chord-group-name $backwards)
-    $right-alias     (chord $chord-group-name $right)
-  )
-
-  (defchords $chord-group-name $chord-timeout
-    ( $forward         )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $forward  )                                    25 (hold-for-duration 100 $jump) )
-    ( $left            )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $left     )                                    25 (hold-for-duration 100 $jump) )
-    ( $backwards       )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $backwards)                                    25 (hold-for-duration 100 $jump) )
-    ( $right           )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $right    )                                    25 (hold-for-duration 100 $jump) )
-    ( $left $forward   )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $left     ) (hold-for-duration 100 $forward  ) 25 (hold-for-duration 100 $jump) )
-    ( $right $forward  )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $right    ) (hold-for-duration 100 $forward  ) 25 (hold-for-duration 100 $jump) )
-    ( $left $backwards )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $left     ) (hold-for-duration 100 $backwards) 25 (hold-for-duration 100 $jump) )
-    ( $right $backwards)  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $right    ) (hold-for-duration 100 $backwards) 25 (hold-for-duration 100 $jump) )
+    $vkey-name (on-release tap-virtualkey $vkey-name)
   )
 )
 
-(t! lethal-jump-movement
-  lethal-jump 20 e s d f g
-  lethal-jump-forward
-  lethal-jump-left
-  lethal-jump-backwards
-  lethal-jump-right
-)
+(t! lethal-jump-movement    e    g e spc lethal-jump-fwd)   
+(t! lethal-jump-movement    s    g e spc lethal-jump-left)  
+(t! lethal-jump-movement    d    g e spc lethal-jump-bwd)   
+(t! lethal-jump-movement    f    g e spc lethal-jump-right) 
+
+
 
 (deflayermap (lethal-jump)
-	w @lethal-jump-forward   
-  a @lethal-jump-left      
-  s @lethal-jump-backwards 
-  d @lethal-jump-right     
+  [ (on-press   press-vkey  spc)
+  ] (on-press release-vkey  spc)
+  p (macro
+      (on-press press-vkey spc) 5
+      (hold-for-duration 10 e) 10
+      (on-press release-vkey spc)
+    )
+  u (macro
+      ;;(release-key spc)
+      (on-press release-vkey spc) 3
+      (hold-for-duration 30 g) 220
+      (hold-for-duration 30 g) 700
+      (hold-for-duration 60 s) 30 (hold-for-duration 30 g) 700
+      (hold-for-duration 60 s) 30 (hold-for-duration 30 g) 750
+      (hold-for-duration 60 s) 30 (hold-for-duration 30 g) 750
+  )
 
+  y (macro
+      ;;(release-key spc)
+      (on-press release-vkey spc) 3
+      (hold-for-duration 60 f) 30 (hold-for-duration 30 g) 220
+      (hold-for-duration 60 f) 30 (hold-for-duration 30 g) 320
+      (hold-for-duration 60 f)    (hold-for-duration 60 d) 30  (hold-for-duration 30 g) 800
+      (hold-for-duration 60 f) 30 (hold-for-duration 30 g) 750
+      (hold-for-duration 60 s)    (hold-for-duration 60 e) 30  (hold-for-duration 30 g)
+  )
+
+  t (macro
+      ;;(release-key spc)
+      (on-press release-vkey spc) 3
+      (hold-for-duration 60 s) 30 (hold-for-duration 30 g) 220
+      (hold-for-duration 60 s) 30 (hold-for-duration 30 g) 320
+      (hold-for-duration 60 s)    (hold-for-duration 60 e) 30  (hold-for-duration 30 g) 800
+      (hold-for-duration 60 s) 30 (hold-for-duration 30 g) 750
+      (hold-for-duration 60 f)    (hold-for-duration 60 d) 30  (hold-for-duration 30 g)
+  )
+
+
+
+	e @lethal-jump-fwd
+  s @lethal-jump-left
+  d @lethal-jump-bwd
+  f @lethal-jump-right
+  ;;i (layer-switch lethal)
 )
