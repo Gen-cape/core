@@ -2,8 +2,56 @@
   w (macro-repeat mlft 25)
   a (macro-repeat r 1)
   q (macro-repeat r mlft 1)
+  i (layer-switch lethal-jump)
   ;; lsft @tsft
   ;;lctrl @releaseSftPressCtrl
+)
 
+(deftemplate lethal-jump-movement (
+    chord-group-name
+    chord-timeout
+    forward
+    left
+    backwards
+    right
+    jump
+    forward-alias
+    left-alias
+    backwards-alias
+    right-alias
+  )
+
+  (defalias
+    $forward-alias   (chord $chord-group-name $forward)
+    $left-alias      (chord $chord-group-name $left)
+    $backwards-alias (chord $chord-group-name $backwards)
+    $right-alias     (chord $chord-group-name $right)
+  )
+
+  (defchords $chord-group-name $chord-timeout
+    ( $forward         )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $forward  )                                    25 (hold-for-duration 100 $jump) )
+    ( $left            )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $left     )                                    25 (hold-for-duration 100 $jump) )
+    ( $backwards       )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $backwards)                                    25 (hold-for-duration 100 $jump) )
+    ( $right           )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $right    )                                    25 (hold-for-duration 100 $jump) )
+    ( $left $forward   )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $left     ) (hold-for-duration 100 $forward  ) 25 (hold-for-duration 100 $jump) )
+    ( $right $forward  )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $right    ) (hold-for-duration 100 $forward  ) 25 (hold-for-duration 100 $jump) )
+    ( $left $backwards )  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $left     ) (hold-for-duration 100 $backwards) 25 (hold-for-duration 100 $jump) )
+    ( $right $backwards)  (macro (hold-for-duration 10 $forward) (hold-for-duration 100 $right    ) (hold-for-duration 100 $backwards) 25 (hold-for-duration 100 $jump) )
+  )
+)
+
+(t! lethal-jump-movement
+  lethal-jump 20 e s d f g
+  lethal-jump-forward
+  lethal-jump-left
+  lethal-jump-backwards
+  lethal-jump-right
+)
+
+(deflayermap (lethal-jump)
+	w @lethal-jump-forward   
+  a @lethal-jump-left      
+  s @lethal-jump-backwards 
+  d @lethal-jump-right     
 
 )

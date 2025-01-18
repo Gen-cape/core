@@ -74,7 +74,7 @@ in {
           "hypridle"
           "systemctl --user start opentabletdriver.service"
           "pypr"
-          "kanata -c ${selfPath}/external/kanata.kdb"
+          "kanata -c ${selfPath}/external/kanata.kdb -c ${selfPath}/external/kanata-zippy.kdb"
         ];
 
         misc = {

@@ -5,6 +5,7 @@
 (include kdbs/base/chords.kdb )            
 (include kdbs/base/simple-vkeys.kdb )      
 (include kdbs/base/seq.kdb )               
+(include kdbs/zippy.kdb )               
 ;;|==========BASE==================|
 
 

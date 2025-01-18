@@ -1,3 +1,65 @@
+(defalias
+  ;; drg
+
+  lsft-f24 (tap-hold $tt $ht lsft f24)
+  lmb (macro-repeat mlft 10)
+  lmb-b (macro-repeat mlft 1)
+  lmb-e (macro-repeat mlft 110 lctl 600)
+
+  nade (macro-repeat 20 q 20 g 100)
+  ustck (macro-repeat a d)
+  dpst (macro-repeat e lctl 1)
+
+  spam-e (macro-repeat e 10)
+  spam-spc (macro-repeat spc)
+  zipline-drg (multi w @spam-e @spam-spc)
+
+  sjump_init (macro spc 20 mlft 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e)
+  sjump_init_double (macro spc 20 mlft 2 lctl 40 mlft e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e 2 e)
+
+  spam_e_sp (macro-repeat e 5 spc)
+  ;;bhop_item_d (macro-repeat e 5 spc 1 mlft 1 lctl 110)
+  bhop_item_d (macro-repeat e 5 spc 1 mrgt  3 1 lctl 30)
+
+  drg-lalt (switch
+    (w) @bhop_item_d break
+    () f23 break
+  )
+  drg-e (switch
+    (caps lsft f24) @dpst break
+    (lalt f23) @spam_e_sp break
+    () e break
+  )
+
+  drg-r (switch
+    (lalt f23) @sjump_init break
+    () r break
+  )
+
+  drg-zip (switch
+    (caps lsft f24) f break
+    (lalt f23) @sjump_init_double break
+    () @zipline-drg break
+  )
+
+  drg-spc (switch
+    (caps lsft f24) spc break
+    () @spam-spc break
+  )
+
+  drg-lm (switch
+    (caps lsft f24) @lmb-e break
+    (lalt f23) @sjump_init break
+    () @lmb break
+  )
+
+  drg-[ (switch
+    (caps lsft lalt f23 f24) (multi lsft [) break
+    () [ break
+  )
+
+)
+
 (deflayermap (drg)
   spc @drg-spc
   q @drg-lm

@@ -1,3 +1,17 @@
+(defalias
+  ;; noita
+  ;;old_tablet (macro x @6 f 100 mrgt @2 160 @5 s @6 mrgt 104 @6)
+  tablet(macro @6 10 @6 f 100 mrgt @1 160 @6 5 s 5 @6 5 mrgt 5 @6 10 @6)
+  tablet_2(macro @7 10 @7 f 100 mrgt @1 160 @7 5 s 5 @7 5 mrgt 5 @7 10 @7)
+
+  tablet_v (macro f 100 mrgt @2 160 @5 s @6 mrgt)
+  tablet_b (macro s @6 mrgt)
+
+  mwd_noita (mwheel-down 5 120)
+  first_spell (macro-repeat @mwd_noita 20 @1 20 mlft)
+  potion_noita (macro-repeat (movemouse-left 5 6) 10 (movemouse-right 5 6) 10)
+)
+
 (deflayermap (noita)
   q @first_spell
   z @tablet

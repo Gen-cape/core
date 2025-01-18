@@ -8,6 +8,12 @@
   - (layer-switch qwr_pure)
   v (layer-switch vim)
   m (layer-switch motion)
+
+  6 lrpv
+  7 lrnx
+  8 (lrld-num 1)
+  9 (lrld-num 2)
+
 )
 
 (deflayermap (leisure)
