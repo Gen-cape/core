@@ -558,6 +558,26 @@
         "type": "github"
       }
     },
+    "hover-rs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1726557118,
+        "narHash": "sha256-dpwU7X3Xbiyttv/Jr4mnHvCQ0t0ISICpiTrWwQbdgck=",
+        "owner": "viperML",
+        "repo": "hover-rs",
+        "rev": "7a699b1e8a52c416e6d113a000b500752a6c3371",
+        "type": "github"
+      },
+      "original": {
+        "owner": "viperML",
+        "repo": "hover-rs",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": "hyprlang",
@@ -1415,6 +1435,7 @@
         "flake-parts": "flake-parts",
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
+        "hover-rs": "hover-rs",
         "hyprcursor": "hyprcursor",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
