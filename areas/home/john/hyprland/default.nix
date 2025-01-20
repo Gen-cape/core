@@ -29,6 +29,7 @@ in {
       inputs'.hyprpicker.packages.hyprpicker
 
       swww
+      wluma
       grim
       wl-clipboard
       slurp
@@ -72,6 +73,7 @@ in {
           # "env DRI_PRIME=1 firefox-nightly"
           "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
           "waybar"
+          "wluma"
           "hypridle"
           "systemctl --user start opentabletdriver.service"
           "pypr"
