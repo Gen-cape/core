@@ -70,6 +70,7 @@ in {
         exec-once = [
           "swww-daemon"
           # "env DRI_PRIME=1 firefox-nightly"
+          "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
           "waybar"
           "hypridle"
           "systemctl --user start opentabletdriver.service"
@@ -213,7 +214,7 @@ in {
         };
         bind = [
           # "$mainMod, Q, exec, foot"
-          ''$MOD,RETURN,exec,run-as-service $(ghostty)'' # terminal
+          ''$MOD,RETURN,exec,run-as-service $(ghostty --gtk-single-instance=true)'' # terminal
           ''$MODSHIFT,RETURN,exec,ghostty -e "sttt doom -d 0.3  -b .8,.3,.87,.47 -c 9; exec fish"'' # terminal
           "$MODSHIFT,Q,killactive," # kill focused window
           "$MOD,T,togglegroup," # group focused window
