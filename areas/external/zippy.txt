@@ -91,6 +91,7 @@ jj f	jj-fzf
 
 qs	quest
 qs a	quest add 
+qs a r	quest archive 
 qs c	quest complete 
 qs l	quest list 
 qs i	quest inbox
