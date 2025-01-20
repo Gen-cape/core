@@ -27,6 +27,7 @@ in {
       inputs'.hyprland-contrib.packages.hdrop
       inputs'.hyprland-contrib.packages.scratchpad
       inputs'.hyprpicker.packages.hyprpicker
+      inputs'.hyprscratch.packages.default
 
       swww
       wluma
@@ -77,6 +78,7 @@ in {
           "hypridle"
           "systemctl --user start opentabletdriver.service"
           "pypr"
+          "hyprscratch init"
           "kanata -c ${selfPath}/external/kanata.kdb -c ${selfPath}/external/kanata-zippy.kdb"
         ];
 
@@ -217,6 +219,8 @@ in {
         bind = [
           # "$mainMod, Q, exec, foot"
           ''$MOD,RETURN,exec,run-as-service $(ghostty --gtk-single-instance=true)'' # terminal
+          ''$mainMod, b, exec, hyprscratch btop "[float;size 70% 80%;center] alacritty --title btop -e btop" eager''
+          ''$mainMod, z, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty" eager''
           ''$MODSHIFT,RETURN,exec,ghostty -e "sttt doom -d 0.3  -b .8,.3,.87,.47 -c 9; exec fish"'' # terminal
           "$MODSHIFT,Q,killactive," # kill focused window
           "$MOD,T,togglegroup," # group focused window

@@ -123,6 +123,11 @@
     nur.url = "github:nix-community/NUR";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
 
+    hyprscratch = {
+      url = "github:sashetophizika/hyprscratch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hover-rs = {
       url = "github:viperML/hover-rs";
       inputs.nixpkgs.follows = "nixpkgs";

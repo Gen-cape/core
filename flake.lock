@@ -903,6 +903,26 @@
         "type": "github"
       }
     },
+    "hyprscratch": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736285757,
+        "narHash": "sha256-0T8pV0/Vsc4L7lELYc6uFWWDGcD+v4BZ9dzEij/Gzl4=",
+        "owner": "sashetophizika",
+        "repo": "hyprscratch",
+        "rev": "642a1c97590c6e7199ed24d126717b8fc57a97d7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sashetophizika",
+        "repo": "hyprscratch",
+        "type": "github"
+      }
+    },
     "hyprutils": {
       "inputs": {
         "nixpkgs": [
@@ -1441,6 +1461,7 @@
         "hyprland-contrib": "hyprland-contrib",
         "hyprland-plugins": "hyprland-plugins",
         "hyprpicker": "hyprpicker",
+        "hyprscratch": "hyprscratch",
         "neovim-riptide": "neovim-riptide",
         "nix-gaming": "nix-gaming",
         "nix-index-db": "nix-index-db",
