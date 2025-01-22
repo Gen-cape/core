@@ -42,8 +42,8 @@ in {
         src = pkgs.fetchFromGitHub {
           owner = "jtroo";
           repo = pname;
-          rev = "da4e7c251276437d5276109c3b2619f9cb8bb57a";
-          sha256 = "sha256-pm3KuBMit0770d+ws1TnJu63+1k2tQab9frlQ+sybh0=";
+          rev = "81f2faf745865cd58eab322d33114b5bca2a3a01";
+          sha256 = "sha256-i513FDCyFrqTD3k+sNl9jBt/iVhE5L+i24UP0iXBOio=";
         };
         cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
           name = "${pname}-vendor.tar.gz";

@@ -39,6 +39,7 @@
     )
   u (macro
       ;;(release-key spc)
+      (hold-for-duration 120 spc) 30 (hold-for-duration 60 e) 130
       (on-press release-vkey spc) 3
       (hold-for-duration 30 g) 220
       (hold-for-duration 30 g) 700
@@ -49,6 +50,7 @@
 
   y (macro
       ;;(release-key spc)
+      (hold-for-duration 120 spc) 30 (hold-for-duration 60 e) 130
       (on-press release-vkey spc) 3
       (hold-for-duration 60 f) 30 (hold-for-duration 30 g) 220
       (hold-for-duration 60 f) 30 (hold-for-duration 30 g) 320
@@ -59,6 +61,7 @@
 
   t (macro
       ;;(release-key spc)
+      (hold-for-duration 120 spc) 30 (hold-for-duration 60 e) 130
       (on-press release-vkey spc) 3
       (hold-for-duration 60 s) 30 (hold-for-duration 30 g) 220
       (hold-for-duration 60 s) 30 (hold-for-duration 30 g) 320
@@ -69,9 +72,10 @@
 
 
 
-	e @lethal-jump-fwd
-  s @lethal-jump-left
-  d @lethal-jump-bwd
-  f @lethal-jump-right
-  ;;i (layer-switch lethal)
+	;;e @lethal-jump-fwd
+  ;;s @lethal-jump-left
+  ;;d @lethal-jump-bwd
+  ;;f @lethal-jump-right
+
+  ;;;;i (layer-switch lethal)
 )
