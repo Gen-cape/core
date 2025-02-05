@@ -1,5 +1,6 @@
 (deflayermap (lethal)
-  w (macro-repeat mlft 25)
+  ;;w (macro-repeat mlft 25)
+  w (macro-repeat mltp 25)
   a (macro-repeat r 1)
   q (macro-repeat r mlft 1)
   8 (tap-hold 200 200 rsft (layer-switch lethal-jump) )

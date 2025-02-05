@@ -9,7 +9,8 @@
 
 
 ;;|==========LAYOUTS==================|
-(include kdbs/layouts/qwerty.kdb )              
+(include kdbs/layouts/qwerty.kdb ) ;; base layout
+
 (include kdbs/layouts/functional/macro-test.kdb )        
 (include kdbs/games/doom.kdb )       
 (include kdbs/games/drg.kdb )        

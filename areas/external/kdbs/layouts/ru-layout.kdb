@@ -7,6 +7,7 @@
 )
 
 (deflayer ru
+  mlft mrgt mmid mfwd mbck mwu mwd mwl mwr
   esc
   @grl     _     _     _     _     _     _     _     _     _     _     _     _     _
   tab     @й     @ц     @у     @к     @ru-e     @н     @г     @ш     @щ     @з     @х     @ъ    _
@@ -16,6 +17,7 @@
 )
 
 (deflayer ru-cap
+  mlft mrgt mmid mfwd mbck mwu mwd mwl mwr
   esc
   @grl     _     _     _     _     _     _     _     _     _     _     _     _     _
   tab     @Й     @Ц     @У     @К     @ru-E     @Н     @Г     @Ш     @Щ     @З     @Х     @Ъ    _
