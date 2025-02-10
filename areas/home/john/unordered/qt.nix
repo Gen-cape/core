@@ -1,11 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs',
+  ...
+}: {
   home.packages = with pkgs; [
-    tela-icon-theme
-    libsForQt5.qtstyleplugin-kvantum
-    kdePackages.qt6ct
-    sweet
-    sweet-nova
-    sweet-folders
+    inputs'.nixpkgs-stable.legacyPackages.tela-icon-theme
+    inputs'.nixpkgs-stable.legacyPackages.libsForQt5.qtstyleplugin-kvantum
+    inputs'.nixpkgs-stable.legacyPackages.kdePackages.qt6ct
+    inputs'.nixpkgs-stable.legacyPackages.sweet
+    inputs'.nixpkgs-stable.legacyPackages.sweet-nova
+    inputs'.nixpkgs-stable.legacyPackages.sweet-folders
   ];
 
   xdg.configFile = {
