@@ -373,6 +373,26 @@
         "type": "github"
       }
     },
+    "flint": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1739362011,
+        "narHash": "sha256-16LoFQCSesNILpDLnhsk6IDWB9MkbhPN0emq29/B9Vw=",
+        "owner": "NotAShelf",
+        "repo": "flint",
+        "rev": "6da53afec5296fc20551a833db46348420b64713",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NotAShelf",
+        "repo": "flint",
+        "type": "github"
+      }
+    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -1508,6 +1528,7 @@
       "inputs": {
         "chaotic": "chaotic",
         "flake-parts": "flake-parts",
+        "flint": "flint",
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
         "hover-rs": "hover-rs",

@@ -10,6 +10,7 @@
     inputs'.zen-browser.packages.default
     inputs'.neovim-riptide.packages.default
     inputs'.hover-rs.packages.default
+    inputs'.flint.packages.default
     qbittorrent
     obs-studio
     krita

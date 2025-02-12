@@ -132,5 +132,10 @@
       url = "github:viperML/hover-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flint = {
+      url = "github:NotAShelf/flint";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
