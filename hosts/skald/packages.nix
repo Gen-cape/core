@@ -11,6 +11,8 @@
     inputs'.neovim-riptide.packages.default
     inputs'.hover-rs.packages.default
     inputs'.flint.packages.default
+
+    television
     qbittorrent
     obs-studio
     krita
