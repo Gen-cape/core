@@ -20,7 +20,7 @@
     riptide = {
       url = "path:/home/john/riptide";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        #   nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
