@@ -89,6 +89,8 @@ jj b	jj bookmark
 jj b m	jj bookmark move main
 jj f	jj-fzf
 
+sh f	sha256-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX=
+
 qs	quest
 qs a	quest add 
 qs a r	quest archive 

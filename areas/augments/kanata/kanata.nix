@@ -7,17 +7,17 @@ in {
   environment.systemPackages = [
     (pkgs.kanata.overrideAttrs (oldAttrs: rec {
       pname = "kanata";
-      version = "1.8.0-prerelease-1";
+      version = "1.8.0-next";
       src = pkgs.fetchFromGitHub {
         owner = "jtroo";
         repo = pname;
-        rev = "dbd31e061b1971d3d014fc28a622f514c2e652d4";
-        sha256 = "sha256-Hnsep3vawp7RKUv+hrACrfOOqftMAtKTesDO76NBMNQ=";
+        rev = "5d1b8d82a4d4bc28c3908a4d17340444bbadc187";
+        sha256 = "sha256-nyA9aEqDPH1ifKNNkRT7n61IWs/RMT2ruvwgkbry8KA=";
       };
       cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
         name = "${pname}-vendor.tar.gz";
         inherit src;
-        outputHash = "sha256-VEHRGbjLz1pWcnx5fknS4fohB4mt3+trUNzoWyw2TPE=";
+        outputHash = "sha256-k5O15SYZ8M1JuRdTvv9enFfZmAWoc03B86JPbKHIz58=";
       });
     }))
   ];
