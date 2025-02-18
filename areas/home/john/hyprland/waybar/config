@@ -1,0 +1,79 @@
+{
+    "position": "bottom",
+    "layer": "bottom",
+    "height": 40,
+    "margin-bottom": 10,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-top": 0,
+    "spacing": 4,
+
+    "modules-left": [],
+    "modules-center": [
+        "hyprland/workspaces",
+        "network",
+        "clock",
+        "battery",
+        "pulseaudio"
+    ],
+    "modules-right": [],
+
+    "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace r-1",
+        "on-scroll-down": "hyprctl dispatch workspace r+1",
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "*": 1
+        }
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%a %d}",
+        "tooltip-format": "{:%Y-%m-%d}",
+        "on-click-right": "gnome-calendar"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+        "on-click": "wlogout --protocol layer-shell -b 6"
+    },
+
+    "network": {
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": "󰈀",
+        "format-linked": "󰈀",
+        "format-disconnected": "󰖪",
+        "tooltip-format": "{ifname}\n{ipaddr}",
+        "on-click": "alacritty --class dotfiles-floating -e nmtui",
+        "on-click-right": "~/dotfiles/.settings/networkmanager.sh"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% ",
+        "format-bluetooth-muted": " ",
+        "format-muted": " ",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "amixer set Master toggle"
+    }
+}

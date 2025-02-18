@@ -1,111 +1,97 @@
-@define-color bg #282828;
-@define-color text #EBDBA1;
-@define-color tp rgba(40, 40, 40, 0);
-@define-color bg2 #EBDBA1;
-@define-color bg3 #99917f;
-/* -----------------------------------------------------
- * General 
- * ----------------------------------------------------- */
-
 * {
-    font-family: "JetBrainsMono Nerd Font";
-    border: none;
-    border-radius: 0px;
-    font-weight: bold;
-
+    font-family: CartographCF Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
 }
 
 window#waybar {
-    background-color: @tp;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background-color: transparent;
 }
 
-/* -----------------------------------------------------
- * Workspaces 
- * ----------------------------------------------------- */
-
 #workspaces {
-    padding: 5px 5px;
-    font-size: 14px;
-    color: @text;
-    background-color: @bg;
-    border-radius: 5px;
+    background-color: transparent;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 1px;
+    margin-left: 8px;
 }
 
 #workspaces button {
-    border: 0px;
-    margin: 0 2px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 -2 3 3px;
+    background-color: #fff;
     padding: 1px 5px;
-    color: @text;
-    transition: all 0.5s ease-in-out;
-    border-radius: 5px;
+    margin-right: 5px;
+    background-size: 300% 300%;
+    font-weight: bold;
+    color: #a585cd;
+    border: none;
+    border-bottom: 4px solid #d6cdcd;
+    border-radius: 10px;
 }
 
 #workspaces button.active {
-    color: @bg;
-    background-color: @bg2;
-    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 -2 3 3px;
+    background-color: rgb(186, 142, 213);
+    padding: 1px 8px;
+    margin-right: 5px;
+    background-size: 300% 300%;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-bottom: 4px solid rgb(143, 102, 168);
+    border-radius: 10px;
 }
 
-#workspaces button:hover {
-    color: @bg;
-    background: @bg2;
-    border-radius: 5px;
+#workspaces button.urgent {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 -2 3 3px;
+    padding: 1px 5px;
+    margin-right: 5px;
+    background: rgb(171, 101, 101);
+    color: #fff;
+    border: none;
+    border-bottom: 4px solid rgb(105, 57, 57);
+    border-radius: 10px;
 }
-
-/* -----------------------------------------------------
- * Network
- * ----------------------------------------------------- */
-
-#network {
-    font-size: 14px;
-    color: @text;
-    border-radius: 5px;
-    padding: 5px 5px;
-    background-color: @bg;
-}
-
-#network.ethernet {
-    color: @text;
-}
-
-#network.wifi {
-    color: @text;
-}
-
-/* -----------------------------------------------------
- * Clock
- * ----------------------------------------------------- */
 
 #clock {
-    font-size: 14px;
-    color: @text;
-    background-color: @bg;
-    padding: 5px 10px;
-    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 -2 3 2px;
+    background: rgb(179, 42, 142);
+    margin: 8px 2px;
+    min-width: 45px;
+    color: #f8e1b7;
+    padding: 1px 10px;
+    font-weight: bold;
+    border: none;
+    border-bottom: 4px solid rgb(155, 32, 122);
+    border-radius: 10px;
 }
 
-/* -----------------------------------------------------
- * Battery
- * ----------------------------------------------------- */
+#battery.charging, #battery.plugged {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 -2 3 2px;
+    padding: 1px 10px;
+    min-width: 50px;
+    color: #bdf8da;
+    background: #495026;
+    margin: 8px 2px;
+    border: none;
+    border-bottom: 4px solid #3a401d;
+    border-radius: 10px;
+}
 
 #battery {
-    font-size: 14px;
-    color: @text;
-    border-radius: 5px;
-    padding: 5px 10px;
-    background-color: @bg;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 -2 3 2px;
+    background-color: #07683e;
+    color: #eae4d0;
+    font-weight: bold;
+    padding: 1px 10px;
+    margin: 8px 2px;
+    border: none;
+    border-bottom: 4px solid #297f5a;
+    border-radius: 10px;
 }
-
-#battery.charging,
-#battery.plugged {
-    color: @text;
-}
-
 
 #battery.critical:not(.charging) {
-    color: #f53c3c;
+    background-color: #f38ba8;
+    color: #bf5673;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -113,18 +99,43 @@ window#waybar {
     animation-direction: alternate;
 }
 
-/* -----------------------------------------------------
- * Pulseaudio
- * ----------------------------------------------------- */
+#network {
+    box-shadow: rgba(0, 0, 0, 0.5) 0 -2 3 2px;
+    font-weight: bold;
+    margin: 8px 2px;
+    padding: 1px 10px;
+    color: #000;
+    border-radius: 10px;
+}
+
+#network.disconnected {
+    background: rgb(243,139,168);
+    color: #fff;
+    border-bottom: 4px solid rgb(213, 115, 142);
+}
+
+#network.linked, #network.wifi {
+    background-color: #a6e3a1;
+    border-bottom: 4px solid #79b574;
+}
+
+#network.ethernet {
+    background-color: #a6e3a1;
+    border-bottom: 4px solid #79b574;
+}
 
 #pulseaudio {
-    font-size: 14px;
-    color: @text;
-    border-radius: 5px;
-    background-color: @bg;
-    padding: 5px 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 -2 3 2px;
+    font-weight: bold;
+    margin: 8px 2px;
+    padding: 1px 10px;
+    background-color: #fab387;
+    color: #734a31;
+    border: none;
+    border-bottom: 4px solid #b87c57;
+    border-radius: 10px;
 }
 
 #pulseaudio.muted {
-    color: @text;
+    background-color: #9f7154;
 }
