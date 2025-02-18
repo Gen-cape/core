@@ -228,7 +228,7 @@ in {
           ''$MOD,R,exec, killall tofi || run-as-service $(tofi-drun)'' # alternative app launcher
 
           "$mainMod, C, killactive,"
-          "$mainMod, M, exit,"
+          # "$mainMod, M, exit," # Im quite annoyed by this button sometimes, mayble ill return it later
           "$mainMod, V, togglefloating,"
           "$mainMod, P, pseudo, # dwindle"
           "$mainMod, J, togglesplit," # dwindle
