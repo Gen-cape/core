@@ -79,6 +79,7 @@ in {
           "systemctl --user start opentabletdriver.service"
           "pypr"
           "hyprscratch init"
+          "swaync"
           "kanata -c ${selfPath}/external/kanata.kdb -c ${selfPath}/external/kanata-zippy.kdb"
         ];
 
