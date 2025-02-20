@@ -30,7 +30,7 @@
           ms-vsliveshare.vsliveshare
           oderwat.indent-rainbow
           pkief.material-icon-theme
-          rust-lang.rust-analyzer
+          # rust-lang.rust-analyzer
           shardulm94.trailing-spaces
           sumneko.lua
           timonwong.shellcheck
