@@ -37,6 +37,8 @@ in {
       log-lines = 30;
 
       system-features = ["nixos-test" "kvm" "recursive-nix" "big-parallel"];
+      experimental-features = [
+      ];
       extra-experimental-features = [
         "flakes" # flakes
         "nix-command" # experimental nix commands
@@ -47,6 +49,8 @@ in {
         "repl-flake" # allow passing installables to nix repl
         "no-url-literals" # disallow deprecated url-literals, i.e., URLs without quotation
         "dynamic-derivations" # allow "text hashing" derivation outputs, so we can build .drv files.
+
+        "pipe-operator"
       ];
 
       accept-flake-config = false;
