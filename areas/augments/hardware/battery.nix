@@ -20,19 +20,19 @@ in {
       systemd.sleep.extraConfig = ''
         AllowSuspend=yes
       '';
-      systemd.services.battery = {
-        enable = true;
-        wantedBy = ["multi-user.target"];
-        after = ["multi-user.target"];
-        description = "Set the battery charge threshold.";
-        serviceConfig = {
-          StartLimitBurst = "0";
-          Type = "oneshot";
-          User = "root";
-          Restart = "on-failure";
-          ExecStart = "/bin/sh -c 'echo ${builtins.toString cfg.value} > /sys/class/power_supply/BAT0/charge_control_end_threshold'";
-        };
-      };
+      # systemd.services.battery = {
+      #   enable = true;
+      #   wantedBy = ["multi-user.target"];
+      #   after = ["multi-user.target"];
+      #   description = "Set the battery charge threshold.";
+      #   serviceConfig = {
+      #     StartLimitBurst = "0";
+      #     Type = "oneshot";
+      #     User = "root";
+      #     Restart = "on-failure";
+      #     ExecStart = "/bin/sh -c 'echo ${builtins.toString cfg.value} > /sys/class/power_supply/BAT0/charge_control_end_threshold'";
+      #   };
+      # };
     })
     {
       services.upower = {
