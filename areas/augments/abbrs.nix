@@ -12,8 +12,16 @@ in {
     "....." = "cd ../../../../";
     "......" = "cd ../../../../../";
 
+    "v" = "nvim";
+    "v." = "nvim .";
+
+    "vc" = "nvim ~/constructed-core/";
+    "vv" = "nvim ~/neovim/";
+    "ya" = "yazi";
+
     ls = "eza";
 
+    jl = "jj log -r :: --no-pager --limit 20";
     jjk = "jj new -m \"FEAK PICTION, ABSOULTE CINEMA\"";
 
     flrc = "echo \"use flake\" > .envrc";
