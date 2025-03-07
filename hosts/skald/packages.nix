@@ -12,8 +12,11 @@
     inputs'.neovim-riptide.packages.default
     inputs'.hover-rs.packages.default
     inputs'.flint.packages.default
+    inputs'.nix-search-tv.packages.default
 
     television
+    nix-search-cli
+
     qbittorrent
     obs-studio
     krita

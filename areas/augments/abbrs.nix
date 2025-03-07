@@ -18,6 +18,8 @@ in {
     "vc" = "nvim ~/constructed-core/";
     "vv" = "nvim ~/neovim/";
     "ya" = "yazi";
+    "pkg" = "nix-search-tv print | tv";
+    "pkgs" = "nix run github:3timeslazy/nix-search-tv print | , tv";
 
     ls = "eza";
 

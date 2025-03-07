@@ -139,6 +139,10 @@
       url = "github:viperML/hover-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-search-tv = {
+      url = "github:3timeslazy/nix-search-tv";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     flint = {
       url = "github:NotAShelf/flint";
