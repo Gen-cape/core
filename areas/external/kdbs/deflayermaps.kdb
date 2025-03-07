@@ -23,5 +23,6 @@
   t (layer-switch tf2)
   f (layer-switch fps)
   l (layer-switch lethal)
+  r (layer-switch repo)
   d (layer-switch doom)
 )
