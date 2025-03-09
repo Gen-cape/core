@@ -14,6 +14,7 @@
     inputs'.flint.packages.default
     inputs'.nix-search-tv.packages.default
 
+    neovide
     television
     nix-search-cli
 
