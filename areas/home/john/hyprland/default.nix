@@ -150,8 +150,8 @@ in {
           # keyboard layout
           kb_layout = "us,ru";
           kb_options = "grp:win_space_toggle";
-          repeat_rate = 50;
-          repeat_delay = 300;
+          repeat_rate = 60;
+          repeat_delay = 200;
           numlock_by_default = true;
           left_handed = false;
           follow_mouse = true;
