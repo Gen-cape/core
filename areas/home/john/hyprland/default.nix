@@ -17,6 +17,7 @@
   funny = pkgs.callPackage ./pkgs/__funny.nix {};
   recordingScripts = pkgs.callPackage ./pkgs/__record.nix {};
   reload_script = pkgs.callPackage ./pkgs/__reload.nix {};
+  audioScripts = pkgs.callPackage ./pkgs/__audio_test.nix {};
 in {
   config = {
     home.packages = with pkgs; [
@@ -296,6 +297,15 @@ in {
 
           # Funny
           "$mainMod ALT, P, exec, ${funny.spread-propaganda}/bin/spread-propaganda"
+
+          ''$mainMod ALT, 1, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_1.mp3 50''
+          ''$mainMod ALT, 2, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_2.mp3 50''
+          ''$mainMod ALT, 3, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_3.mp3 50''
+          ''$mainMod ALT, 4, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_4.mp3 50''
+          ''$mainMod ALT, 5, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_5.mp3 50''
+
+          # Stop audio playback
+          ''bind = $mainMod ALT, 0, exec, ${pkgs.procps}/bin/pkill mpv''
 
           "$mainMod ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
           "$mainMod, W,  exec, pkill waybar || waybar"
