@@ -1,4 +1,5 @@
 (deflayermap (repo)
-    4 (macro-repeat mwheel-up 10 200 )
-    5 (macro-repeat mwheel-down 10 200 )
+    f (macro-repeat ( mwheel-up 25 2000  ))
+    caps (macro-repeat ( mwheel-down 25 2000  ))
+    q (macro-repeat ( mlft 25 ))
 )
