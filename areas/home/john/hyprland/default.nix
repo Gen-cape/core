@@ -222,6 +222,18 @@ in {
           ''$MOD,RETURN,exec,run-as-service $(ghostty --gtk-single-instance=true)'' # terminal
           ''$mainMod, b, exec, hyprscratch btop "[float;size 70% 80%;center] alacritty --title btop -e btop" eager''
           ''$mainMod, z, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty" eager''
+
+          # Ghostty Terminal Quake-style Bindings
+
+          # Add these lines to your Hyprland config file (usually ~/.config/hypr/hyprland.conf)
+
+          # Alacritty Terminal Quake-style Bindings
+          ''$mainMod, grave, exec, hdrop -f -p top -w 100 -h 40 -g 0 -c alacritty_top alacritty --class alacritty_top        '' # Top terminal (grave/tilde key)
+          ''$mainMod, left, exec, hdrop -f -p left -w 40 -h 100 -g 0 -c alacritty_left alacritty --class alacritty_left      '' # Left terminal
+          ''$mainMod, right, exec, hdrop -f -p right -w 40 -h 100 -g 0 -c alacritty_right alacritty --class alacritty_right  '' # Right terminal
+          ''$mainMod, down, exec, hdrop -f -p bottom -w 100 -h 40 -g 0 -c alacritty_bottom alacritty --class alacritty_bottom'' # Bottom terminal
+          ''$mainMod, c, exec, hdrop -f -p top -w 70 -h 70 -g 15 -c alacritty_center alacritty --class alacritty_center      '' # Center terminal
+
           ''$MODSHIFT,RETURN,exec,ghostty -e "sttt doom -d 0.3  -b .8,.3,.87,.47 -c 9; exec fish"'' # terminal
           "$MODSHIFT,Q,killactive," # kill focused window
           "$MOD,T,togglegroup," # group focused window
