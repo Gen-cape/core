@@ -15,6 +15,7 @@
 (include kdbs/games/doom.kdb )       
 (include kdbs/games/drg.kdb )        
 (include kdbs/games/fps.kdb )        
+(include kdbs/games/repo.kdb )        
 (include kdbs/games/game-alias.kdb ) 
 (include kdbs/games/lethal.kdb )     
 (include kdbs/games/noita.kdb )      
