@@ -11,13 +11,13 @@ in {
       src = pkgs.fetchFromGitHub {
         owner = "jtroo";
         repo = pname;
-        rev = "5d1b8d82a4d4bc28c3908a4d17340444bbadc187";
-        sha256 = "sha256-nyA9aEqDPH1ifKNNkRT7n61IWs/RMT2ruvwgkbry8KA=";
+        rev = "a9dabfcb07e22c9efa0bc15349780b10afacb6cd";
+        sha256 = "sha256-ELdjTNcM5AEY/wLBPkWmY/s05F2b+POBOlX8PvKphVE=";
       };
       cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
         name = "${pname}-vendor.tar.gz";
         inherit src;
-        outputHash = "sha256-k5O15SYZ8M1JuRdTvv9enFfZmAWoc03B86JPbKHIz58=";
+        outputHash = "sha256-cfWJigApFDB3U7sE904mb0CbunkGIIHXBbaI/bAf2tI=";
       });
     }))
   ];
