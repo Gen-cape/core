@@ -207,6 +207,8 @@ in {
           # "$mainMod, Q, exec, foot"
           ''$MOD,RETURN,exec,run-as-service $(ghostty --gtk-single-instance=true)'' # terminal
           ''$mainMod, b, exec, hyprscratch btop "[float;size 70% 80%;center] alacritty --title btop -e btop" eager''
+          ''$MODSHIFT, e, exec, hyprscratch yazi "[float;size 70% 80%;center] alacritty --title yazi -e yazi" eager''
+          ''$mainMod, e, exec, hyprscratch yazi "[float;size 70% 80%;center] ghostty -e \"EDITOR=nvim yazi\"" eager''
           ''$mainMod, z, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty" eager''
 
           # Ghostty Terminal Quake-style Bindings
