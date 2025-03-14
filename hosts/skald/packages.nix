@@ -23,7 +23,22 @@
     krita
     vlc
     libreoffice-qt6-fresh
-    r2modman
+
+    (pkgs.r2modman.overrideAttrs (finalAttrs: rec {
+      pname = "r2modman";
+      version = "3.1.57";
+      src = pkgs.fetchFromGitHub {
+        owner = "ebkr";
+        repo = "r2modmanPlus";
+        rev = "v${finalAttrs.version}";
+        hash = "sha256-1b24tclqXGx85BGFYL9cbthLScVWau2OmRh9YElfCLs=";
+      };
+      offlineCache = pkgs.fetchYarnDeps {
+        yarnLock = "${src}/yarn.lock";
+        hash = "sha256-3SMvUx+TwUmOur/50HDLWt0EayY5tst4YANWIlXdiPQ=";
+      };
+    }))
+
     protontricks
     matugen
 
@@ -70,7 +85,6 @@
     pkgs.qimgv
     pkgs.pqiv
     pkgs.dooit
-    pkgs.r2modman
     # pkgs.lazyjj
     # pkgs.gg-jj
     # pkgs.julia_19
