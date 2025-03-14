@@ -3,14 +3,35 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.exiftool];
+  home.packages = [
+    pkgs.ripdrag
+    pkgs.exiftool
+  ];
 
   programs.yazi = {
     enable = true;
 
     enableBashIntegration = config.programs.bash.enable;
     enableZshIntegration = config.programs.zsh.enable;
+    enableNushellIntegration = config.programs.nushell.enable;
 
+    plugins = {
+      filepicker = ./plugins/filepicker;
+      compress = ./plugins/compress;
+    };
+
+    keymap = {
+      manager.prepend_keymap = [
+        {
+          on = ["<C-p>"];
+          run = "plugin filepicker";
+        }
+        {
+          on = ["c" "a"];
+          run = "plugin compress";
+        }
+      ];
+    };
     settings = {
       manager = {
         layout = [1 4 3];
