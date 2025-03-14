@@ -2,4 +2,5 @@
     f (macro-repeat ( mwheel-up 25 2000  ))
     caps (macro-repeat ( mwheel-down 25 2000  ))
     q (macro-repeat ( mlft 25 ))
+    c (macro-repeat (mlft 10 e 25))
 )
