@@ -1,6 +1,37 @@
 (deflayermap (repo)
-    f (macro-repeat ( mwheel-up 25 2000  ))
-    caps (macro-repeat ( mwheel-down 25 2000  ))
-    q (macro-repeat ( mlft 25 ))
-    c (macro-repeat (mlft 10 e 25))
+    f (macro-repeat ( mwheel-up 1 2000  ))
+    ;;caps (macro-repeat ( mwheel-down 25 2000  ))
+    v (macro-repeat (mlft 10 e 25))
+    g f
+
+    ;;repo-game-fast-rotate (macro-repeat
+    ;;    (on-press press-vkey)
+    ;;)
+
+    caps (multi mouseright (movemouse-down 1 10) )
+    5 (multi mouseright (movemouse-left 1 20) )
+   ;; lctl (macro 
+   ;;          (hold-for-duration 300 sft) 270
+   ;;          (hold-for-duration 30 ctl)
+   ;;     )
+      lctl (macro 
+             (hold-for-duration 300 sft) 230
+	     (hold-for-duration 30 ctl)
+	)
+    c lctl
+    r (macro
+    	(on-press press-vkey mlft)
+
+	(hold-for-duration 300 mwdf) 300
+	(hold-for-duration 300 mwuf) 300
+
+        (on-press release-vkey mlft)
+    )
+    
 )
+
+(defvirtualkeys
+  mwdf (mwheel-down 1 100)
+  mwuf (mwheel-up 1 100)
+)
+

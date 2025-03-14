@@ -1,4 +1,15 @@
 (defvirtualkeys
+  mlft mlft
+  mmid mmid
+  mrgt mrgt
+  mfwd mfwd
+  mbck mbck
+  mltp mltp
+  mmtp mmtp
+  mrtp mrtp
+  mftp mftp
+  mbtp mbtp
+
   ctrl lctl
   ctl lctl
   sft lsft
