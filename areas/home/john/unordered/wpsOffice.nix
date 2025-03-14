@@ -1,6 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs',
+  ...
+}: {
   home.packages = with pkgs; [
-    wpsoffice
+    # inputs'.nixpkgs-stable.legacyPackages.wpsoffice
     onlyoffice-desktopeditors
   ];
 }
