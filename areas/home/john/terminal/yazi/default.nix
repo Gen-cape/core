@@ -6,6 +6,8 @@
   home.packages = [
     pkgs.ripdrag
     pkgs.exiftool
+    pkgs.zip
+    pkgs.p7zip
   ];
 
   programs.yazi = {
