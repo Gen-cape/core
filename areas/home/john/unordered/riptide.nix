@@ -8,5 +8,7 @@
     inputs'.riptide.packages.quest
 
     inputs'.riptide.packages.ghostty
+    inputs'.riptide.packages.toml-bombadil
+    inputs'.riptide.packages.keep-alive
   ];
 }
