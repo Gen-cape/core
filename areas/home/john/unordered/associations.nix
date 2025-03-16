@@ -15,6 +15,11 @@
     # "x-scheme-handler/https" = "zen.desktop";
     # "x-scheme-handler/about" = "zen.desktop";
     # "x-scheme-handler/unknown" = "zen.desktop";
+    "x-scheme-handler/http" = "zen_twilight.desktop";
+    "x-scheme-handler/https" = "zen_twilight.desktop";
+    "x-scheme-handler/about" = "zen_twilight.desktop";
+    "x-scheme-handler/unknown" = "zen_twilight.desktop";
+    "application/pdf" = ["org.pwmt.zathura.desktop" "zen_twilight.desktop"];
 
     "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
     "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
@@ -22,7 +27,7 @@
     "inode/directory" = "org.gnome.Nautilus.desktop";
 
     # Documents
-    "application/pdf" = ["org.pwmt.zathura.desktop" "firefox.desktop"];
+    # "application/pdf" = ["org.pwmt.zathura.desktop" "firefox.desktop"];
     "application/doc" = "libreoffice-writer.desktop";
     "application/docx" = "libreoffice-writer.desktop";
     "application/msword" = "libreoffice-writer.desktop";
