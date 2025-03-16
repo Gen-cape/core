@@ -14,6 +14,7 @@ in {
     image = /home/john/.current_wallpaper.png;
     cursor.package = pkgs.rose-pine-cursor;
     cursor.name = "BreezeX-RosePine-Linux";
+    cursor.size = 20;
 
     fonts = {
       monospace = {
