@@ -9,6 +9,14 @@
     ;;)
 
     caps (multi mouseright (movemouse-down 1 10) )
+    ;;caps (macro-repeat
+    ;;      (on-press press-vkey mlft)
+    ;;      (on-press press-vkey mrgt) 40
+    ;;      (hold-for-duration 1000 mvup) 1000
+    ;;      (on-release release-vkey mlft)
+    ;;      (on-release release-vkey mrgt) 50
+    ;;
+    ;;)
     5 (multi mouseright (movemouse-left 1 20) )
    ;; lctl (macro 
    ;;          (hold-for-duration 300 sft) 270
@@ -31,6 +39,8 @@
 )
 
 (defvirtualkeys
+  mvup (movemouse-up 1 27)
+  mvrt (movemouse-right 1 40)
   mwdf (mwheel-down 1 100)
   mwuf (mwheel-up 1 100)
 )
