@@ -1,7 +1,7 @@
 {
   config = {
     programs.zellij = {
-      enable = true;
+      enable = false;
       settings = {
         copy_command = "wl-copy";
 
