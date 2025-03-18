@@ -144,6 +144,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nixpak = {
+    #   url = "github:nixpak/nixpak";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
     flint = {
       url = "github:NotAShelf/flint";
       inputs.nixpkgs.follows = "nixpkgs";
