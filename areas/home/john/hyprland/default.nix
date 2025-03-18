@@ -97,8 +97,8 @@ in {
             # "SDL_VIDEODRIVER, wayland"
             "CLUTTER_BACKEND, wayland"
             "QT_QPA_PLATFORM, wayland;xcb"
-            "HYPRCURSOR_THEME, rose-pine-hyprcursor"
-            "HYPRCURSOR_SIZE,30"
+            # "HYPRCURSOR_THEME, rose-pine-hyprcursor"
+            # "HYPRCURSOR_SIZE,30"
 
             "GDK_SCALE, ${scaling}"
 
