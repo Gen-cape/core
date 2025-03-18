@@ -55,10 +55,6 @@
       bind K send-keys "clear"\; send-keys "Enter"
     '';
     plugins = with pkgs.tmuxPlugins; [
-      sensible
-      yank
-      resurrect
-      continuum
       {
         plugin = catppuccin;
         extraConfig = ''
@@ -90,37 +86,6 @@
           set -g @catppuccin_date_time_text "%H:%M"
         '';
       }
-      {
-        plugin = resurrect;
-        extraConfig = ''
-          set -g @resurrect-strategy-nvim 'session'
-        '';
-      }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '10'
-        '';
-      }
-      tmux-thumbs
     ];
   };
-
-  # Create reset.conf file
-  home.file.".config/tmux/tmux.reset.conf".text = ''
-    # First remove *all* keybindings
-    # unbind-key -a
-    # Now reinsert all the regular tmux keys
-    bind ^X lock-server
-    bind ^D detach
-    bind * list-clients
-    bind ^L refresh-client
-    bind l refresh-client
-    bind : command-prompt
-    bind-key -T copy-mode-vi v send-keys -X begin-selection
-  '';
-
-  # Create the scripts directory for the calendar script
-  home.file.".config/tmux/scripts/.keep".text = "";
 }
