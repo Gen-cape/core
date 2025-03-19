@@ -1130,8 +1130,8 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1742219832,
-        "narHash": "sha256-74yoPTFDcGfWMViZj9omTtsZxjFBtHImsBwDZFLRBlY=",
+        "lastModified": 1742386052,
+        "narHash": "sha256-YloyDVOTz7c++qLZiMaJNlmFV00zE/DIVRRn75eP1M4=",
         "path": "/home/john/neovim",
         "type": "path"
       },
