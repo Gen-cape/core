@@ -30,6 +30,7 @@ in {
         libsForQt5.kwidgetsaddons
         libsForQt5.kwindowsystem
         # ark
+        kdePackages.full
       ])
     ];
   };
