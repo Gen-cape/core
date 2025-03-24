@@ -47,7 +47,7 @@ in {
           inputs.chaotic.nixosModules.default
           inputs.nur.modules.nixos.default
           # inputs.home-manager.nixosModules.home-manager one day, when ill tinker less
-          inputs.stylix.nixosModules.stylix
+          # inputs.stylix.nixosModules.stylix
         ];
       };
     };

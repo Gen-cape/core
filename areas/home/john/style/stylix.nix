@@ -12,9 +12,9 @@ in {
 
     # Don't forget to apply wallpaper
     image = /home/john/.current_wallpaper.png;
-    cursor.package = pkgs.rose-pine-cursor;
-    cursor.name = "BreezeX-RosePine-Linux";
-    cursor.size = 20;
+    # cursor.package = pkgs.rose-pine-cursor;
+    # cursor.name = "BreezeX-RosePine-Linux";
+    # cursor.size = 20;
 
     fonts = {
       monospace = {
