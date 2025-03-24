@@ -35,7 +35,6 @@ in {
       inherit baseAugments;
       debug =
         mkForUser "john";
-      cursor = inputs'.rose-pine-hyprcursor.packages.default;
     };
     nixosConfigurations = {
       skald = mkSystem {

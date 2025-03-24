@@ -5,7 +5,6 @@
 }: {
   environment.systemPackages = with pkgs; [
     # inputs'.quickshell.packages.quickshell
-    inputs'.rose-pine-hyprcursor.packages.default
     inputs'.search-flake-inputs.packages.default
     # inputs'.zen-browser.packages.default
     inputs'.zen-browser.packages.twilight

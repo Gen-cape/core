@@ -23,7 +23,7 @@ in {
     home.packages = with pkgs; [
       kdePackages.xwaylandvideobridge # xwaylandvideobridge
       rofi-wayland
-      inputs'.hyprcursor.packages.hyprcursor
+      # inputs'.hyprcursor.packages.hyprcursor
       inputs'.hyprland-contrib.packages.grimblast
       inputs'.hyprland-contrib.packages.hdrop
       inputs'.hyprland-contrib.packages.scratchpad
@@ -57,6 +57,8 @@ in {
 
         exec-once = [
           "swww-daemon"
+          "swww img ~/wall.gif"
+          "hyprctl setcursor Bibata-Modern-Classic 20"
           # "env DRI_PRIME=1 firefox-nightly"
           "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
           "waybar"
