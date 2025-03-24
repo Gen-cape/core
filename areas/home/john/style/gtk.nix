@@ -6,8 +6,8 @@
   gtk = {
     enable = true;
     theme = {
-      name = lib.mkForce "adw-gtk3-dark";
-      package = lib.mkForce pkgs.adw-gtk3;
+      name = lib.mkForce "Sweet-Dark";
+      package = lib.mkForce pkgs.sweet;
 
       # name = "WhiteSur-Dark-solid-hdpi";
       # package = pkgs.whitesur-gtk-theme;
@@ -16,8 +16,8 @@
       # package = pkgs.orchis-theme;
     };
     iconTheme = {
-      name = "Flat-Remix-Blue-Dark";
-      package = pkgs.flat-remix-icon-theme;
+      name = "Sweet-Rainbow";
+      package = pkgs.sweet-folders;
 
       # name = "WhiteSur-dark";
       # package = pkgs.whitesur-icon-theme;
