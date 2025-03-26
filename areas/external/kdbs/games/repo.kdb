@@ -28,6 +28,29 @@
              (hold-for-duration 300 sft) 230
 	     (hold-for-duration 30 ctl)
 	)
+	alt (macro
+        (hold-for-duration 300 sft) 230
+		(hold-for-duration 30 ctl) 30
+		(hold-for-duration 50 spc) 50
+		(hold-for-duration 30 q) 230
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+		(hold-for-duration 30 q) 30 60
+	)
+	t (multi
+		(on-press press-vkey sft)
+		(macro 
+				(hold-for-duration 75 mvrt) 75
+		)
+		(on-release release-vkey sft)
+	)
     c lctl
     r (macro
     	(on-press press-vkey mlft)
