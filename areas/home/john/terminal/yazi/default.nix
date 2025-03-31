@@ -27,10 +27,12 @@
         {
           on = ["<C-p>"];
           run = "plugin filepicker";
+          desc = "Open filepicker";
         }
         {
           on = ["c" "a"];
           run = "plugin compress";
+          desc = "Compress file";
         }
       ];
     };

@@ -12,11 +12,20 @@ local selected_or_hovered = ya.sync(function()
   return names
 end)
 
+-- local escape_spaces_in_list = ya.sync(function(list)
+--   local escapedList = {}
+--   for _, str in ipairs(list) do
+--     local escapedStr, _ = string.gsub(str, " ", "\\ ")
+--     table.insert(escapedList, escapedStr)
+--   end
+--   return escapedList
+-- end)
+
 return {
   entry = function()
     ya.manager_emit("escape", { visual = true })
     local names = selected_or_hovered()
-    local cmd = "ripdrag " .. table.concat(names, " ") .. " --and-exit"
+    local cmd = "ripdrag \"" .. table.concat(names, "\" \"") .. "\" --and-exit"
     os.execute(cmd)
   end,
 }
