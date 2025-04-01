@@ -296,7 +296,8 @@ in {
           # Stop audio playback
           ''bind = $mainMod ALT, 0, exec, ${pkgs.procps}/bin/pkill mpv''
 
-          "$mainMod ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
+          # "$mainMod ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
+          "$mainMod ALT, L, exec, ${pkgs.swaylock-effects}/bin/swaylock --daemonize"
           "$mainMod, W,  exec, pkill waybar || waybar"
         ];
 
