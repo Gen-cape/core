@@ -9,6 +9,7 @@
     ;;repo-game-fast-rotate (macro-repeat
     ;;    (on-press press-vkey)
     ;;)
+  ; (macro-repeat mlft 25)
 
     caps (multi mouseright (movemouse-down 1 10) )
     ;;caps (macro-repeat
@@ -28,22 +29,20 @@
              (hold-for-duration 300 sft) 230
 	     (hold-for-duration 30 ctl)
 	)
-	alt (macro
-        (hold-for-duration 300 sft) 230
-		(hold-for-duration 30 ctl) 30
-		(hold-for-duration 50 spc) 50
-		(hold-for-duration 30 q) 230
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
-		(hold-for-duration 30 q) 30 60
+    alt (
+	  tap-dance 200 (
+	    (multi
+          (on-press tap-vkey cancel-macros)
+	      (on-release tap-vkey repo-jump)
+        )
+
+	    (multi
+          (on-press tap-vkey cancel-macros)
+	      (on-release tap-vkey repo-jump-2)
+        )
+	  )
 	)
+
 	t (multi
 		(on-press press-vkey sft)
 		(macro 
@@ -68,5 +67,52 @@
   mvrt (movemouse-right 1 40)
   mwdf (mwheel-down 1 100)
   mwuf (mwheel-up 1 100)
+  repo-release-tumble (macro 
+			(hold-for-duration 30 q) 30 60
+			(hold-for-duration 30 q) 30 60
+			(hold-for-duration 30 q) 30 60
+  )
+  repo-jump 
+			(macro
+				(hold-for-duration 300 sft) 230
+				(hold-for-duration 30 ctl) 30
+				(hold-for-duration 50 spc) 50
+				(hold-for-duration 30 q) 230
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+			
+            )
+
+  repo-jump-2
+			(macro
+				(hold-for-duration 300 sft) 230
+				(hold-for-duration 30 ctl) 30 400
+				(hold-for-duration 50 spc) 50
+				(hold-for-duration 30 q) 230
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+				(hold-for-duration 30 q) 30 60
+			
+            )
+
+  cancel-macros (macro-release-cancel-and-cancel-on-press nop9)
+
 )
 
