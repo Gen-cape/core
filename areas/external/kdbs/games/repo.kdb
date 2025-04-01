@@ -40,6 +40,10 @@
           (on-press tap-vkey cancel-macros)
 	      (on-release tap-vkey repo-jump-2)
         )
+;;       (multi
+;;      (on-press tap-vkey cancel-macros)
+;;      (on-release tap-vkey repo-jump-3)
+        )
 	  )
 	)
 
@@ -111,6 +115,16 @@
 				(hold-for-duration 30 q) 30 60
 			
             )
+;;repo-jump-3
+;;(macro
+;;  (on-press press-vkey sft) 300
+;;  (on-press press-vkey ctl) 300
+;;  (on-press press-vkey spc) 30
+;;  (on-press release-vkey sft)
+;;  (on-press release-vkey ctl)
+;;  (on-press release-vkey spc) 100
+;;  (hold-for-duration 10 q) 10
+;;)
 
   cancel-macros (macro-release-cancel-and-cancel-on-press nop9)
 
