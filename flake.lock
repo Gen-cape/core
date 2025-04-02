@@ -1625,8 +1625,8 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1743534272,
-        "narHash": "sha256-jw63+QzTglUAy1cOzNerpfn9zhciX5xhDJGj/f0YQDI=",
+        "lastModified": 1743581107,
+        "narHash": "sha256-XaHAs3cjizKqqywonamS21yneC2z9tJ1ia4cFHT+mIw=",
         "path": "/home/john/riptide",
         "type": "path"
       },
