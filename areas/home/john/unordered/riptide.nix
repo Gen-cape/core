@@ -11,5 +11,6 @@
     inputs'.riptide.packages.toml-bombadil
     inputs'.riptide.packages.keep-alive
     inputs'.riptide.packages.tray-tui
+    inputs'.riptide.packages.toml-bombadil
   ];
 }
