@@ -68,7 +68,9 @@ in {
           "pypr"
           "hyprscratch init"
           "swaync"
-          "kanata -c ${selfPath}/external/kanata.kdb -c ${selfPath}/external/kanata-zippy.kdb"
+          "bombadil watch -p bundle"
+          # "kanata -c ${selfPath}/external/kanata/kanata.kdb -c ${selfPath}/external/kanata/kanata-zippy.kdb"
+          "kanata -c ~/.config/kanata/kanata.kdb -c ~/.config/kanata/kanata-zippy.kdb"
         ];
 
         misc = {

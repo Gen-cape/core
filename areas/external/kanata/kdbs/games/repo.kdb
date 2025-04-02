@@ -9,7 +9,7 @@
     ;;repo-game-fast-rotate (macro-repeat
     ;;    (on-press press-vkey)
     ;;)
-  ; (macro-repeat mlft 25)
+  ;; (macro-repeat mlft 25)
 
     caps (multi mouseright (movemouse-down 1 10) )
     ;;caps (macro-repeat
@@ -43,7 +43,7 @@
 ;;       (multi
 ;;      (on-press tap-vkey cancel-macros)
 ;;      (on-release tap-vkey repo-jump-3)
-        )
+;;    )
 	  )
 	)
 
