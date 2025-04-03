@@ -1,0 +1,21 @@
+gtk-titlebar = false
+
+background-opacity = 0.5
+
+background = #000000
+
+foreground = #b8b59e
+
+confirm-close-surface = false
+
+window-decoration = false
+window-padding-x = 10
+window-padding-y = 10
+
+window-vsync = false
+resize-overlay = never
+
+shell-integration-features = no-sudo,title
+# custom-shader = ./mnoise.glsl
+
+keybind = ctrl+i=unbind
