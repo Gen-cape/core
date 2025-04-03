@@ -1,8 +1,5 @@
 (defzippy-experimental
   zippy.txt
-  on-first-press-chord-deadline 500
-  idle-reactivate-time          500
-  smart-space-punctuation (? ! . , ; :)
   output-character-mappings (
     ;; This should work for US international.
     ! S-1

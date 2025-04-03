@@ -4,6 +4,8 @@
     v (macro-repeat (mlft 10 e 25))
     g f
 
+    u (macro-repeat (e 25))
+
   k (on-press press-vkey mlft)
   l (on-press release-vkey mlft)
     ;;repo-game-fast-rotate (macro-repeat
