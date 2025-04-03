@@ -2,14 +2,30 @@
   services.swayidle = {
     enable = true;
     events = [
-      # No events configured by default is fine
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+      }
+      {
+        event = "lock";
+        command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize --grace 0";
+      }
+      {
+        event = "unlock";
+        command = "pkill -SIGUSR1 swaylock";
+      }
+      {
+        event = "after-resume";
+        command = "swaymsg \"output * dpms on\"";
+      }
     ];
     timeouts = let
       std-lock-time = 300; # 5 minutes of idling
     in [
       {
         timeout = std-lock-time - 5; # 5 seconds before lock
-        command = "notify-send 'Locking in 5 seconds!'"; # or logger to log the event in a logfile
+        # command = "notify-send 'Locking in 5 seconds!'"; # or logger to log the event in a logfile
+        command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds!'";
       }
       {
         timeout = std-lock-time;
@@ -27,7 +43,7 @@
       indicator = true;
       effect-blur = "7x5";
       fade-in = "0.2";
-      grace = 5;
+      grace = 2;
       indicator-radius = "100";
 
       font = "Work Sans";
@@ -43,22 +59,3 @@
     };
   };
 }
-# events = [
-#   {
-#     event = "before-sleep";
-#     command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
-#   }
-#   {
-#     event = "lock";
-#     command = "${pkgs.swaylock-effects}/bin/swaylock --daemonize --grace 0";
-#   }
-#   {
-#     event = "unlock";
-#     command = "pkill -SIGUSR1 swaylock";
-#   }
-#   {
-#     event = "after-resume";
-#     command = "swaymsg \"output * dpms on\"";
-#   }
-# ];
-
