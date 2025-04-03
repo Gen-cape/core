@@ -57,7 +57,7 @@ in {
 
         exec-once = [
           "swww-daemon"
-          "swww img ~/wall.gif"
+          "sleep 1 && swww img ~/wall.gif"
           "hyprctl setcursor Bibata-Modern-Classic 20"
           # "env DRI_PRIME=1 firefox-nightly"
           "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
