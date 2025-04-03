@@ -18,4 +18,4 @@ resize-overlay = never
 shell-integration-features = no-sudo,title
 # custom-shader = ./mnoise.glsl
 
-keybind = ctrl+i=unbind
+keybind = ctrl+i=text:\t
