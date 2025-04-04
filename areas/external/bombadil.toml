@@ -1,4 +1,4 @@
-dotfiles_dir = "constructed-core/areas/external" # Path to your dotfile directory containing this config file (relative to $HOME). 
+dotfiles_dir = "core/areas/external" # Path to your dotfile directory containing this config file (relative to $HOME). 
 
 [profiles.kanata.dots]
 kanata = {source = "kanata", target = ".config/kanata"}

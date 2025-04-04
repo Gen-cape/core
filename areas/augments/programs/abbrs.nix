@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   templateDir = "~/riptide";
-  flakeDir = "~/constructed-core";
+  flakeDir = "~/core";
 in {
   environment.systemPackages = with pkgs; [
     eza
@@ -15,7 +15,7 @@ in {
     "v" = "nvim";
     "v." = "nvim .";
 
-    "vc" = "nvim ~/constructed-core/";
+    "vc" = "nvim ~/core/";
     "vv" = "nvim ~/neovim/";
     "ya" = "yazi";
     "pkg" = "nix-search-tv print | tv";

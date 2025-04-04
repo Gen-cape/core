@@ -12,5 +12,4 @@ in {
   home.file.".config/waybar".source =
     config.lib.file.mkOutOfStoreSymlink
     "${selfPath}/home/john/hyprland/waybar";
-  # "/home/john/constructed-core/areas/home/john/ghostty";
 }

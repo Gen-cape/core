@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  flakePath = "/home/john/constructed-core"; # path to the system flake
+  flakePath = "/home/john/core"; # path to the system flake
 in {
   environment.variables.flakePath = flakePath;
 
