@@ -10,13 +10,6 @@
       CLUTTER_BACKEND = "wayland";
       GDK_BACKEND = "wayland";
     };
-    # xdg.portal = {
-    #   enable = true;
-    #   extraPortals = [
-    #     pkgs.xdg-desktop-portal-gtk
-    #   ];
-    #   config.common.default = "*";
-    # };
     programs.xwayland.enable = true;
 
     xdg.portal = {

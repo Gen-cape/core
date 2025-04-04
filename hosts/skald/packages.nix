@@ -3,6 +3,8 @@
   inputs',
   ...
 }: {
+  programs.gpu-screen-recorder.enable = true;
+
   environment.systemPackages = with pkgs; [
     # inputs'.quickshell.packages.quickshell
     inputs'.search-flake-inputs.packages.default
@@ -12,6 +14,11 @@
     inputs'.hover-rs.packages.default
     inputs'.flint.packages.default
     inputs'.nix-search-tv.packages.default
+
+    heroic
+    npins
+    gpu-screen-recorder
+    gpu-screen-recorder-gtk
 
     neovide
     television

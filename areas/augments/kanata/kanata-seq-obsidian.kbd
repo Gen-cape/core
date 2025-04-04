@@ -1,9 +1,0 @@
-
-(defseq
-  co-abstract (a b s)
-)
-
-
-(defvirtualkeys
-  co-abstract (macro   a b s t r a c t ])
-)
