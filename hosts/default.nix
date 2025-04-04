@@ -31,11 +31,7 @@
   mkHome = inputs.riptide.mimics.mkHome systemSet;
 in {
   flake = {
-    DEBUG = {
-      inherit baseAugments;
-      debug =
-        mkForUser "john";
-    };
+    DEBUG = {};
     nixosConfigurations = {
       skald = mkSystem {
         hostname = "skald";
