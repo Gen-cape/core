@@ -18,13 +18,13 @@
 
   inputs = {
     riptide = {
-      url = "path:/home/john/riptide";
+      url = "github:Gen-cape/riptide";
       inputs = {
         #   nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
-    neovim-riptide.url = "path:/home/john/neovim";
+    neovim-riptide.url = "github:Gen-cape/neovim";
 
     ghostty = {
       url = "github:ghostty-org/ghostty";

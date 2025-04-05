@@ -1151,14 +1151,17 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1743546543,
-        "narHash": "sha256-i6+NfmuNIZs5gzGSCmGqZeN+yiJe7CsqEtLVZ3PUmOw=",
-        "path": "/home/john/neovim",
-        "type": "path"
+        "lastModified": 1744052674,
+        "narHash": "sha256-DFstl0Ha3Z4OJ6ZlsSC1gmkA0LszXbMxWRNbpsTsk8s=",
+        "owner": "Gen-cape",
+        "repo": "neovim",
+        "rev": "81d46d2dd552eb73403f6749c455df087fb5ed2b",
+        "type": "github"
       },
       "original": {
-        "path": "/home/john/neovim",
-        "type": "path"
+        "owner": "Gen-cape",
+        "repo": "neovim",
+        "type": "github"
       }
     },
     "nix-gaming": {
@@ -1625,14 +1628,17 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1743581107,
-        "narHash": "sha256-XaHAs3cjizKqqywonamS21yneC2z9tJ1ia4cFHT+mIw=",
-        "path": "/home/john/riptide",
-        "type": "path"
+        "lastModified": 1743794668,
+        "narHash": "sha256-I3MZ4UWDG1T4zttfkEXC25idb3Yp77RwuM8jIkhqAH0=",
+        "owner": "Gen-cape",
+        "repo": "riptide",
+        "rev": "1a52bd2da5ffaa6c412ec4442e7938368eadaf9b",
+        "type": "github"
       },
       "original": {
-        "path": "/home/john/riptide",
-        "type": "path"
+        "owner": "Gen-cape",
+        "repo": "riptide",
+        "type": "github"
       }
     },
     "root": {
