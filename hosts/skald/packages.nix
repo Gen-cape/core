@@ -16,6 +16,8 @@
     inputs'.nix-search-tv.packages.default
 
     heroic
+    inputs'.nixpkgs.legacyPackages.umu-launcher
+
     npins
     gpu-screen-recorder
     gpu-screen-recorder-gtk
