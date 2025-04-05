@@ -214,6 +214,7 @@ in {
           ''$MODSHIFT, e, exec, hyprscratch yazi "[float;size 70% 80%;center] alacritty --title yazi -e yazi" eager''
           ''$mainMod, e, exec, hyprscratch yazi "[float;size 70% 80%;center] ghostty -e \"EDITOR=nvim yazi\"" eager''
           ''$mainMod, z, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty" eager''
+          ''$mainMod, bracketleft, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty -e tray-tui" eager''
 
           # Ghostty Terminal Quake-style Bindings
 
