@@ -2,7 +2,6 @@
   withSystem,
   inputs,
   self,
-  inputs',
   ...
 }: let
   inherit (inputs.riptide) mimics;
@@ -44,6 +43,19 @@ in {
           inputs.nur.modules.nixos.default
           # inputs.home-manager.nixosModules.home-manager one day, when ill tinker less
           # inputs.stylix.nixosModules.stylix
+        ];
+      };
+
+      # infiltration (remote deployment agent, got it?), use with nixos-anywhere
+      # nix run  nixpkgs#nixos-anywhere -- --flake .#snake --generate-hardware-config nixos-generate-config ./hosts/snake/hardware.nix root@...
+      # (hostname)
+      snake = mkSystem {
+        hostname = "snake";
+        system = "x86_64-linux";
+        modules = [
+          (mkForHost "snake")
+          inputs.disko.nixosModules.disko
+          {disko.devices.disk.main.device = "/dev/nvme0n1";}
         ];
       };
     };
