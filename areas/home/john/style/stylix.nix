@@ -46,7 +46,10 @@ in {
 
     polarity = "dark"; # "light" or "either" };
 
-    targets.tofi.enable = false;
+    targets = {
+      tofi.enable = false;
+      hyprland.hyprpaper.enable = false;
+    };
   };
   # OR
 
