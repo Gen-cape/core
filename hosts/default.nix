@@ -11,6 +11,7 @@
   systemSet = {
     inherit withSystem;
     inherit (inputs.home-manager.lib) homeManagerConfiguration;
+    nixosSystem = inputs.nixpkgs.lib.nixosSystem;
     basicArgs = {
       inherit self inputs;
       inherit (inputs.riptide) mimics;
@@ -79,6 +80,7 @@ in {
     homeConfigurations = {
       "john@skald" = mkHome {
         username = "john";
+        hostname = "skald";
         system = "x86_64-linux";
         modules = [
           (mkForUser "john")
