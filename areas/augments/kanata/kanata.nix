@@ -7,18 +7,17 @@ in {
   environment.systemPackages = [
     (pkgs.kanata.overrideAttrs (oldAttrs: rec {
       pname = "kanata";
-      version = "1.8.0-next";
+      version = "1.8.1";
       src = pkgs.fetchFromGitHub {
         owner = "jtroo";
         repo = pname;
-        rev = "a9dabfcb07e22c9efa0bc15349780b10afacb6cd";
-        sha256 = "sha256-ELdjTNcM5AEY/wLBPkWmY/s05F2b+POBOlX8PvKphVE=";
+        rev = "v${version}";
+        sha256 = "sha256-w/PeSqj51gJOWmAV5UPMprntdzinX/IL49D2ZUMfeSM=";
       };
-      cargoDeps = oldAttrs.cargoDeps.overrideAttrs (_: {
-        name = "${pname}-vendor.tar.gz";
+      cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
         inherit src;
-        outputHash = "sha256-cfWJigApFDB3U7sE904mb0CbunkGIIHXBbaI/bAf2tI=";
-      });
+        hash = "sha256-T9fZxv3aujYparzVphfYBJ+5ti/T1VkeCeCqWPyllY8";
+      };
     }))
   ];
 
