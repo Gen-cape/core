@@ -7,7 +7,6 @@
     inputs'.riptide.packages.quest
     inputs'.riptide.packages.jj-fzf
 
-    inputs'.riptide.packages.ghostty
     inputs'.riptide.packages.toml-bombadil
     inputs'.riptide.packages.keep-alive
     inputs'.riptide.packages.tray-tui
