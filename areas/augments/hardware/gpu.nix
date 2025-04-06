@@ -82,8 +82,8 @@ in {
           powerManagement.finegrained = false;
           open = false;
           nvidiaSettings = true;
-          package = config.boot.linuxKernel.packages.linux_zen.nvidia_x11_vulkan_beta;
-          # package = (pkgs.linuxPackagesFor config.boot.kernelPackages.kernel).nvidiaPackages.stable;
+          # package = config.boot.linuxKernel.packages.linux_zen.nvidia_x11_vulkan_beta;
+          package = (pkgs.linuxPackagesFor config.boot.kernelPackages.kernel).nvidiaPackages.stable;
         };
 
         graphics = {
