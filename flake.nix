@@ -20,7 +20,7 @@
     riptide = {
       url = "github:Gen-cape/riptide";
       inputs = {
-        #   nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
