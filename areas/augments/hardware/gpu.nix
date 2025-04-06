@@ -21,7 +21,7 @@ in {
   config = mkMerge [
     (mkIf (cfg.type == "amd") {
       # hardware.amdgpu.opencl.enable = true;
-      # services.xserver.videoDrivers = ["modesetting"];
+      services.xserver.videoDrivers = ["modesetting"];
 
       # boot = {
       #   initrd.kernelModules = ["amdgpu"];
@@ -35,25 +35,28 @@ in {
       # chaotic.mesa-git.enable = true;
 
       # Vulkan and opengl stuff
-      hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-        # package = inputs'.chaotic.packages.mesa_git.drivers;
-        #
-        extraPackages = with pkgs; [
-          # vaapiVdpau
-          # libvdpau-va-gl
-          inputs.chaotic.packages."${pkgs.system}".libdrm_git
-          # libva
-          # rocmPackages.clr
-          # rocmPackages.clr.icd
-          # rocmPackages.rocminfo
-          # rocmPackages.rocm-runtime
-        ];
+      hardware = {
+        graphics = {
+          enable = true;
+          enable32Bit = true;
+          # package = inputs'.chaotic.packages.mesa_git.drivers;
+          #
+          extraPackages = with pkgs; [
+            # vaapiVdpau
+            # libvdpau-va-gl
+            inputs.chaotic.packages."${pkgs.system}".libdrm_git
+            # libva
+            # rocmPackages.clr
+            # rocmPackages.clr.icd
+            # rocmPackages.rocminfo
+            # rocmPackages.rocm-runtime
+          ];
 
-        extraPackages32 = with pkgs; [
-          # driversi686Linux.libvdpau-va-gl
-        ];
+          extraPackages32 = with pkgs; [
+            # driversi686Linux.libvdpau-va-gl
+          ];
+        };
+        amdgpu.initrd.enable = lib.mkDefault true;
       };
 
       # environment.variables = {
@@ -80,6 +83,7 @@ in {
           open = false;
           nvidiaSettings = true;
           package = config.boot.linuxKernel.packages.linux_zen.nvidia_x11_vulkan_beta;
+          # package = (pkgs.linuxPackagesFor config.boot.kernelPackages.kernel).nvidiaPackages.stable;
         };
 
         graphics = {
@@ -87,6 +91,8 @@ in {
           enable32Bit = true;
         };
       };
+
+      boot.kernelParams = ["nvidia.NVreg_PreserveVideoMemoryAllocations=1"]; # For correct suspention and hibernation
     })
   ];
 }
