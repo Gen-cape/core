@@ -58,6 +58,23 @@ in {
           {disko.devices.disk.main.device = "/dev/nvme0n1";}
         ];
       };
+
+      omen = mkSystem {
+        # derived from snake
+        hostname = "omen";
+        system = "x86_64-linux";
+        modules = [
+          (mkForHost "omen")
+          baseAugments
+          inputs.disko.nixosModules.disko
+
+          inputs.nix-gaming.nixosModules.pipewireLowLatency
+          inputs.chaotic.nixosModules.default
+          inputs.nur.modules.nixos.default
+
+          {disko.devices.disk.main.device = "/dev/nvme0n1";}
+        ];
+      };
     };
     homeConfigurations = {
       "john@skald" = mkHome {
