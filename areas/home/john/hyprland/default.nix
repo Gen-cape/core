@@ -171,13 +171,16 @@ in {
 
           blur = {
             enabled = true;
-            size = 5;
-            passes = 1;
+            size = 4;
+            passes = 4;
             new_optimizations = true;
+            ignore_opacity = true;
+            xray = false;
+            vibrancy = 0.1696;
             noise = 0.026;
-            contrast = 1;
-            vibrancy_darkness = 0.11;
-            vibrancy = 0.22;
+            # contrast = 1;
+            # vibrancy_darkness = 0.11;
+            # vibrancy = 0.22;
           };
 
           shadow = {
