@@ -1,6 +1,6 @@
 gtk-titlebar = false
 
-background-opacity = 0.8
+background-opacity = 0.7
 
 background = #000000
 
@@ -26,7 +26,7 @@ font-family-bold = "JetBrainsMono Nerd Font, Bold"
 font-family-italic = "JetBrainsMono Nerd Font, Italic"
 font-family-bold-italic = "JetBrainsMono Nerd Font, Bold Italic"
 font-feature = -liga
-font-size = 12
+font-size = 13
 
 window-padding-x = 5
 window-padding-y = 5
