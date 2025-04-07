@@ -159,7 +159,8 @@ in {
 
         general = {
           gaps_in = 5;
-          gaps_out = 20;
+          # gaps_out = 20;
+          gaps_out = "12,22,22,22";
           border_size = 2;
           # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
           # "col.inactive_border" = "rgba(595959aa)";
@@ -167,12 +168,12 @@ in {
         };
 
         decoration = {
-          rounding = 10;
+          rounding = 13;
 
           blur = {
             enabled = true;
-            size = 4;
-            passes = 4;
+            size = 3;
+            passes = 3;
             new_optimizations = true;
             ignore_opacity = true;
             xray = false;
@@ -185,9 +186,11 @@ in {
 
           shadow = {
             enabled = true;
-            range = 4;
+            range = 30;
+            offset = "0 2";
             render_power = 3;
-            # color = "rgba(1a1a1aee)";
+            # color = "rgba(0000002A)";
+            scale = 0.8;
           };
         };
 
