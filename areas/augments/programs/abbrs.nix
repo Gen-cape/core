@@ -21,6 +21,9 @@ in {
     "pkg" = "nix-search-tv print | tv";
     "pkgs" = "nix run github:3timeslazy/nix-search-tv print | , tv";
 
+    jf = "jj-fzf";
+    jk = "jj-fzf";
+
     ls = "eza";
 
     jl = "jj log -r :: --no-pager --limit 20";
