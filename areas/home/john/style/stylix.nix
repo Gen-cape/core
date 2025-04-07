@@ -49,6 +49,7 @@ in {
     targets = {
       tofi.enable = false;
       hyprland.hyprpaper.enable = false;
+      firefox.enable = false;
     };
   };
   # OR
