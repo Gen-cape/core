@@ -88,6 +88,17 @@ in {
           inputs.stylix.homeManagerModules.stylix
         ];
       };
+
+      "john@omen" = mkHome {
+        username = "john";
+        hostname = "omen";
+        system = "x86_64-linux";
+        modules = [
+          (mkForUser "john")
+          inputs.chaotic.homeManagerModules.default
+          inputs.stylix.homeManagerModules.stylix
+        ];
+      };
     };
     # thats some wicked things, binds each home-system (in case home-manager acts standalone)
   };
