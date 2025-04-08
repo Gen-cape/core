@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
+#scripts/nix-helper.sh
 set -eo pipefail # Use -e to exit on error, -o pipefail for pipe safety
 
 # --- Configuration & Setup ---
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
 CONFIG_FILE="${SCRIPT_DIR}/nix-helper.cfg"
-FLAKE_ROOT_DEFAULT="." # Default relative path to flake from project root
+FLAKE_ROOT_CONFIG_DEFAULT="." # Default relative path to flake from config
 
 # Source configuration if it exists
 if [[ -f "$CONFIG_FILE" ]]; then
@@ -13,7 +14,8 @@ if [[ -f "$CONFIG_FILE" ]]; then
 fi
 
 # Determine Flake Root (use config default or override)
-FLAKE_ROOT="${FLAKE_ROOT:-$FLAKE_ROOT_DEFAULT}"
+# Use the variable name from the config file: DEFAULT_FLAKE_PATH
+FLAKE_ROOT_REL_PATH="${DEFAULT_FLAKE_PATH:-$FLAKE_ROOT_CONFIG_DEFAULT}"
 
 # Determine Privilege Escalation Method
 if [[ -z "${PAMT}" ]]; then
@@ -31,7 +33,17 @@ fi
 USE_GUM=false
 if command -v gum &>/dev/null; then
     USE_GUM=true
+    # Source Gum specific env vars from config if they exist and we're using gum
+    if [[ -f "$CONFIG_FILE" ]]; then
+        # This simple sourcing assumes the export lines are safe.
+        # More robust would be to parse specific vars, but let's keep it simple.
+         grep '^export GUM_' "$CONFIG_FILE" > /tmp/gum_config_exports.sh
+         # shellcheck source=/tmp/gum_config_exports.sh
+         source /tmp/gum_config_exports.sh
+         rm /tmp/gum_config_exports.sh
+    fi
 fi
+
 
 # --- Color Definitions (using tput for better compatibility) ---
 # Check if terminal supports color
@@ -61,6 +73,8 @@ else # No color support or tput not found
     C_RESET="" C_BOLD="" C_BLACK="" C_RED="" C_GREEN="" C_YELLOW="" C_BLUE="" C_MAGENTA="" C_CYAN="" C_WHITE=""
     C_BR_BLACK="" C_BR_RED="" C_BR_GREEN="" C_BR_YELLOW="" C_BR_BLUE="" C_BR_MAGENTA="" C_BR_CYAN="" C_BR_WHITE=""
 fi
+
+
 # --- Gum Fallback Functions ---
 
 # Choose one item from a list
@@ -75,8 +89,13 @@ gum_choose_fallback() {
     select opt in "${options[@]}" "Cancel"; do
         case "$REPLY" in
             [1-$((${#options[@]}))]) # Valid number selection
-                echo "$opt"
-                return 0
+                # Check if opt is empty (can happen in some shells if input is just Enter)
+                if [[ -z "$opt" ]]; then
+                    echo "${C_RED}Invalid selection. Please choose a number.${C_RESET}" >&2
+                else
+                    echo "$opt"
+                    return 0
+                fi
                 ;;
             $((${#options[@]} + 1))) # Cancel option
                  echo "Cancelled." >&2
@@ -89,7 +108,10 @@ gum_choose_fallback() {
 choose() {
     if $USE_GUM; then
         # Gum automatically handles cancellation (ESC)
-        gum choose --header "$1" "${@:2}"
+        # Use --height to prevent issues with long lists
+        local choice
+        choice=$(gum choose --header "$1" --height 15 "${@:2}") || return 1 # Return error on ESC/cancel
+        echo "$choice" # Gum outputs selection to stdout
     else
         gum_choose_fallback "$@"
     fi
@@ -111,25 +133,31 @@ gum_confirm_fallback() {
 }
 confirm() {
     if $USE_GUM; then
+        # Gum returns 0 for yes, 1 for no/ESC
         gum confirm "$1"
     else
-        gum_confirm_fallback "$1"
+        gum_confirm_fallback "$@"
     fi
 }
 
 # Get text input
-# Usage: input "Prompt" "Placeholder"
+# Usage: input "Prompt" ["Placeholder"]
 # Returns the input string
 gum_input_fallback() {
     local prompt="$1"
-    local placeholder="$2"
+    local placeholder="${2:-}" # Use provided placeholder or empty string
     local input_val=""
-    read -rp "${C_CYAN}${prompt} ${C_BR_BLACK}[${placeholder}]: ${C_RESET}" input_val
+    if [[ -n "$placeholder" ]]; then
+        read -rp "${C_CYAN}${prompt} ${C_BR_BLACK}[${placeholder}]: ${C_RESET}" input_val
+    else
+         read -rp "${C_CYAN}${prompt}: ${C_RESET}" input_val
+    fi
     echo "$input_val"
 }
 input() {
     if $USE_GUM; then
-        gum input --prompt "$1 " --placeholder "$2"
+        # Gum automatically handles cancellation (ESC)
+        gum input --prompt "$1 " --placeholder "${2:-}"
     else
         gum_input_fallback "$@"
     fi
@@ -146,35 +174,58 @@ gum_password_fallback() {
     echo "$pass"
 }
 password() {
-    if $USE_GUM; then
-        # Gum handles the prompt style via env vars
-        gum input --password --prompt "$1 "
+    if [ -n "$USE_GUM" ]; then
+      TTY=$(tty)
     else
+      TTY=''
+    fi
+
+    if $USE_GUM && [ -n "$TTY" ]; then
+        # Gum password needs a tty
+        gum input --password --prompt "$1: " < "$TTY"
+    else
+        if $USE_GUM && [ -z "$TTY" ]; then
+            print_warning "Cannot use 'gum password' without a TTY, falling back to 'read -s'."
+        fi
         gum_password_fallback "$@"
     fi
 }
 
-# Spin while command executes
-# Usage: spin "Title" command args...
+# Spin while command executes (Fallback Definition)
 gum_spin_fallback() {
     local title="$1"
     shift
     echo "${C_CYAN}Running: ${title}...${C_RESET}"
     "$@" # Execute command directly
 }
+
+# Spin while command executes (Main Function)
+# Usage: spin "Title" command args...
 spin() {
+    local title="$1"
+    shift # Remove title from argument list $@
+
     if $USE_GUM; then
-        gum spin --title "$1" -- "$@"
+        # Correct usage: gum spin [OPTIONS] -- <COMMAND> [ARGS...]
+        # The command and its arguments MUST come after the --
+        # "$@" now contains the actual command and its arguments
+        #Spinner options: line, dot, minidot, jump, pulse, points, glob, moon, monkey, meter, hamburger
+        gum spin --spinner dot --title "$title" --show-output -- "$@"
     else
-        gum_spin_fallback "$@"
+        # Fallback just needs the original arguments (title + command + args)
+        # We need to call it with the original title and the shifted args "$@"
+        gum_spin_fallback "$title" "$@"
     fi
+    # Return the exit code of the executed command
+    return $?
 }
+
 
 # --- Helper Functions ---
 print_header() {
     local title="$1"
     if $USE_GUM; then
-        gum style --border rounded --border-foreground "$C_BLUE" --padding "1 2" --margin "1 0" "${C_BOLD}${C_BR_CYAN}${title}${C_RESET}"
+        gum style --border rounded --border-foreground "$COLOR_BLUE" --padding "1 2" --margin "1 0" "${C_BOLD}${C_BR_CYAN}${title}${C_RESET}"
     else
         echo -e "\n${C_BOLD}${C_BR_CYAN}=== ${title} ===${C_RESET}"
     fi
@@ -204,17 +255,22 @@ run_cmd() {
         use_privilege=true
         shift
     fi
-    local cmd_str=("$@")
+    # Use printf %q to safely quote arguments for display
+    local cmd_str_display
+    cmd_str_display=$(printf "%q " "$@")
 
-    echo "${C_BR_BLACK}Executing: ${use_privilege:+${PAMT} }${cmd_str[*]}${C_RESET}"
+    echo "${C_BR_BLACK}Executing: ${use_privilege:+${PAMT} }${cmd_str_display}${C_RESET}"
 
     if confirm "Proceed with execution?"; then
+        local spin_title="Task"
         if $use_privilege; then
-            # Original: spin "Running with ${PAMT}..." "$PAMT" "${cmd_str[@]}"
-            spin "Privileged Task" "$PAMT" "${cmd_str[@]}"  # Use a simpler title
+             spin_title="Privileged Task"
+             # Pass PAMT as the command, and the original command+args as its arguments
+             spin "$spin_title" "$PAMT" "$@"
         else
-            # Original: spin "Running..." "${cmd_str[@]}"
-            spin "Normal Task" "${cmd_str[@]}" # Use a simpler title
+             spin_title="Normal Task"
+             # Pass the command and its arguments directly
+             spin "$spin_title" "$@"
         fi
 
         local exit_code=$?
@@ -236,21 +292,30 @@ select_flake_target() {
     local default_dot="Current directory (.)"
     local specific_host="Specific host (#host)"
     local target_type
-    target_type=$(choose "Select Flake Target:" "$default_dot" "$specific_host") || exit 1
+    target_type=$(choose "Select Flake Target:" "$default_dot" "$specific_host") || return 1 # Return error code if choose fails
 
     if [[ "$target_type" == "$default_dot" ]]; then
         echo "."
+        return 0
     elif [[ "$target_type" == "$specific_host" ]]; then
         local host_name
-        host_name=$(input "Enter host name (e.g., 'my-server'):" "hostname") || exit 1
+        host_name=$(input "Enter host name (e.g., 'my-server'):" "hostname") || return 1
         if [[ -z "$host_name" ]]; then
             print_error "Host name cannot be empty."
-            exit 1
+            return 1
         fi
-        echo ".#${host_name}"
+        # Ensure it starts with .#
+        if [[ "$host_name" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+             echo ".#${host_name}"
+             return 0
+        else
+            print_error "Invalid host name format."
+            return 1
+        fi
     else
-         print_error "Invalid selection."
-         exit 1
+         # This case might be reachable if `choose` returns unexpected empty string
+         print_error "Invalid selection or cancelled."
+         return 1
     fi
 }
 
@@ -269,19 +334,38 @@ ask_common_options() {
 handle_nixos_rebuild() {
     print_header "NixOS Rebuild"
     local action
-    action=$(choose "Select nixos-rebuild action:" "switch" "boot" "test" "dry-build") || exit 1
+    # Removed dry-run because it's often not privileged, handled separately if needed
+    action=$(choose "Select nixos-rebuild action:" "switch" "boot" "test") || exit 1 # Exit if choose fails
 
     local flake_target
-    flake_target=$(select_flake_target) || exit 1
+    flake_target=$(select_flake_target) || exit 1 # Exit if select fails
 
     local trace_flag
-    trace_flag=$(ask_common_options) || exit 1
+    trace_flag=$(ask_common_options) # Don't exit if options are cancelled
 
-    local cmd_args=("nixos-rebuild" "$action" "--flake" "${FLAKE_ROOT}${flake_target}")
+    # CORRECTED: Use flake_target directly, as we are already in FLAKE_ROOT
+    local cmd_args=("nixos-rebuild" "$action" "--flake" "${flake_target}")
     [[ -n "$trace_flag" ]] && cmd_args+=("$trace_flag")
 
     run_cmd --privileged "${cmd_args[@]}"
 }
+
+# Handle nixos-rebuild dry-run (separately as it's often not privileged)
+handle_nixos_dry_run() {
+     print_header "NixOS Dry Run"
+     local flake_target
+     flake_target=$(select_flake_target) || exit 1 # Exit if select fails
+
+     local trace_flag
+     trace_flag=$(ask_common_options) # Don't exit if options are cancelled
+
+     # CORRECTED: Use flake_target directly
+     local cmd_args=("nixos-rebuild" "dry-build" "--flake" "${flake_target}")
+     [[ -n "$trace_flag" ]] && cmd_args+=("$trace_flag")
+
+     run_cmd "${cmd_args[@]}" # No --privileged needed for dry-run
+}
+
 
 # Handle nh commands
 handle_nh() {
@@ -301,7 +385,7 @@ handle_nh() {
     local trace_flag=""
     local cmd_args=("nh")
     local requires_privilege=false
-    local needs_reboot=false
+    # local needs_reboot=false # Removed as not directly used
 
     case "$nh_action" in
         "os boot" | "os switch" | "os test")
@@ -315,11 +399,12 @@ handle_nh() {
         "os boot + home switch + reboot")
             # This requires multiple steps
             print_info "This will run 'nh os boot', then 'nh home switch', then reboot."
-            if confirm "Proceed?"; then
+            if confirm "Proceed with multi-step operation?"; then
                 print_info "Step 1: nh os boot"
+                # Run directly using run_cmd which handles confirmation and privilege
                 if run_cmd --privileged nh os boot; then
                     print_info "Step 2: nh home switch"
-                    # nh home switch usually doesn't need sudo, but run_cmd handles confirmation
+                    # nh home switch usually doesn't need sudo
                     if run_cmd nh home switch; then
                          print_info "Step 3: Rebooting"
                          if confirm "Reboot now?"; then
@@ -336,7 +421,7 @@ handle_nh() {
                     exit 1
                 fi
             else
-                print_warning "Operation cancelled."
+                print_warning "Multi-step operation cancelled."
             fi
             # Exit after handling this multi-step action
             exit 0
@@ -347,6 +432,7 @@ handle_nh() {
             ;;
     esac
 
+    # Execute single-step nh commands that require privilege
     if $requires_privilege; then
         run_cmd --privileged "${cmd_args[@]}"
     else
@@ -364,9 +450,10 @@ handle_home_manager() {
     flake_target=$(select_flake_target) || exit 1
 
     local trace_flag
-    trace_flag=$(ask_common_options) || exit 1
+    trace_flag=$(ask_common_options)
 
-    local cmd_args=("home-manager" "$action" "--flake" "${FLAKE_ROOT}${flake_target}")
+    # CORRECTED: Use flake_target directly
+    local cmd_args=("home-manager" "$action" "--flake" "${flake_target}")
     [[ -n "$trace_flag" ]] && cmd_args+=("$trace_flag")
 
     # Home Manager usually doesn't require sudo
@@ -397,64 +484,32 @@ handle_nixos_anywhere() {
 
     local target_ssh_dest="${target_user}@${target_ip}"
 
-    local generate_hw_config=false
-    local hw_config_path=""
-    if confirm "Generate hardware config on target?"; then
-        generate_hw_config=true
-        hw_config_path_default="./hosts/${target_host_flake}/hardware.nix"
-        hw_config_path=$(input "Hardware config output path on target:" "$hw_config_path_default") || exit 1
-        hw_config_path="${hw_config_path:-$hw_config_path_default}" # Use default if empty
-        print_info "Hardware config will be generated at: ${C_YELLOW}${hw_config_path}${C_RESET} on the target machine."
-        print_warning "Ensure the target path exists or nixos-generate-config can create it."
-    fi
+    # Removed hardware config generation due to complexity and variability in nixos-anywhere
+    print_info "Note: Hardware config generation via flags is removed."
+    print_info "Run deploy first, then SSH manually:"
+    print_info "${C_YELLOW}ssh ${target_ssh_dest}${C_RESET}"
+    print_info "And run: ${C_YELLOW}nixos-generate-config --root /mnt --dir /etc/nixos${C_RESET} (adjust paths if needed)"
 
     local anywhere_rev="${NIXOS_ANYWHERE_REV:-github:nix-community/nixos-anywhere}" # Use configured or a default
     if confirm "Use a specific nixos-anywhere revision/source?"; then
-        anywhere_rev_input=$(input "Enter nixos-anywhere source (e.g., nixpkgs#nixos-anywhere or github:owner/repo/rev):" "$anywhere_rev") || exit 1
-        anywhere_rev="${anywhere_rev_input:-$anywhere_rev}" # Use default if empty
+        anywhere_rev_input=$(input "Enter nixos-anywhere source:" "$anywhere_rev") || exit 1 # Assume cancel means use default
+        anywhere_rev="${anywhere_rev_input:-$anywhere_rev}" # Use default if empty or cancelled
     fi
 
 
     local cmd_args=("nix" "run")
-    # Add experimental features if needed for `nix run` (usually not needed for just running)
-    # cmd_args+=("--extra-experimental-features" "nix-command flakes")
+    cmd_args+=("--extra-experimental-features" "nix-command flakes") # Often needed by nix run
     cmd_args+=("$anywhere_rev" "--")
-    cmd_args+=("--flake" "${FLAKE_ROOT}#${target_host_flake}")
-
-    if $generate_hw_config; then
-        cmd_args+=("--option" "hardware.flake" "github:nixos/nixos-hardware")
-        print_warning "This command syntax for nixos-anywhere generate-hardware-config might need verification based on the tool's version."
-        cmd_args+=("--build-on-remote") # Usually needed
-        # The syntax changed. Let's try to adapt based on common patterns.
-        # It might inject commands via SSH or have specific flags.
-        # This is a placeholder - VERIFY THE CORRECT nixos-anywhere SYNTAX for config generation.
-        # Option 1: Using --ssh-option or similar if available
-        # cmd_args+=("--ssh-option" "SendEnv=NIXOS_GENERATE_CONFIG_ARGS='--force --root /mnt --dir ${hw_config_path%/*}'") # Example hypothetical syntax
-        # Option 2: Passing commands directly if supported
-        # cmd_args+=("--" "ssh" "$target_ssh_dest" "'mkdir -p ${hw_config_path%/*} && nixos-generate-config --root /mnt --dir ${hw_config_path%/*}'") # Another guess
-        print_error "Hardware config generation via nixos-anywhere flags is complex and version-dependent."
-        print_warning "Recommended: Run nixos-anywhere without generation first, then manually SSH in and run:"
-        print_info "${C_YELLOW}nixos-generate-config --root /mnt --dir /etc/nixos ${C_RESET}(adjust path if needed)"
-        print_info "Then copy the file back."
-        if ! confirm "Try to proceed with potentially incorrect generation flags?"; then
-             print_warning "Skipping hardware generation flag."
-             generate_hw_config=false # Disable it if user aborts the attempt
-        else
-             # Add the arguments based on older understanding - MIGHT FAIL
-             cmd_args+=("--generate-hardware-config" "nixos-generate-config ${hw_config_path}")
-        fi
-
-    fi
+    # CORRECTED: Use .#hostname for the flake target
+    cmd_args+=("--flake" ".#${target_host_flake}")
+    cmd_args+=("--build-on-remote") # Usually needed/desired
 
     cmd_args+=("$target_ssh_dest")
 
 
-    print_info "Target Flake: ${C_YELLOW}${FLAKE_ROOT}#${target_host_flake}${C_RESET}"
+    print_info "Target Flake: ${C_YELLOW}.#${target_host_flake}${C_RESET}"
     print_info "Target SSH Destination: ${C_YELLOW}${target_ssh_dest}${C_RESET}"
     print_info "Using nixos-anywhere source: ${C_YELLOW}${anywhere_rev}${C_RESET}"
-    if $generate_hw_config; then
-         print_info "Attempting Hardware Config Generation to: ${C_YELLOW}${hw_config_path}${C_RESET} (on target)"
-    fi
 
     # nixos-anywhere does not need sudo locally
     run_cmd "${cmd_args[@]}"
@@ -466,27 +521,35 @@ handle_nixos_anywhere() {
 # Ensure a command category was passed
 if [[ $# -eq 0 ]]; then
     print_error "No command category specified."
-    echo "Usage: $0 [os|home|nh|remote|config]"
+    echo "Usage: $0 [os|dryrun|home|nh|remote|config]"
     exit 1
 fi
 
 COMMAND_CATEGORY="$1"
 shift # Remove the category from arguments
 
-# Make sure FLAKE_ROOT exists if it's not just "."
-if [[ "$FLAKE_ROOT" != "." ]] && [[ ! -d "$FLAKE_ROOT" ]]; then
-   print_error "Flake directory specified in config does not exist: $FLAKE_ROOT"
+# --- Change to Flake Root Directory ---
+# Resolve the relative path from the script's dir to an absolute path
+ABS_FLAKE_ROOT="$(cd "${SCRIPT_DIR}/${FLAKE_ROOT_REL_PATH}" &>/dev/null && pwd)"
+
+if [[ -z "$ABS_FLAKE_ROOT" ]] || [[ ! -d "$ABS_FLAKE_ROOT" ]]; then
+   print_error "Flake directory specified in config ('${FLAKE_ROOT_REL_PATH}') does not resolve to a valid directory from script location."
    exit 1
 fi
-# Change to flake root directory context if specified and exists
-# This simplifies flake path references like '.'
-cd "$FLAKE_ROOT" || exit 1
-print_info "Operating relative to flake path: $(pwd)"
+
+# Change to the absolute flake root directory context
+cd "$ABS_FLAKE_ROOT" || { print_error "Failed to change directory to flake root: ${ABS_FLAKE_ROOT}"; exit 1; }
+print_info "Operating relative to flake path: ${C_YELLOW}$(pwd)${C_RESET}"
+# --- End Change Directory ---
 
 
+# --- Execute Command Category Handler ---
 case "$COMMAND_CATEGORY" in
     os)
         handle_nixos_rebuild "$@"
+        ;;
+    dryrun)
+        handle_nixos_dry_run "$@"
         ;;
     home)
         handle_home_manager "$@"
@@ -499,18 +562,18 @@ case "$COMMAND_CATEGORY" in
         ;;
     config)
         print_header "Configuration"
-        print_info "Config file: ${CONFIG_FILE}"
-        print_info "Flake root: $(pwd)"
+        print_info "Config file found: ${CONFIG_FILE}"
+        print_info "Resolved Flake root: $(pwd)"
         print_info "Privilege command: ${PAMT}"
         print_info "Using gum: ${USE_GUM}"
-        print_info "Nixos-Anywhere Source: ${NIXOS_ANYWHERE_REV:-Not Set}"
+        print_info "Nixos-Anywhere Source: ${NIXOS_ANYWHERE_REV:-Not Set in config}"
         # Add more config display if needed
         ;;
     *)
         print_error "Unknown command category: $COMMAND_CATEGORY"
-        echo "Available categories: os, home, nh, remote, config"
+        echo "Available categories: os, dryrun, home, nh, remote, config"
         exit 1
         ;;
 esac
 
-exit 0 # Explicitly exit with success if we reach here
+exit $? # Exit with the status of the last executed command handler
