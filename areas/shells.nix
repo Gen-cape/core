@@ -9,6 +9,9 @@
       nativeBuildInputs = [
         (pkgs.writeShellScriptBin "link" ''(cd ~/core/areas/external && bombadil install && bombadil link -p bundle)'')
         (pkgs.writeShellScriptBin "nlink" ''(cd ~/core/areas/external && bombadil install && bombadil link -p)'')
+        pkgs.gum
+        pkgs.just
+        pkgs.nushell
       ];
       buildInputs = [];
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
