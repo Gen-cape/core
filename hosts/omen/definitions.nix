@@ -9,5 +9,6 @@ in {
     powerManagement.enable = true;
     # webcam = "worky";
     webcam = "noworky>:(";
+    boot = {enable = false;};
   };
 }
