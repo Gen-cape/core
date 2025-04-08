@@ -6,5 +6,10 @@ kanata = {source = "kanata", target = ".config/kanata"}
 [profiles.ghostty.dots]
 ghostty = {source = "ghostty", target = ".config/ghostty"}
 
+
+[profiles.walls.dots]
+wallgif = {source = "walls/wall.gif", target = "~/wall.gif"}
+wallstylix = {source = "walls/.current_wallpaper.png", target = "~/.current_wallpaper.png"}
+
 [profiles.bundle]
-extra_profiles = ["kanata", "ghostty"]
+extra_profiles = ["kanata", "ghostty", "walls"]
