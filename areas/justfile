@@ -13,9 +13,11 @@ all:
 
 # Path to the helper script
 # HELPER_SCRIPT := "./scripts/nix-helper.sh"
-HELPER_SCRIPT := "./areas/external/scripts/nix-helper.sh"
+# HELPER_SCRIPT := "./areas/external/scripts/nix-helper.sh"
+HELPER_SCRIPT := "./external/scripts/nix-helper.sh"
 # Path to the script configuration
-HELPER_CONFIG := "./areas/external/scripts/nix-helper.cfg"
+# HELPER_CONFIG := "./areas/external/scripts/nix-helper.cfg"
+HELPER_CONFIG := "./external/scripts/nix-helper.cfg"
 
 # --- Setup & Checks ---
 
