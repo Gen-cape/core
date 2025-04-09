@@ -66,7 +66,6 @@ in {
           "wluma"
           "hypridle"
           "systemctl --user start opentabletdriver.service"
-          "pypr"
           "hyprscratch init"
           "swaync"
           "bombadil watch -p bundle"
