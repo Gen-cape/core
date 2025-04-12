@@ -8,9 +8,10 @@
   ...
 }: let
   inherit (lib) mkIf optionals concatLists;
+  definitions = inputs.self.nixosConfigurations.${hostname}.config.core;
+  inherit (definitions) scaling;
 
   selfPath = (builtins.unsafeDiscardStringContext "${self}") + "/areas";
-  scaling = "1.6";
   # debug = false;
   system = pkgs.system;
   debug = true;
@@ -129,7 +130,7 @@ in {
             "NIXOS_OZONE_WL,1"
             "MOZ_ENABLE_WAYLAND,1"
           ]
-          (optionals (inputs.self.nixosConfigurations.${hostname}.config.core.gpu.type == "nvidia") [
+          (optionals (definitions.gpu.type == "nvidia") [
             "LIBVA_DRIVER_NAME,nvidia"
             "GBM_BACKEND,nvidia-drm"
             "__GLX_VENDOR_LIBRARY_NAME,nvidia"

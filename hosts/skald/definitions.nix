@@ -9,5 +9,6 @@ in {
     powerManagement.enable = true;
     # webcam = "worky";
     webcam = "noworky>:(";
+    scaling = "1.6";
   };
 }
