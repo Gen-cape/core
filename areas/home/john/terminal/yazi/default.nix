@@ -38,6 +38,7 @@
           { key = "t",          path = "/tmp",                                 },
           { key = { "h", "h" }, path = "~",              desc = "Home"         },
           { key = { "h", "d" }, path = "~/Documents",    desc = "Documents"    },
+          { key = { "h", "j" }, path = "~/Downloads",    desc = "Downloads"    },
           { key = { "h", "k" }, path = "~/Desktop",      desc = "Desktop"      },
           { key = "c",          path = "~/.config",      desc = "Config files" },
           { key = { "l", "s" }, path = "~/.local/share", desc = "Local share"  },
@@ -54,7 +55,7 @@
         theme = {
           title = "blue",
           header = "green",
-          header_warning = "yellow",
+          header_warning = "red",
           list_item = { odd = "blue", even = "blue" },
         },
       })
