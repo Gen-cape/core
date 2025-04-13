@@ -26,6 +26,8 @@
     television
     nix-search-cli
 
+    vscode
+
     qbittorrent
     obs-studio
     krita
