@@ -1192,11 +1192,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1744052674,
-        "narHash": "sha256-DFstl0Ha3Z4OJ6ZlsSC1gmkA0LszXbMxWRNbpsTsk8s=",
+        "lastModified": 1744652372,
+        "narHash": "sha256-qqLv3ZwVt+KomPZ5XD99VvylSUbjz4YetTkR+RsM114=",
         "owner": "Gen-cape",
         "repo": "neovim",
-        "rev": "81d46d2dd552eb73403f6749c455df087fb5ed2b",
+        "rev": "b11be555336cf92171688072bd87e45c2f0d0a92",
         "type": "github"
       },
       "original": {
