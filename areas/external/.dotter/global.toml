@@ -1,0 +1,21 @@
+# Path to your dotfile directory containing this config file (relative to $HOME) is: core/areas/external
+
+[settings]
+default_target_type = "symbolic"
+
+[kanata.files]
+"kanata" = "~/.config/kanata"
+
+[ghostty.files]
+"ghostty" = "~/.config/ghostty"
+
+[walls.files]
+"walls/wall.gif" = "~/wall.gif"
+"walls/.current_wallpaper.png" = "~/.current_wallpaper.png"
+
+
+[makima.files]
+"makima" = "~/.config/makima"
+
+[bundle]
+depends = ["kanata", "ghostty", "walls", "makima"]

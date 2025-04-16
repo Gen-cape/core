@@ -11,7 +11,7 @@ in {
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
 
     # Don't forget to apply wallpaper
-    image = /home/john/.current_wallpaper.png;
+    image = /home/john/wall.png;
     # cursor.package = pkgs.rose-pine-cursor;
     # cursor.name = "BreezeX-RosePine-Linux";
     # cursor.size = 20;
