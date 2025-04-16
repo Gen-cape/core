@@ -26,6 +26,7 @@
     television
     nix-search-cli
     wtype
+    isd
 
     vscode
 
