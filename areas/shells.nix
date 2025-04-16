@@ -24,6 +24,11 @@
         (pkgs.writeShellScriptBin "nlinkf" ''
           (cd ~/core/areas/external && dotter undeploy -y "$@")
         '')
+
+        (pkgs.writeShellScriptBin "el" ''
+          (nvim ~/core/areas/external/.dotter/)
+        '')
+
         (pkgs.writeShellScriptBin "kl" ''(cd ~/core/areas/ && just "$@")'')
         pkgs.gum
         pkgs.just
