@@ -25,6 +25,7 @@
     neovide
     television
     nix-search-cli
+    wtype
 
     vscode
 
