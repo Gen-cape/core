@@ -12,7 +12,7 @@ default_target_type = "symbolic"
 [walls.files]
 "walls/wall.gif" = "~/wall.gif"
 "walls/.current_wallpaper.png" = "~/.current_wallpaper.png"
-
+"walls/wall.png" = "~/wall.png"
 
 [makima.files]
 "makima" = "~/.config/makima"
