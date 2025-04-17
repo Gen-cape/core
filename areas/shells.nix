@@ -28,11 +28,26 @@
         (pkgs.writeShellScriptBin "el" ''
           (nvim ~/core/areas/external/.dotter/)
         '')
+        (pkgs.writeShellScriptBin "rb" ''
+          (sudo nixos-rebuild switch --flake . --show-trace)
+        '')
+        (pkgs.writeShellScriptBin "bt" ''
+          (sudo nixos-rebuild boot --flake . --show-trace)
+        '')
+        (pkgs.writeShellScriptBin "hrb" ''
+          (home-manager switch --flake . --show-trace)
+        '')
+        (pkgs.writeShellScriptBin "all" ''
+          (sudo nixos-rebuild boot --flake . --show-trace && home-manager switch --flake . --show-trace)
+        '')
+        (pkgs.writeShellScriptBin "boot" ''
+          (sudo nixos-rebuild boot --flake . --show-trace && home-manager switch --flake . --show-trace && reboot)
+        '')
 
         (pkgs.writeShellScriptBin "kl" ''(cd ~/core/areas/ && just "$@")'')
-        pkgs.gum
+        # pkgs.gum
         pkgs.just
-        pkgs.nushell
+        # pkgs.nushell
       ];
       buildInputs = [];
       LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
