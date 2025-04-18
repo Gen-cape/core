@@ -80,13 +80,13 @@
     rpg-cli
     confetty
 
-    (symlinkJoin {
-      name = "Obsidian";
-      paths = with pkgs; [
-        obsidian
-        pandoc
-      ];
-    })
+    # (symlinkJoin {
+    #   name = "Obsidian";
+    #   paths = with pkgs; [
+    #     obsidian
+    #     pandoc
+    #   ];
+    # })
     btop
     gotop
     hyperfine
