@@ -17,5 +17,8 @@ default_target_type = "symbolic"
 [makima.files]
 "makima" = "~/.config/makima"
 
+[direnv.files]
+"misc/direnv.toml" = "~/.config/direnv/direnv.toml"
+
 [bundle]
-depends = ["kanata", "ghostty", "walls", "makima"]
+depends = ["kanata", "ghostty", "walls", "makima", "direnv"]
