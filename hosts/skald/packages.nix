@@ -17,6 +17,7 @@
 
     heroic
     inputs'.nixpkgs.legacyPackages.umu-launcher
+    hydralauncher
 
     npins
     gpu-screen-recorder
