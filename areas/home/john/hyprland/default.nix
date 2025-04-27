@@ -93,7 +93,14 @@ in {
           mouse_move_enables_dpms = true; # Enable DPMS on mouse/touchpad action
           key_press_enables_dpms = true; # Enable DPMS on keyboard action
           disable_autoreload = true; # Autoreload is unnecessary on NixOS, because the configuration file is read-only link
+
+          animate_manual_resizes = true;
+          animate_mouse_windowdragging = true;
+          initial_workspace_tracking = 1;
+          font_family = "monospace";
+          enable_anr_dialog = false;
         };
+
         xwayland.force_zero_scaling = true;
 
         env = concatLists [
