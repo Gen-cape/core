@@ -15,6 +15,8 @@
     inputs'.flint.packages.default
     inputs'.nix-search-tv.packages.default
 
+    inputs'.riptide.packages.ulss
+
     heroic
     inputs'.nixpkgs.legacyPackages.umu-launcher
     hydralauncher

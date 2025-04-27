@@ -1659,11 +1659,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743980048,
-        "narHash": "sha256-Fa4fZLspJIf8T9WWrRyOR0Hueirpl5gTSkpME6PNF70=",
+        "lastModified": 1745777435,
+        "narHash": "sha256-XgOAjsl8bBIpFmYOBqS/6EPddD2k91akDFLwwYJtI88=",
         "owner": "Gen-cape",
         "repo": "riptide",
-        "rev": "9c3be56f052b2d5819be96493f66995a000affc2",
+        "rev": "95a3dc54f8211ae65ded71e79dad8ebbf23f82d7",
         "type": "github"
       },
       "original": {
