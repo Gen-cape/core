@@ -62,6 +62,7 @@ in {
           "sleep 1 && swww img ~/wall.gif"
           "hyprctl setcursor Bibata-Modern-Classic 20"
           # "env DRI_PRIME=1 firefox-nightly"
+          "echo 'Xft.dpi: 192' | ${pkgs.xorg.xrdb}/bin/xrdb -merge" # fix scaling
           "ghostty --gtk-single-instance=true --quit-after-last-window-closed=false --initial-window=false"
           "waybar"
           "wluma"
@@ -113,7 +114,7 @@ in {
             # "HYPRCURSOR_THEME, rose-pine-hyprcursor"
             # "HYPRCURSOR_SIZE,30"
 
-            "GDK_SCALE, ${scaling}"
+            # "GDK_SCALE, ${scaling}" // cuz xrdb fixes
 
             "XDG_CURRENT_DESKTOP, Hyprland"
             "XDG_SESSION_DESKTOP, Hyprland"
