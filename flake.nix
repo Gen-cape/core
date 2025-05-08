@@ -32,7 +32,7 @@
     };
 
     ghostty = {
-      url = "github:ghostty-org/ghostty?rev=6f7977fef186faa9b9afe7707dc21a2eff59883b"; # seems broken for scratchpads, so old ver
+      url = "github:ghostty-org/ghostty";
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
 
