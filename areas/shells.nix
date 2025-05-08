@@ -49,6 +49,9 @@
         (pkgs.writeShellScriptBin "boot" ''
           (sudo nixos-rebuild boot --flake . --show-trace && home-manager switch --flake . --show-trace && reboot)
         '')
+        (pkgs.writeShellScriptBin "clean" ''
+          (sudo nix-collect-garbage -d && sudo nh clean all)
+        '')
 
         (pkgs.writeShellScriptBin "kl" ''(cd ~/core/areas/ && just "$@")'')
         # pkgs.gum
