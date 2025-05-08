@@ -239,15 +239,11 @@ in {
           ''$mainMod, bracketleft, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty -e tray-tui" eager''
 
           # Ghostty Terminal Quake-style Bindings
-
-          # Add these lines to your Hyprland config file (usually ~/.config/hypr/hyprland.conf)
-
-          # Alacritty Terminal Quake-style Bindings
-          ''$mainMod, grave, exec, hdrop -f -p top -w 100 -h 40 -g 0 -c alacritty_top alacritty --class alacritty_top        '' # Top terminal (grave/tilde key)
-          ''$mainMod, left, exec, hdrop -f -p left -w 40 -h 100 -g 0 -c alacritty_left alacritty --class alacritty_left      '' # Left terminal
-          ''$mainMod, right, exec, hdrop -f -p right -w 40 -h 100 -g 0 -c alacritty_right alacritty --class alacritty_right  '' # Right terminal
-          ''$mainMod, down, exec, hdrop -f -p bottom -w 100 -h 40 -g 0 -c alacritty_bottom alacritty --class alacritty_bottom'' # Bottom terminal
-          ''$mainMod, c, exec, hdrop -f -p top -w 70 -h 70 -g 15 -c alacritty_center alacritty --class alacritty_center      '' # Center terminal
+          ''$mainMod, grave, exec, hyprscratch quake "[float;size 100% 40%;move 0% 0%] ghostty -e fish" eager'' # Top terminal (grave/tilde key)
+          ''$mainMod SHIFT, left, exec, hyprscratch left-term "[float;size 40% 85%;move 0% 7%] ghostty -e fish" eager'' # Left terminal
+          ''$mainMod SHIFT, right, exec, hyprscratch right-term "[float;size 40% 85%;move 60% 7%] ghostty -e fish" eager'' # Right terminal
+          ''$mainMod SHIFT, down, exec, hyprscratch bottom-term "[float;size 100% 40%;move 0% 60%] ghostty -e fish" eager'' # Bottom terminal
+          ''$mainMod SHIFT, c, exec, hyprscratch right-term "[float;size 50% 50%;move 25% 25%] ghostty -e fish" eager'' # Center terminal
 
           ''$MODSHIFT,RETURN,exec,ghostty -e "sttt doom -d 0.3  -b .8,.3,.87,.47 -c 9; exec fish"'' # terminal
           "$MODSHIFT,Q,killactive," # kill focused window
