@@ -25,6 +25,8 @@
     gpu-screen-recorder
     gpu-screen-recorder-gtk
 
+    ncdu
+
     neovide
     television
     nix-search-cli
