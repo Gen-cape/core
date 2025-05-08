@@ -312,6 +312,8 @@ in {
           # Funny
           "$mainMod ALT, P, exec, ${funny.spread-propaganda}/bin/spread-propaganda"
 
+          "$mainMod SHIFT, S, exec, ${pkgs.slurp}/bin/slurp -d | ${pkgs.grim}/bin/grim -g - - | ${pkgs.wl-clipboard}/bin/wl-copy"
+
           ''$mainMod ALT, 1, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_1.mp3 50''
           ''$mainMod ALT, 2, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_2.mp3 50''
           ''$mainMod ALT, 3, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_3.mp3 50''
