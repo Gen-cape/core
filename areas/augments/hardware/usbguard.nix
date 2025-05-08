@@ -1,7 +1,12 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs',
+  ...
+}: let
 in {
   config = {
     services.usbguard = {
+      package = inputs'.nixpkgs-stable.legacyPackages.usbguard;
       IPCAllowedUsers = ["root" "${"john"}"];
       presentDevicePolicy = "allow";
       rules = ''
@@ -15,7 +20,7 @@ in {
       '';
     };
 
-    environment.systemPackages = [pkgs.usbguard];
+    # environment.systemPackages = [pkgs.usbguard];
     services.udisks2.enable = true;
   };
 }
