@@ -231,10 +231,10 @@ in {
         };
         bind = [
           # "$mainMod, Q, exec, foot"
-          ''$MOD,RETURN,exec,run-as-service $(ghostty --gtk-single-instance=true)'' # terminal
+          ''$MOD,RETURN,exec, ghostty'' # terminal
           ''$mainMod, b, exec, hyprscratch btop "[float;size 70% 80%;center] alacritty --title btop -e btop" eager''
           ''$MODSHIFT, e, exec, hyprscratch yazi "[float;size 70% 80%;center] alacritty --title yazi -e yazi" eager''
-          ''$mainMod, e, exec, hyprscratch yazi "[float;size 70% 80%;center] ghostty -e \"EDITOR=nvim yazi\"" eager''
+          ''$mainMod, e, exec, hyprscratch yazi "[float;size 70% 80%;center] ghostty -e yazi" eager''
           ''$mainMod, z, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty" eager''
           ''$mainMod, bracketleft, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty -e tray-tui" eager''
 
@@ -253,7 +253,7 @@ in {
           "$MODSHIFT,Q,killactive," # kill focused window
           "$MOD,T,togglegroup," # group focused window
           "$MODSHIFT,G,changegroupactive," # switch within the active group
-          ''$MOD,R,exec, killall tofi || run-as-service $(tofi-drun)'' # alternative app launcher
+          ''$MOD,R,exec, killall tofi || tofi-drun'' # alternative app launcher
 
           "$mainMod, C, killactive,"
           # "$mainMod, M, exit," # Im quite annoyed by this button sometimes, mayble ill return it later
@@ -261,7 +261,6 @@ in {
           "$mainMod, P, pseudo, # dwindle"
           "$mainMod, J, togglesplit," # dwindle
           "$mainMod, F, fullscreen"
-          ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
           "$mainMod, Print, exec, grim"
 
           # Move focus with mainMod + arrow keys
