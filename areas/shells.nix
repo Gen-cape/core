@@ -54,6 +54,7 @@
         '')
 
         (pkgs.writeShellScriptBin "kl" ''(cd ~/core/areas/ && just "$@")'')
+        (pkgs.writeShellScriptBin "jk" ''(cd ~/core/areas/ && jj-fzf)'')
         # pkgs.gum
         pkgs.just
         # pkgs.nushell

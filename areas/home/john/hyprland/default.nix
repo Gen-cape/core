@@ -245,6 +245,10 @@ in {
           ''$mainMod SHIFT, down, exec, hyprscratch bottom-term "[float;size 100% 40%;move 0% 60%] ghostty -e fish" eager'' # Bottom terminal
           ''$mainMod SHIFT, c, exec, hyprscratch right-term "[float;size 50% 50%;move 25% 25%] ghostty -e fish" eager'' # Center terminal
 
+          ''$mainMod SHIFT, f, exec, hyprscratch core-term "[float;size 50% 50%;move 25% 25%] ghostty -e sh -c 'cd ~/core && exec fish'" eager'' # spawn terminal at core
+          ''$mainMod SHIFT, v, exec, hyprscratch neovim-term "[float;size 90% 90%;move 5% 5%] ghostty -e sh -c 'cd ~/core && exec nvim'" eager'' # Neovim at core
+          ''$mainMod SHIFT, j, exec, hyprscratch jj-term "[float;size 70% 50%;move 15% 25%] ghostty -e sh -c 'cd ~/core && nix develop -c "jk" '" eager'' # jk command binding
+
           ''$MODSHIFT,RETURN,exec,ghostty -e "sttt doom -d 0.3  -b .8,.3,.87,.47 -c 9; exec fish"'' # terminal
           "$MODSHIFT,Q,killactive," # kill focused window
           "$MOD,T,togglegroup," # group focused window
