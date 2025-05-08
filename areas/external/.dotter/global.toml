@@ -20,5 +20,8 @@ default_target_type = "symbolic"
 [direnv.files]
 "misc/direnv.toml" = "~/.config/direnv/direnv.toml"
 
+[rofi.files]
+"rofi" = "~/.config/rofi"
+
 [bundle]
-depends = ["kanata", "ghostty", "walls", "makima", "direnv"]
+depends = ["kanata", "ghostty", "walls", "makima", "direnv", "rofi"]

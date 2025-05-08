@@ -1,0 +1,168 @@
+* {
+    background-main:             #0D1117EE; /* Dark dim blue/grey, semi-transparent */
+    background-panel:            #161B22EE; /* Slightly lighter dark, semi-transparent */
+    text-primary:                #E6EDF3; /* Light grey/off-white */
+    text-secondary:              #7D8590; /* Medium grey for placeholders */
+    accent-highlight:            #21262DEE; /* Darker highlight background, semi-transparent */
+    prompt-text-color:           #58A6FF; /* Light blue accent */
+    accent-border:               #30363D; /* Dark grey for borders */
+
+    selected-text-color-on-highlight: @text-primary;
+    background-main-transparent: @background-main;
+
+    font:                        "JetBrains Mono 12";
+
+    border-radius-sharp:         0px;
+    border-radius-slight:        0px;
+}
+
+configuration {
+    modi:                       "drun,calc";
+    show-icons:                 true;
+    display-calc:               "|>";
+    display-drun:               "|>";
+    drun-display-format:        "{name}";
+    font:                       "JetBrains Mono 12";
+    icon-theme:                 "Papirus";
+}
+
+window {
+    background-color:           @background-main-transparent;
+    border:                     1px;
+    border-color:               @accent-border;
+    border-radius:              @border-radius-sharp;
+    width:                      60%;
+    /* height:                   50%; */ /* Uncomment and adjust if fixed height is desired */
+    padding:                    0px;
+    location:                   center;
+    anchor:                     center;
+}
+
+mainbox {
+    children:                   [ "inputbar", "listview", "mode-switcher" ];
+    background-color:           transparent;
+    spacing:                    16px;
+    margin:                     0px;
+    padding:                    20px;
+}
+
+inputbar {
+    children:                   [ "prompt", "entry" ];
+    border:                     1px;
+    border-color:               @accent-border;
+    border-radius:              @border-radius-slight; 
+    background-color:           @background-panel;
+    text-color:                 @text-primary;
+    spacing:                    12px;
+    padding:                    12px; 
+}
+
+prompt {
+    background-color:           transparent;
+    text-color:                 @prompt-text-color;
+    enabled:                    true;
+    padding:                    0px 0px 0px 4px;
+}
+
+entry {
+    background-color:           transparent;
+    text-color:                 @text-primary;
+    cursor:                     @prompt-text-color;
+    placeholder:                "Select the new dispatch";
+    placeholder-color:          @text-secondary;
+    padding:                    0px 0px 0px 4px;
+}
+
+listview {
+    columns:                    6; 
+    lines:                      4; 
+    cycle:                      true;
+    dynamic:                    true;
+    scrollbar:                  false;
+    layout:                     vertical;
+    reverse:                    false;
+    fixed-height:               true;
+    fixed-columns:              true;
+    
+    background-color:           transparent; 
+    text-color:                 @text-primary;
+    spacing:                    12px;
+    margin:                     0px;
+    padding:                    0px;
+}
+
+element {
+    orientation:                horizontal;
+    border-radius:              @border-radius-slight;
+    background-color:           transparent;
+    text-color:                 @text-primary;
+    padding:                    10px;
+    spacing:                    10px;
+}
+
+element-icon {
+    background-color:           transparent;
+    size:                       1.2em; 
+    cursor:                     inherit;
+    vertical-align:             0.5;
+    text-color:                 inherit;
+}
+
+element-text {
+    background-color:           transparent;
+    cursor:                     inherit;
+    vertical-align:             0.5;
+    /* highlight:                  inherit; */ /* Removed: This can interfere with selected text color */
+    text-color:                 inherit;
+}
+
+element selected {
+    background-color:           @accent-highlight;
+    text-color:                 @selected-text-color-on-highlight;
+    border-radius:              @border-radius-slight;
+}
+
+element selected element-icon {
+    background-color:           transparent; 
+    text-color:                 inherit;
+}
+
+element selected element-text {
+    background-color:           transparent; 
+    text-color:                 inherit;
+}
+
+mode-switcher {
+    background-color:           transparent;
+    border:                     0px;
+    spacing:                    10px;
+    padding:                    0px;
+}
+
+button {
+    padding:                    8px 12px;
+    border-radius:              @border-radius-slight;
+    background-color:           @background-panel;
+    text-color:                 @text-primary;
+    horizontal-align:           0.5;
+    cursor:                     pointer;
+}
+
+button selected {
+    background-color:           @accent-highlight; 
+    text-color:                 @selected-text-color-on-highlight;
+}
+
+message {
+    padding:                    12px;
+    border-radius:              @border-radius-slight;
+    background-color:           @background-panel;
+    text-color:                 @text-primary;
+    border:                     1px;
+    border-color:               @prompt-text-color; 
+}
+
+textbox {
+    text-color:                 @text-primary;
+    padding:                    8px 12px;
+}

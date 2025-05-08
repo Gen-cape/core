@@ -253,7 +253,8 @@ in {
           "$MODSHIFT,Q,killactive," # kill focused window
           "$MOD,T,togglegroup," # group focused window
           "$MODSHIFT,G,changegroupactive," # switch within the active group
-          ''$MOD,R,exec, killall tofi || tofi-drun'' # alternative app launcher
+          ''$MODSHIFT,R,exec, killall tofi || tofi-drun'' # alternative app launcher
+          ''$MOD, R, exec, rofi -show drun -modi drun''
 
           "$mainMod, C, killactive,"
           # "$mainMod, M, exit," # Im quite annoyed by this button sometimes, mayble ill return it later
