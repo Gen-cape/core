@@ -70,7 +70,6 @@ in {
           "systemctl --user start opentabletdriver.service"
           "hyprscratch init"
           "swaync"
-          # "bombadil watch -p bundle" # DO NOT :(, nuked my .config
           "dotter watch"
           # "kanata -c ${selfPath}/external/kanata/kanata.kdb -c ${selfPath}/external/kanata/kanata-zippy.kdb"
           "kanata -c ~/.config/kanata/kanata.kdb -c ~/.config/kanata/kanata-zippy.kdb"
