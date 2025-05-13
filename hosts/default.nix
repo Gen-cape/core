@@ -76,6 +76,15 @@ in {
           {disko.devices.disk.main.device = "/dev/nvme0n1";}
         ];
       };
+
+      minimus = mkSystem {
+        hostname = "minimus";
+        system = "x86_64-linux";
+        modules = [
+          (mkForHost "minimus")
+          inputs.disko.nixosModules.disko
+        ];
+      };
     };
     homeConfigurations = {
       "john@skald" = mkHome {
@@ -86,6 +95,7 @@ in {
           (mkForUser "john")
           inputs.chaotic.homeManagerModules.default
           inputs.stylix.homeManagerModules.stylix
+          {disko.devices.disk.main.device = "/dev/vda";}
         ];
       };
 
