@@ -10,7 +10,7 @@
 in {
   programs.firefox = {
     enable = true;
-    package = inputs'.chaotic.packages.firefox_nightly;
+    # package = inputs'.chaotic.packages.firefox_nightly;
     policies = {
       DisableTelemetry = true;
       DisableFirefoxStudies = true;
