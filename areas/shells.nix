@@ -40,6 +40,9 @@
         (pkgs.writeShellScriptBin "debugify" ''
           (sudo nixos-rebuild switch --flake . --show-trace --install-bootloader && home-manager switch --flake . --show-trace)
         '')
+        (pkgs.writeShellScriptBin "fresh" ''
+          (sudo nixos-rebuild boot --flake . --show-trace --install-bootloader && home-manager switch --flake . --show-trace)
+        '')
         (pkgs.writeShellScriptBin "all" ''
           (sudo nixos-rebuild boot --flake . --show-trace && home-manager switch --flake . --show-trace)
         '')
