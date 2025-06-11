@@ -76,6 +76,15 @@ in {
           {disko.devices.disk.main.device = "/dev/nvme0n1";}
         ];
       };
+
+      kitsune = mkSystem {
+        hostname = "kitsune";
+        system = "x86_64-linux";
+        modules = [
+          (mkForHost "kitsune")
+          inputs.disko.nixosModules.disko
+        ];
+      };
     };
     homeConfigurations = {
       "john@skald" = mkHome {
