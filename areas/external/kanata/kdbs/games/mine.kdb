@@ -1,0 +1,74 @@
+(deflayermap (mine)
+  f1 (on-press toggle-vkey v-autoplanter)
+  f2 (on-press toggle-vkey v-autotree)
+  f3 (on-press toggle-vkey v-autotree-athame)
+  f4 (on-press toggle-vkey v-autopotions)
+  f5 (on-press toggle-vkey v-rgt)
+  f6 (on-press toggle-vkey v-rgt-h)
+)
+(defvirtualkeys
+
+  v-rgt (macro-repeat
+    mrgt 80 
+  )
+
+  v-rgt-h mrgt 
+  ;; Macro 1: Autoplanter
+  v-autoplanter (macro-repeat
+    (hold-for-duration 30 1) 50    
+    mrgt 80                        
+    mrgt 80
+    mrgt 80
+    mrgt 80
+    mrgt 80                        
+    mlft 80                        
+    (hold-for-duration 30 2) 50    
+    mrgt 80 
+    1000    
+  )
+  ;; Macro 2: Auto Tree Farmer
+  v-autotree (macro-repeat
+    (hold-for-duration 30 2) 50 mrgt 80 
+    (hold-for-duration 30 1) 50          
+    mrgt 80 mrgt 80 mrgt 80 mrgt 80 mrgt 80 mrgt 80 
+    (movemouse-up 3000 1) 500      
+    (hold-for-duration 2000 mlft) 2100 
+    (movemouse-down 3000 1) 500    
+    (hold-for-duration 30 3) 50   
+    (hold-for-duration 6000 mlft) 100 
+    2000 
+  )
+  ;; Macro 3: Auto Tree Stripper/Farmer
+  v-autotree-athame (macro-repeat
+    (hold-for-duration 30 2) 50 mrgt 80             
+    (hold-for-duration 30 1) 50                     
+    mrgt 80 mrgt 80 mrgt 80 mrgt 80 mrgt 80 mrgt 80 
+    (movemouse-down 3500 1) 500                     
+    (hold-for-duration 30 4) 50                     
+    ;; Strip 6 log segments, moving up each time
+    mrgt 100 (movemouse-up 500 1) 100 
+    mrgt 100 (movemouse-up 500 1) 100
+    mrgt 100 (movemouse-up 500 1) 100
+    mrgt 100 (movemouse-up 500 1) 100
+    mrgt 100 (movemouse-up 500 1) 100
+    mrgt 100 (movemouse-up 500 1) 100
+    (movemouse-down 3000 1) 500          
+    (hold-for-duration 30 3) 50          
+    (hold-for-duration 6000 mlft) 100    
+    2000                                 
+  )
+  ;; Macro 4: Auto Potion Brewer
+  v-autopotions (macro-repeat
+    (movemouse-down 2000 1) (movemouse-left 1000 1) 500
+    (hold-for-duration 30 1) 50 mrgt 80 
+    (movemouse-up 2000 1) (movemouse-right 1000 1) 500
+    mrgt 80       
+    (hold-for-duration 30 2) 50 q 80     
+    (hold-for-duration 30 3) 50 q 80     
+    (hold-for-duration 30 4) 50 q 80     
+    3000      
+    (hold-for-duration 30 5) 50 
+    mrgt 80 mrgt 80 mrgt 80 
+    1000 
+  )
+)
