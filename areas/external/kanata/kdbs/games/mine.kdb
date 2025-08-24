@@ -5,8 +5,11 @@
   f4 (on-press toggle-vkey v-autopotions)
   f5 (on-press toggle-vkey v-rgt)
   f6 (on-press toggle-vkey v-rgt-h)
+  f7 (on-press toggle-vkey v-wmash)
 )
 (defvirtualkeys
+
+  v-wmash w
 
   v-rgt (macro-repeat
     mrgt 80 
