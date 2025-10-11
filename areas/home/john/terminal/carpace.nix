@@ -1,9 +1,4 @@
 {pkgs, ...} @ autoArgs: {
-  programs.carapace = {
-    enable = true;
-    enableFishIntegration = true;
-    enableNushellIntegration = true;
-  };
   programs.atuin = {
     enable = true;
     enableFishIntegration = true;
