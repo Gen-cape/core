@@ -97,8 +97,4 @@
         }
       '';
   };
-  home.packages = with pkgs; [
-    nushellPlugins.skim
-    skim
-  ];
 }
