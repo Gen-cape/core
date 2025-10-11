@@ -5,43 +5,30 @@
   self,
   ...
 }: {
-  # programs.neovim = {
-  #   enable = true;
-  #
-  #   defaultEditor = true;
-  #   viAlias = true;
-  #   vimAlias = true;
-  #   vimdiffAlias = true;
-  #
-  #   withRuby = true;
-  #   withPython3 = true;
-  #   withNodeJs = true;
-  # };
-
   home.sessionVariables = {
     EDITOR = "nvim";
   };
 
   home.packages = with pkgs; let
     llvmPkgs = llvmPackages;
-    fenixPkgs = inputs.fenix.packages.${pkgs.system};
+    # fenixPkgs = inputs.fenix.packages.${pkgs.system};
   in [
     neovide
 
-    (fenixPkgs.stable.withComponents [
-      "cargo"
-      "clippy"
-      "rust-src"
-      "rustc"
-      "rustfmt"
-      "rust-analyzer"
-    ])
+    # (fenixPkgs.stable.withComponents [
+    #   "cargo"
+    #   "clippy"
+    #   "rust-src"
+    #   "rustc"
+    #   "rustfmt"
+    #   "rust-analyzer"
+    # ])
 
     python3
     python3Packages.pip
     pyright
 
-    nodejs
+    # nodejs
 
     llvmPkgs.clang
     llvmPkgs.lldb
@@ -52,9 +39,9 @@
     lua-language-server
     stylua
 
-    go
+    # go
 
-    julia
+    # julia
 
     nixd
 
