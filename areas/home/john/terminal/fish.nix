@@ -7,16 +7,6 @@
   programs.fish = {
     enable = true;
 
-    #pathAdd = with pkgs; [
-    #  eza
-    #  bat
-    #  fzf
-    #  ripgrep
-    #  zoxide
-    #  direnv
-    #  fd
-    #  file
-    #];
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
