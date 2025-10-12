@@ -40,14 +40,11 @@
     "inode/directory" = "org.gnome.Nautilus.desktop";
 
     # Documents
-    # "application/pdf" = ["org.pwmt.zathura.desktop" "firefox.desktop"];
-    "application/doc" = "libreoffice-writer.desktop";
-    "application/docx" = "libreoffice-writer.desktop";
-    "application/msword" = "libreoffice-writer.desktop";
-    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "libreoffice-writer.desktop";
-    "application/vnd.oasis.opendocument.text" = "libreoffice-writer.desktop";
-    "application/vnd.oasis.opendocument.spreadsheet" = "libreoffice-calc.desktop";
-    "application/vnd.oasis.opendocument.presentation" = "libreoffice-impress.desktop";
+    # "application/pdf" = ["org.pwmt.zathura.desktop" "zen-beta.desktop"];
+    "application/doc" = "onlyoffice-desktopeditors.desktop";
+    "application/docx" = "onlyoffice-desktopeditors.desktop";
+    "application/msword" = "onlyoffice-desktopeditors.desktop";
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "onlyoffice-desktopeditors.desktop";
 
     # Images
     "image/png" = ["org.nomacs.ImageLounge.desktop" "org.kde.krita.desktop" "org.gnome.Nautilus.desktop"];
