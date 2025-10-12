@@ -30,7 +30,6 @@
     obs-studio
     krita
     vlc
-    libreoffice-qt6-fresh
 
     (pkgs.r2modman.overrideAttrs (finalAttrs: rec {
       pname = "r2modman";
@@ -102,7 +101,6 @@
     pkgs.alacritty
     pkgs.vesktop
     pkgs.tor-browser
-    pkgs.libreoffice
     pkgs.gotop
     pkgs.activate-linux
     pkgs.nix-melt
