@@ -10,5 +10,6 @@ in {
     # webcam = "worky";
     webcam = "noworky>:(";
     scaling = "1.6";
+    boot.grub.configurationLimit = 5;
   };
 }
