@@ -65,9 +65,8 @@
     git
     amdgpu_top
 
-    helvum
+    coppwr
 
-    qpwgraph
     easyeffects
     # raysession
     # patchance
