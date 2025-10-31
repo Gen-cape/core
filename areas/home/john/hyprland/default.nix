@@ -20,6 +20,7 @@
   recordingScripts = pkgs.callPackage ./pkgs/__record.nix {};
   reload_script = pkgs.callPackage ./pkgs/__reload.nix {};
   audioScripts = pkgs.callPackage ./pkgs/__audio_test.nix {};
+  audioLite = pkgs.callPackage ./pkgs/__hijacker.nix {};
 in {
   config = {
     home.packages = with pkgs; [
@@ -228,104 +229,110 @@ in {
           # workspace_swipe = true;
           # workspace_swipe_forever = true;
         };
-        bind = [
-          # "$mainMod, Q, exec, foot"
-          ''$MOD,RETURN,exec, ghostty'' # terminal
-          ''$mainMod, b, exec, hyprscratch btop "[float;size 70% 80%;center] alacritty --title btop -e btop" eager''
-          ''$MODSHIFT, e, exec, hyprscratch yazi "[float;size 70% 80%;center] alacritty --title yazi -e yazi" eager''
-          ''$mainMod, e, exec, hyprscratch yazi "[float;size 70% 80%;center] ghostty -e yazi" eager''
-          ''$mainMod, z, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty" eager''
-          ''$mainMod, bracketleft, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty -e tray-tui" eager''
+        bind =
+          [
+            # "$mainMod, Q, exec, foot"
+            ''$MOD,RETURN,exec, ghostty'' # terminal
+            ''$mainMod, b, exec, hyprscratch btop "[float;size 70% 80%;center] alacritty --title btop -e btop" eager''
+            ''$MODSHIFT, e, exec, hyprscratch yazi "[float;size 70% 80%;center] alacritty --title yazi -e yazi" eager''
+            ''$mainMod, e, exec, hyprscratch yazi "[float;size 70% 80%;center] ghostty -e yazi" eager''
+            ''$mainMod, z, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty" eager''
+            ''$mainMod, bracketleft, exec, hyprscratch ghostty "[float;size 70% 80%;center] ghostty -e tray-tui" eager''
 
-          # Ghostty Terminal Quake-style Bindings
-          ''$mainMod, grave, exec, hyprscratch quake "[float;size 100% 40%;move 0% 0%] ghostty -e fish" eager'' # Top terminal (grave/tilde key)
-          ''$mainMod SHIFT, left, exec, hyprscratch left-term "[float;size 40% 85%;move 0% 7%] ghostty -e fish" eager'' # Left terminal
-          ''$mainMod SHIFT, right, exec, hyprscratch right-term "[float;size 40% 85%;move 60% 7%] ghostty -e fish" eager'' # Right terminal
-          ''$mainMod SHIFT, down, exec, hyprscratch bottom-term "[float;size 100% 40%;move 0% 60%] ghostty -e fish" eager'' # Bottom terminal
-          ''$mainMod SHIFT, c, exec, hyprscratch right-term "[float;size 50% 50%;move 25% 25%] ghostty -e fish" eager'' # Center terminal
+            # Ghostty Terminal Quake-style Bindings
+            ''$mainMod, grave, exec, hyprscratch quake "[float;size 100% 40%;move 0% 0%] ghostty -e fish" eager'' # Top terminal (grave/tilde key)
+            ''$mainMod SHIFT, left, exec, hyprscratch left-term "[float;size 40% 85%;move 0% 7%] ghostty -e fish" eager'' # Left terminal
+            ''$mainMod SHIFT, right, exec, hyprscratch right-term "[float;size 40% 85%;move 60% 7%] ghostty -e fish" eager'' # Right terminal
+            ''$mainMod SHIFT, down, exec, hyprscratch bottom-term "[float;size 100% 40%;move 0% 60%] ghostty -e fish" eager'' # Bottom terminal
+            ''$mainMod SHIFT, c, exec, hyprscratch right-term "[float;size 50% 50%;move 25% 25%] ghostty -e fish" eager'' # Center terminal
 
-          ''$mainMod SHIFT, f, exec, hyprscratch core-term "[float;size 50% 50%;move 25% 25%] ghostty -e sh -c 'cd ~/core && exec fish'" eager'' # spawn terminal at core
-          ''$mainMod SHIFT, v, exec, hyprscratch neovim-term "[float;size 90% 90%;move 5% 5%] ghostty -e sh -c 'cd ~/core && exec nvim'" eager'' # Neovim at core
-          ''$mainMod SHIFT, j, exec, hyprscratch jj-term "[float;size 70% 50%;move 15% 25%] ghostty -e sh -c 'cd ~/core && nix develop -c "jk" '" eager'' # jk command binding
+            ''$mainMod SHIFT, f, exec, hyprscratch core-term "[float;size 50% 50%;move 25% 25%] ghostty -e sh -c 'cd ~/core && exec fish'" eager'' # spawn terminal at core
+            ''$mainMod SHIFT, v, exec, hyprscratch neovim-term "[float;size 90% 90%;move 5% 5%] ghostty -e sh -c 'cd ~/core && exec nvim'" eager'' # Neovim at core
+            ''$mainMod SHIFT, j, exec, hyprscratch jj-term "[float;size 70% 50%;move 15% 25%] ghostty -e sh -c 'cd ~/core && nix develop -c "jk" '" eager'' # jk command binding
 
-          ''$MODSHIFT,RETURN,exec,ghostty -e "sttt doom -d 0.3  -b .8,.3,.87,.47 -c 9; exec fish"'' # terminal
-          "$MODSHIFT,Q,killactive," # kill focused window
-          "$MOD,T,togglegroup," # group focused window
-          "$MODSHIFT,G,changegroupactive," # switch within the active group
-          ''$MODSHIFT,R,exec, killall tofi || tofi-drun'' # alternative app launcher
-          ''$MOD, R, exec, rofi -show drun -modi drun''
+            ''$MODSHIFT,RETURN,exec,ghostty -e "sttt doom -d 0.3  -b .8,.3,.87,.47 -c 9; exec fish"'' # terminal
+            "$MODSHIFT,Q,killactive," # kill focused window
+            "$MOD,T,togglegroup," # group focused window
+            "$MODSHIFT,G,changegroupactive," # switch within the active group
+            ''$MODSHIFT,R,exec, killall tofi || tofi-drun'' # alternative app launcher
+            ''$MOD, R, exec, rofi -show drun -modi drun''
 
-          "$mainMod, C, killactive,"
-          # "$mainMod, M, exit," # Im quite annoyed by this button sometimes, mayble ill return it later
-          "$mainMod, V, togglefloating,"
-          "$mainMod, P, pseudo, # dwindle"
-          "$mainMod, J, togglesplit," # dwindle
-          "$mainMod, F, fullscreen"
-          "$mainMod, Print, exec, grim"
+            "$mainMod, C, killactive,"
+            # "$mainMod, M, exit," # Im quite annoyed by this button sometimes, mayble ill return it later
+            "$mainMod, V, togglefloating,"
+            "$mainMod, P, pseudo, # dwindle"
+            "$mainMod, J, togglesplit," # dwindle
+            "$mainMod, F, fullscreen"
+            "$mainMod, Print, exec, grim"
 
-          # Move focus with mainMod + arrow keys
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
+            # Move focus with mainMod + arrow keys
+            "$mainMod, left, movefocus, l"
+            "$mainMod, right, movefocus, r"
+            "$mainMod, up, movefocus, u"
+            "$mainMod, down, movefocus, d"
 
-          # Switch workspaces with mainMod + [0-9]
-          "$mainMod, 1, workspace, 1"
-          "$mainMod, 2, workspace, 2"
-          "$mainMod, 3, workspace, 3"
-          "$mainMod, 4, workspace, 4"
-          "$mainMod, 5, workspace, 5"
-          "$mainMod, 6, workspace, 6"
-          "$mainMod, 7, workspace, 7"
-          "$mainMod, 8, workspace, 8"
-          "$mainMod, 9, workspace, 9"
-          "$mainMod, 0, workspace, 10"
+            # Switch workspaces with mainMod + [0-9]
+            "$mainMod, 1, workspace, 1"
+            "$mainMod, 2, workspace, 2"
+            "$mainMod, 3, workspace, 3"
+            "$mainMod, 4, workspace, 4"
+            "$mainMod, 5, workspace, 5"
+            "$mainMod, 6, workspace, 6"
+            "$mainMod, 7, workspace, 7"
+            "$mainMod, 8, workspace, 8"
+            "$mainMod, 9, workspace, 9"
+            "$mainMod, 0, workspace, 10"
 
-          # Move active window to a workspace with mainMod + SHIFT + [0-9]
-          "$mainMod SHIFT, 1, movetoworkspace, 1"
-          "$mainMod SHIFT, 2, movetoworkspace, 2"
-          "$mainMod SHIFT, 3, movetoworkspace, 3"
-          "$mainMod SHIFT, 4, movetoworkspace, 4"
-          "$mainMod SHIFT, 5, movetoworkspace, 5"
-          "$mainMod SHIFT, 6, movetoworkspace, 6"
-          "$mainMod SHIFT, 7, movetoworkspace, 7"
-          "$mainMod SHIFT, 8, movetoworkspace, 8"
-          "$mainMod SHIFT, 9, movetoworkspace, 9"
-          "$mainMod SHIFT, 0, movetoworkspace, 10"
+            # Move active window to a workspace with mainMod + SHIFT + [0-9]
+            "$mainMod SHIFT, 1, movetoworkspace, 1"
+            "$mainMod SHIFT, 2, movetoworkspace, 2"
+            "$mainMod SHIFT, 3, movetoworkspace, 3"
+            "$mainMod SHIFT, 4, movetoworkspace, 4"
+            "$mainMod SHIFT, 5, movetoworkspace, 5"
+            "$mainMod SHIFT, 6, movetoworkspace, 6"
+            "$mainMod SHIFT, 7, movetoworkspace, 7"
+            "$mainMod SHIFT, 8, movetoworkspace, 8"
+            "$mainMod SHIFT, 9, movetoworkspace, 9"
+            "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-          # Scroll through existing workspaces with mainMod + scroll
-          "$mainMod, mouse_down, workspace, e+1"
-          "$mainMod, mouse_up, workspace, e-1"
+            # Scroll through existing workspaces with mainMod + scroll
+            "$mainMod, mouse_down, workspace, e+1"
+            "$mainMod, mouse_up, workspace, e-1"
 
-          # Replay buffer controls
-          "$mainMod ALT, R, exec, ${recordingScripts.start-replay}/bin/start-replay"
-          "$mainMod ALT, S, exec, ${recordingScripts.save-replay}/bin/save-replay"
-          "$mainMod ALT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
+            # Replay buffer controls
+            "$mainMod ALT, R, exec, ${recordingScripts.start-replay}/bin/start-replay"
+            "$mainMod ALT, S, exec, ${recordingScripts.save-replay}/bin/save-replay"
+            "$mainMod ALT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
 
-          # Regular recording controls
-          "$mainMod SHIFT, R, exec, ${recordingScripts.start-recording}/bin/start-recording"
-          "$mainMod CTRL, R, exec, ${recordingScripts.start-recording-60}/bin/start-recording-60"
-          "$mainMod SHIFT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
-          "$mainMod SHIFT, P, exec, ${recordingScripts.toggle-pause-recording}/bin/toggle-pause-recording"
+            # Regular recording controls
+            "$mainMod SHIFT, R, exec, ${recordingScripts.start-recording}/bin/start-recording"
+            "$mainMod CTRL, R, exec, ${recordingScripts.start-recording-60}/bin/start-recording-60"
+            "$mainMod SHIFT, X, exec, ${recordingScripts.stop-recording}/bin/stop-recording"
+            "$mainMod SHIFT, P, exec, ${recordingScripts.toggle-pause-recording}/bin/toggle-pause-recording"
 
-          # Funny
-          "$mainMod ALT, P, exec, ${funny.spread-propaganda}/bin/spread-propaganda"
+            # Funny
+            "$mainMod ALT, P, exec, ${funny.spread-propaganda}/bin/spread-propaganda"
 
-          "$mainMod SHIFT, S, exec, ${pkgs.slurp}/bin/slurp -d | ${pkgs.grim}/bin/grim -g - - | ${pkgs.wl-clipboard}/bin/wl-copy"
+            "$mainMod SHIFT, S, exec, ${pkgs.slurp}/bin/slurp -d | ${pkgs.grim}/bin/grim -g - - | ${pkgs.wl-clipboard}/bin/wl-copy"
 
-          ''$mainMod ALT, 1, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_1.mp3 50''
-          ''$mainMod ALT, 2, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_2.mp3 50''
-          ''$mainMod ALT, 3, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_3.mp3 50''
-          ''$mainMod ALT, 4, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_4.mp3 50''
-          ''$mainMod ALT, 5, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_5.mp3 50''
+            # ''$mainMod ALT, 1, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_1.mp3 50''
+            # ''$mainMod ALT, 2, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_2.mp3 50''
+            # ''$mainMod ALT, 3, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_3.mp3 50''
+            # ''$mainMod ALT, 4, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_4.mp3 50''
+            # ''$mainMod ALT, 5, exec, ${audioScripts.play-audio-to-mic}/bin/play-audio-to-mic $HOME/audio_5.mp3 50''
 
-          # Stop audio playback
-          ''bind = $mainMod ALT, 0, exec, ${pkgs.procps}/bin/pkill mpv''
+            # Stop audio playback
+            ''bind = $mainMod ALT, 0, exec, ${pkgs.procps}/bin/pkill mpv''
 
-          # "$mainMod ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
-          "$mainMod ALT, L, exec, ${pkgs.swaylock-effects}/bin/swaylock --daemonize"
-          "$mainMod, W,  exec, pkill waybar || waybar"
-        ];
+            # "$mainMod ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
+            "$mainMod ALT, L, exec, ${pkgs.swaylock-effects}/bin/swaylock --daemonize"
+            "$mainMod, W,  exec, pkill waybar || waybar"
+            # stop le funny
+            "${mod} ALT,0,exec,${pkgs.procps}/bin/pkill pw-play"
+          ]
+          ++ (builtins.map
+            (num: "${mod} ALT,${builtins.toString num},exec,${audioLite}/bin/hijacker-lite ~/Sounds/${builtins.toString num}.mp3")
+            (lib.range 1 9));
 
         bindm = [
           # Move/resize windows with mainMod + LMB/RMB and dragging
