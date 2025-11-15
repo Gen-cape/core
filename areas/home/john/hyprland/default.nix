@@ -255,7 +255,12 @@ in {
             "$MOD,T,togglegroup," # group focused window
             "$MODSHIFT,G,changegroupactive," # switch within the active group
             ''$MODSHIFT,R,exec, killall tofi || tofi-drun'' # alternative app launcher
-            ''$MOD, R, exec, rofi -show drun -modi drun''
+            # ''$MOD, R, exec, rofi -show drun -modi drun''
+
+            "$mainMod,R,exec,vicinae toggle"
+            "$MODSHIFT,A,exec,vicinae vicinae://extensions/vicinae/clipboard/history"
+
+            # "${mod},V,exec,${pkgs.copyq}/bin/copyq toggle"
 
             "$mainMod, C, killactive,"
             # "$mainMod, M, exit," # Im quite annoyed by this button sometimes, mayble ill return it later

@@ -1,0 +1,25 @@
+[meta]
+version = 1
+name = "Catppuccin Mocha"
+description = "Modified version of catppuccin mocha theme"
+variant = "dark"
+[colors.core]
+background = { name = "#000000", opacity = 0.8 }
+foreground = "#cdd6f4"
+secondary_background = { name = "#181825", opacity = 0.4 }
+border = "#313244"
+accent = "#89b4fa"
+[colors.accents]
+blue = "#89b4fa"
+green = "#a6e3a1"
+magenta = "#f5c2e7"
+orange = "#fab387"
+purple = "#cba6f7"
+red = "#f38ba8"
+yellow = "#f9e2af"
+cyan = "#94e2d5"
+[colors.list.item.selection]
+background = { name = "#313244", opacity = 0.5 }
+secondary_background = { name = "#383a4a", opacity = 0.5 }
+[colors.list.item.hover]
+background = { name = "#262637", opacity = 0.5 }

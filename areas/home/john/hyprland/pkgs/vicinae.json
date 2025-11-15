@@ -1,0 +1,23 @@
+{
+    "closeOnFocusLoss": true,
+    "faviconService": "twenty",
+    "font": {
+        "size": 12
+    },
+    "keybinding": "default",
+    "keybinds": {
+    },
+    "popToRootOnClose": true,
+    "rootSearch": {
+        "searchFiles": false
+    },
+    "theme": {
+        "iconTheme": "Default",
+        "name": "catppuccin mocha"
+    },
+    "window": {
+        "csd": true,
+        "opacity": 0.8,
+        "rounding": 10
+    }
+}
