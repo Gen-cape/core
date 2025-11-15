@@ -39,6 +39,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
+    fresh.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     systems.url = "github:nix-systems/default";
     nuenv.url = "https://flakehub.com/f/DeterminateSystems/nuenv/*.tar.gz";
