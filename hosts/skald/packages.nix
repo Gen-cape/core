@@ -2,7 +2,9 @@
   pkgs,
   inputs',
   ...
-}: {
+}: let
+  fresh = inputs'.fresh.legacyPackages;
+in {
   programs.gpu-screen-recorder.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -113,6 +115,10 @@
     pkgs.activate-linux
     pkgs.nix-melt
     pkgs.nix-inspect
+    pkgs.nodePackages.npm
     pkgs.zathura
+
+    # FRESH zone
+    fresh.opencode
   ];
 }
