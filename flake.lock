@@ -490,6 +490,22 @@
         "type": "github"
       }
     },
+    "freshest": {
+      "locked": {
+        "lastModified": 1766651565,
+        "narHash": "sha256-QEhk0eXgyIqTpJ/ehZKg9IKS7EtlWxF3N7DXy42zPfU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3e2499d5539c16d0d173ba53552a4ff8547f4539",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -1695,6 +1711,7 @@
         "flake-parts": "flake-parts",
         "flint": "flint",
         "fresh": "fresh",
+        "freshest": "freshest",
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
         "hover-rs": "hover-rs",
