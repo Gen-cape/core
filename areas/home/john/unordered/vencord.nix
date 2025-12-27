@@ -8,10 +8,6 @@
   inherit (config.faery.system) username;
 in {
   home.packages = with pkgs; [
-    vesktop
-    (discord.override {
-      withVencord = true;
-    })
   ];
 
   xdg = {

@@ -42,6 +42,14 @@
     fresh.url = "github:NixOS/nixpkgs/nixos-unstable";
     freshest.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    nixcord = {
+      url = "github:kaylorben/nixcord";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     systems.url = "github:nix-systems/default";
     nuenv.url = "https://flakehub.com/f/DeterminateSystems/nuenv/*.tar.gz";
 
