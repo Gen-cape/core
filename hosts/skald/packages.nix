@@ -4,6 +4,7 @@
   ...
 }: let
   fresh = inputs'.fresh.legacyPackages;
+  freshest = inputs'.freshest.legacyPackages;
 in {
   programs.gpu-screen-recorder.enable = true;
 
@@ -42,20 +43,21 @@ in {
     krita
     vlc
 
-    (pkgs.r2modman.overrideAttrs (finalAttrs: rec {
-      pname = "r2modman";
-      version = "3.1.57";
-      src = pkgs.fetchFromGitHub {
-        owner = "ebkr";
-        repo = "r2modmanPlus";
-        rev = "v${finalAttrs.version}";
-        hash = "sha256-1b24tclqXGx85BGFYL9cbthLScVWau2OmRh9YElfCLs=";
-      };
-      offlineCache = pkgs.fetchYarnDeps {
-        yarnLock = "${src}/yarn.lock";
-        hash = "sha256-3SMvUx+TwUmOur/50HDLWt0EayY5tst4YANWIlXdiPQ=";
-      };
-    }))
+    # (pkgs.r2modman.overrideAttrs (finalAttrs: rec {
+    #   pname = "r2modman";
+    #   version = "3.1.57";
+    #   src = pkgs.fetchFromGitHub {
+    #     owner = "ebkr";
+    #     repo = "r2modmanPlus";
+    #     rev = "v${finalAttrs.version}";
+    #     hash = "sha256-1b24tclqXGx85BGFYL9cbthLScVWau2OmRh9YElfCLs=";
+    #   };
+    #   offlineCache = pkgs.fetchYarnDeps {
+    #     yarnLock = "${src}/yarn.lock";
+    #     hash = "sha256-3SMvUx+TwUmOur/50HDLWt0EayY5tst4YANWIlXdiPQ=";
+    #   };
+    # }))
+    freshest.r2modman
 
     protontricks
     matugen
