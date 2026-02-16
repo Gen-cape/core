@@ -6,10 +6,18 @@
   f5 (on-press toggle-vkey v-rgt)
   f6 (on-press toggle-vkey v-rgt-h)
   f7 (on-press toggle-vkey v-wmash)
+  f8 (on-press toggle-vkey v-spc)
+  f9 (on-press toggle-vkey v-lft)
+  f10 (on-press toggle-vkey v-lft-sp)
 )
 (defvirtualkeys
-
+  
+  v-lft mlft
+  v-lft-sp (macro-repeat mlft 100)
   v-wmash w
+  v-spc (macro-repeat
+    spc 15
+  )
 
   v-rgt (macro-repeat
     mrgt 80 

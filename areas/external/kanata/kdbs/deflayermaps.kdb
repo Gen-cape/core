@@ -26,4 +26,5 @@
   r (layer-switch repo)
   d (layer-switch doom)
   m (layer-switch mine)
+  4 (layer-switch factorio)
 )

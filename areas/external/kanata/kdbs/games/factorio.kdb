@@ -1,0 +1,40 @@
+(deflayermap (factorio)
+  e (on-press toggle-vkey v-turret-creep-fast)
+  
+  c (on-press toggle-vkey v-turret-creep-full-stack)
+  lsft  (multi
+    1 mlft
+  )  f (multi
+    2 lctl mrgt
+  )
+
+  r (macro q 15 mlft 15 q )
+)
+
+(defvirtualkeys
+  v-turret-creep-fast (macro-repeat
+    (hold-for-duration 20 1) 20
+    (hold-for-duration 20 mlft) 20
+    (hold-for-duration 20 2) 20
+    (hold-for-duration 10 z) 10
+    (hold-for-duration 10 z) 10
+    (hold-for-duration 10 z) 10
+    (hold-for-duration 10 z) 10
+    (hold-for-duration 10 z) 10
+    (hold-for-duration 10 z) 10
+    (hold-for-duration 10 z) 10
+    15
+  )
+
+  v-turret-creep-full-stack (macro-repeat
+    (hold-for-duration 10 1)
+    (hold-for-duration 20 mlft) 20
+    
+    (hold-for-duration 10 2)
+    (hold-for-duration 40 ctrl)       ;; Lock LCtrl down
+    (hold-for-duration 40 mrgt) 40      ;; Click to dump the stack
+    
+    ;; 5. Tiny reset delay to prevent overlapping with the next turret
+    30
+  )
+)

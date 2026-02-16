@@ -21,6 +21,7 @@
 (include kdbs/games/noita.kdb )      
 (include kdbs/games/tf2.kdb )        
 (include kdbs/games/mine.kdb )        
+(include kdbs/games/factorio.kdb )        
 (include kdbs/layouts/functional/arrows.kdb )            
 (include kdbs/layouts/functional/motion.kdb )            
 (include kdbs/layouts/functional/numpad.kdb )            

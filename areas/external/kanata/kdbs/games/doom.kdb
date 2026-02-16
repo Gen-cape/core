@@ -1,4 +1,4 @@
 (deflayermap (doom)
-  v lsft
+  w (multi w lsft @4)
 
 )
