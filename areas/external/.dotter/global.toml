@@ -14,8 +14,8 @@ default_target_type = "symbolic"
 "walls/.current_wallpaper.png" = "~/.current_wallpaper.png"
 "walls/wall.png" = "~/wall.png"
 
-[makima.files]
-"makima" = "~/.config/makima"
+# [makima.files]
+# "makima" = "~/.config/makima"
 
 [direnv.files]
 "misc/direnv.toml" = "~/.config/direnv/direnv.toml"
@@ -24,4 +24,4 @@ default_target_type = "symbolic"
 "rofi" = "~/.config/rofi"
 
 [bundle]
-depends = ["kanata", "ghostty", "walls", "makima", "direnv", "rofi"]
+depends = ["kanata", "ghostty", "walls", "direnv", "rofi"]

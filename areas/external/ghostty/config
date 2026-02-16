@@ -31,7 +31,7 @@ font-size = 13
 window-padding-x = 5
 window-padding-y = 5
 
-theme = "catppuccin-mocha"
+# theme = "catppuccin-mocha"
 background = #000000
 foreground = #cdd6f4
 

@@ -13,9 +13,11 @@
 
 (defalias
   ;; fast test debug layer
-  mt1 (macro C-left left left [ S-e x a m p l e spc rght ] S-ret spc C-v spc S-ret [ S-e n d spc o f spc S-e x a m p l e rght rght ] S-ret r e w r i t e spc i t spc t o spc l o o k spc d i f f e r e n t , spc o p t i m i z e spc a n d spc s i m p l i f y)
+  ;; mt1 (macro C-left left left [ S-e x a m p l e spc rght ] S-ret spc C-v spc S-ret [ S-e n d spc o f spc S-e x a m p l e rght rght ] S-ret r e w r i t e spc i t spc t o spc l o o k spc d i f f e r e n t , spc o p t i m i z e spc a n d spc s i m p l i f y)
   mt2 (macro end 2 home 2 C-bspc C-bspc down home C-bspc C-bspc)
   mt3 (multi XX XX)
   mt4 (multi XX XX)
+
+  mt1 (multi XX XX)
 
 )
