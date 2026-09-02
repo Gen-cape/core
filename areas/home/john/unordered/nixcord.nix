@@ -5,8 +5,13 @@
 
   programs.nixcord = {
     enable = true;
+    vesktop.enable = true;
     config = {
-      # transparent = true;
+      useQuickCss = true;
+      themeLinks = [];
+      frameless = false;
+      transparent = true;
+
       plugins = {
         betterGifPicker.enable = true;
         fakeNitro.enable = true;
@@ -18,6 +23,11 @@
         unindent.enable = true;
         voiceDownload.enable = true;
         voiceMessages.enable = true;
+        moreCommands.enable = true;
+        moreKaomoji.enable = true;
+        onePingPerDM.enable = true;
+        imageZoom.enable = true;
+        webKeybinds.enable = true;
       };
     };
   };

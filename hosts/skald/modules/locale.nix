@@ -2,44 +2,32 @@
   pkgs,
   lib,
   ...
-}: let
-  inherit (lib.modules) mkDefault;
-in {
+}: {
+  time.timeZone = "Europe/Moscow";
+
   services.xserver.xkb = {
     layout = "us,ru";
-    variant = "";
     options = "grp:alt_shift_toggle";
   };
 
-  i18n = let
+  i18n = {
     defaultLocale = "en_US.UTF-8";
-    auxiliary = "ru_RU.UTF-8";
-  in {
-    inherit defaultLocale;
-
     extraLocaleSettings = {
-      LANG = defaultLocale;
-      LC_COLLATE = defaultLocale;
-      LC_CTYPE = defaultLocale;
-      LC_MESSAGES = defaultLocale;
-
-      LC_ADDRESS = auxiliary;
-      LC_IDENTIFICATION = auxiliary;
-      LC_MEASUREMENT = auxiliary;
-      LC_MONETARY = auxiliary;
-      LC_NAME = auxiliary;
-      LC_NUMERIC = auxiliary;
-      LC_PAPER = auxiliary;
-      LC_TELEPHONE = auxiliary;
-      LC_TIME = auxiliary;
+      LC_ADDRESS = "ru_RU.UTF-8";
+      LC_IDENTIFICATION = "ru_RU.UTF-8";
+      LC_MEASUREMENT = "ru_RU.UTF-8";
+      LC_MONETARY = "ru_RU.UTF-8";
+      LC_NAME = "ru_RU.UTF-8";
+      LC_NUMERIC = "ru_RU.UTF-8";
+      LC_PAPER = "ru_RU.UTF-8";
+      LC_TELEPHONE = "ru_RU.UTF-8";
+      LC_TIME = "ru_RU.UTF-8";
     };
-
-    supportedLocales = mkDefault [
+    supportedLocales = lib.mkDefault [
       "en_US.UTF-8/UTF-8"
       "ru_RU.UTF-8/UTF-8"
     ];
 
-    # IME configuration
     inputMethod = {
       enable = true;
       type = "fcitx5";
@@ -47,17 +35,8 @@ in {
         fcitx5-gtk
         fcitx5-lua
         libsForQt5.fcitx5-qt
-
-        # themes
         fcitx5-material-color
       ];
     };
-  };
-
-  time = {
-    timeZone = "Europe/Moscow";
-
-    # DualBooting
-    #hardwareClockInLocalTime = true;
   };
 }

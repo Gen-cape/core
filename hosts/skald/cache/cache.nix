@@ -1,13 +1,16 @@
-{
+{...}: {
   nix.settings = {
-    substituters = [
-      "https://cache.nixos.org?priority=10"
-      "https://cache.garnix.io"
+    extra-substituters = [
       "https://nix-community.cachix.org"
-      "https://hyprland.cachix.org"
-      "https://yazi.cachix.org"
     ];
 
-    trusted-public-keys = [];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+
+    connect-timeout = 5;
+    fallback = true;
+    http-connections = 50;
+    max-substitution-jobs = 128;
   };
 }

@@ -7,8 +7,6 @@
     inputs.spicetify-nix.homeManagerModules.default
   ];
 
-  stylix.targets.spicetify.enable = false;
-
   programs.spicetify = let
     spicetifyPkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
   in {

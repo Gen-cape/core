@@ -1,1 +1,0 @@
-_: {boot.supportedFilesystems = ["ntfs"];}

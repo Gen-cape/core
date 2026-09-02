@@ -2,125 +2,67 @@
   pkgs,
   inputs',
   ...
-}: let
-  fresh = inputs'.fresh.legacyPackages;
-  freshest = inputs'.freshest.legacyPackages;
-in {
+}: {
   programs.gpu-screen-recorder.enable = true;
+  programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # inputs'.quickshell.packages.quickshell
-    inputs'.search-flake-inputs.packages.default
-    # inputs'.zen-browser.packages.default
-    inputs'.zen-browser.packages.twilight
+    # inputs'.search-flake-inputs.packages.default
+    # inputs'.zen-browser.packages.twilight
     inputs'.neovim-riptide.packages.default
-    inputs'.hover-rs.packages.default
-    inputs'.flint.packages.default
-    inputs'.nix-search-tv.packages.default
+    # inputs'.hover-rs.packages.default
+    # inputs'.flint.packages.default
+    # inputs'.nix-search-tv.packages.default
+    # inputs'.riptide.packages.ulss
 
-    inputs'.riptide.packages.ulss
-
+    # Gaming & Launchers (umu-launcher is in gaming.nix)
     heroic
-    inputs'.nixpkgs.legacyPackages.umu-launcher
     hydralauncher
-
-    npins
-    gpu-screen-recorder
-    gpu-screen-recorder-gtk
-
-    ncdu
-
-    neovide
-    television
-    nix-search-cli
-    wtype
-    isd
-
-    vscode
-
-    qbittorrent
-    obs-studio
-    krita
-    vlc
-
-    # (pkgs.r2modman.overrideAttrs (finalAttrs: rec {
-    #   pname = "r2modman";
-    #   version = "3.1.57";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "ebkr";
-    #     repo = "r2modmanPlus";
-    #     rev = "v${finalAttrs.version}";
-    #     hash = "sha256-1b24tclqXGx85BGFYL9cbthLScVWau2OmRh9YElfCLs=";
-    #   };
-    #   offlineCache = pkgs.fetchYarnDeps {
-    #     yarnLock = "${src}/yarn.lock";
-    #     hash = "sha256-3SMvUx+TwUmOur/50HDLWt0EayY5tst4YANWIlXdiPQ=";
-    #   };
-    # }))
-    freshest.r2modman
-
+    r2modman
+    bottles
     protontricks
-    matugen
 
-    networkmanagerapplet
+    # Screen Recording & Display
+    gpu-screen-recorder-gtk
+    matugen
+    wtype
+
+    # Audio & Hardware Monitoring
     pavucontrol
     easyeffects
-
-    git
+    coppwr
     amdgpu_top
 
-    coppwr
-
-    easyeffects
-    # raysession
-    # patchance
-    # pw-viz
-
-    jujutsu
+    # File & Disk Management
+    nautilus
+    ncdu
     tmsu
+    qbittorrent
 
-    gamemode
-    bottles
+    # Media Viewers & Editors
     nomacs
+    krita
+    vlc
+    zathura
+
+    # Productivity & Terminal Utilities
+    git
+    jujutsu
     ripgrep
-    # television
-    rpg-cli
-    confetty
-
-    # (symlinkJoin {
-    #   name = "Obsidian";
-    #   paths = with pkgs; [
-    #     obsidian
-    #     pandoc
-    #   ];
-    # })
     btop
-    gotop
     hyperfine
-    timewarrior
-    taskwarrior-tui
-    taskwarrior3
+    isd
+    npins
 
-    pkgs.qimgv
-    pkgs.pqiv
-    pkgs.dooit
-    # pkgs.lazyjj
-    # pkgs.gg-jj
-    # pkgs.julia_19
-    pkgs.urn-timer
-    pkgs.chromium
-    pkgs.nautilus
-    pkgs.alacritty
-    pkgs.vesktop
-    pkgs.tor-browser
-    pkgs.gotop
-    pkgs.activate-linux
-    pkgs.nix-melt
-    pkgs.nix-inspect
-    pkgs.nodePackages.npm
-    pkgs.zathura
+    # Task Management (Taskwarrior stack)
+    # taskwarrior3
+    # taskwarrior-tui
+    # timewarrior
 
-    # FRESH zone
-    fresh.opencode
+    # System Utilities & Inspection
+    networkmanagerapplet
+    nix-inspect
+    nix-melt
+    tor-browser
   ];
 }

@@ -1,114 +1,77 @@
 {
-  withSystem,
   inputs,
   self,
   ...
 }: let
-  inherit (inputs.riptide) mimics;
-  inherit (mimics) fzf;
-  selfPath = (builtins.unsafeDiscardStringContext "${self}") + "/areas";
+  gate = inputs.gate.lib;
+  system = "x86_64-linux";
 
-  systemSet = {
-    inherit withSystem;
-    inherit (inputs.home-manager.lib) homeManagerConfiguration;
-    nixosSystem = inputs.nixpkgs.lib.nixosSystem;
-    basicArgs = {
-      inherit self inputs;
-      inherit (inputs.riptide) mimics;
+  areas = self + "/areas";
+
+  baseAugments = gate.importModules {rootPath = areas + "/augments";};
+  mkHostModules = host: gate.importModules {rootPath = ./${host};};
+  mkUserModules = user: gate.importModules {rootPath = areas + "/home/${user}";};
+
+  # Reusable module bundles
+  desktopModules =
+    baseAugments
+    ++ [
+      inputs.nix-gaming.nixosModules.pipewireLowLatency
+    ];
+
+  diskoNvme = [
+    inputs.disko.nixosModules.disko
+    {disko.devices.disk.main.device = "/dev/nvme0n1";}
+  ];
+in {
+  nixosConfigurations = {
+    skald = gate.nixos {
+      inherit system inputs;
+      modules =
+        [{networking.hostName = "skald";}]
+        ++ (mkHostModules "skald")
+        ++ desktopModules;
+    };
+
+    omen = gate.nixos {
+      inherit system inputs;
+      modules =
+        [{networking.hostName = "omen";}]
+        ++ (mkHostModules "omen")
+        ++ desktopModules
+        ++ diskoNvme;
+    };
+
+    snake = gate.nixos {
+      inherit system inputs;
+      modules =
+        [{networking.hostName = "snake";}]
+        ++ (mkHostModules "snake")
+        ++ diskoNvme;
+    };
+
+    kitsune = gate.nixos {
+      inherit system inputs;
+      modules =
+        [
+          {networking.hostName = "kitsune";}
+          inputs.disko.nixosModules.disko
+        ]
+        ++ (mkHostModules "kitsune");
     };
   };
 
-  augmentsRoot = selfPath + "/augments";
-  homeModulesRoot = selfPath + "/home";
-
-  defaultRule = "\\.nix !__ ";
-  baseAugments = fzf (/. + augmentsRoot) defaultRule;
-  mkForUser = name: fzf (/. + (homeModulesRoot + "/${name}")) defaultRule;
-  mkForHost = host: fzf (./. + /${host}) defaultRule;
-
-  # https://github.com/nix-community/home-manager/issues/5980 sigh...
-  mkSystem = inputs.riptide.mimics.mkSystem systemSet;
-  mkHome = inputs.riptide.mimics.mkHome systemSet;
-in {
-  flake = {
-    DEBUG = {};
-    nixosConfigurations = {
-      skald = mkSystem {
-        hostname = "skald";
-        system = "x86_64-linux";
-        modules = [
-          (mkForHost "skald")
-          baseAugments
-          inputs.nix-gaming.nixosModules.pipewireLowLatency
-          inputs.chaotic.nixosModules.default
-          inputs.nur.modules.nixos.default
-          # inputs.home-manager.nixosModules.home-manager one day, when ill tinker less
-          # inputs.stylix.nixosModules.stylix
-        ];
-      };
-
-      # infiltration (remote deployment agent, got it?), use with nixos-anywhere
-      # nix run  nixpkgs#nixos-anywhere -- --flake .#snake --generate-hardware-config nixos-generate-config ./hosts/snake/hardware.nix root@...
-      # (hostname)
-      snake = mkSystem {
-        hostname = "snake";
-        system = "x86_64-linux";
-        modules = [
-          (mkForHost "snake")
-          inputs.disko.nixosModules.disko
-          {disko.devices.disk.main.device = "/dev/nvme0n1";}
-        ];
-      };
-
-      omen = mkSystem {
-        # derived from snake
-        hostname = "omen";
-        system = "x86_64-linux";
-        modules = [
-          (mkForHost "omen")
-          baseAugments
-          inputs.disko.nixosModules.disko
-
-          inputs.nix-gaming.nixosModules.pipewireLowLatency
-          inputs.chaotic.nixosModules.default
-          inputs.nur.modules.nixos.default
-
-          {disko.devices.disk.main.device = "/dev/nvme0n1";}
-        ];
-      };
-
-      kitsune = mkSystem {
-        hostname = "kitsune";
-        system = "x86_64-linux";
-        modules = [
-          (mkForHost "kitsune")
-          inputs.disko.nixosModules.disko
-        ];
-      };
+  homeConfigurations = {
+    "john@skald" = gate.homeManager {
+      inherit system inputs;
+      modules =
+        mkUserModules "john";
     };
-    homeConfigurations = {
-      "john@skald" = mkHome {
-        username = "john";
-        hostname = "skald";
-        system = "x86_64-linux";
-        modules = [
-          (mkForUser "john")
-          inputs.chaotic.homeManagerModules.default
-          inputs.stylix.homeManagerModules.stylix
-        ];
-      };
 
-      "john@omen" = mkHome {
-        username = "john";
-        hostname = "omen";
-        system = "x86_64-linux";
-        modules = [
-          (mkForUser "john")
-          inputs.chaotic.homeManagerModules.default
-          inputs.stylix.homeManagerModules.stylix
-        ];
-      };
+    "john@omen" = gate.homeManager {
+      inherit system inputs;
+      modules =
+        mkUserModules "john";
     };
-    # thats some wicked things, binds each home-system (in case home-manager acts standalone)
   };
 }

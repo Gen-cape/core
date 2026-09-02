@@ -7,13 +7,13 @@
 
   environment.systemPackages = with pkgs; [
     # inputs'.quickshell.packages.quickshell
-    inputs'.search-flake-inputs.packages.default
+    # inputs'.search-flake-inputs.packages.default
     # inputs'.zen-browser.packages.default
     inputs'.zen-browser.packages.twilight
     inputs'.neovim-riptide.packages.default
-    inputs'.hover-rs.packages.default
-    inputs'.flint.packages.default
-    inputs'.nix-search-tv.packages.default
+    # inputs'.hover-rs.packages.default
+    # inputs'.flint.packages.default
+    # inputs'.nix-search-tv.packages.default
 
     heroic
     inputs'.nixpkgs.legacyPackages.umu-launcher
@@ -24,7 +24,7 @@
 
     neovide
     television
-    nix-search-cli
+    # nix-search-cli
 
     qbittorrent
     obs-studio
