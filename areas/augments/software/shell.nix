@@ -37,7 +37,6 @@ in {
   };
 
   programs.git.enable = true;
-  programs.ssh.startAgent = true;
 
   environment.systemPackages = with pkgs; [
     eza
