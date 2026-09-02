@@ -17,6 +17,7 @@ in {
 
       jl = "jj log -r :: --no-pager --limit 20";
       jk = "jj-fzf";
+      cd = "z";
 
       switch = "nh os switch ${flakeDir}";
       boot-switch = "nh os boot ${flakeDir} && reboot";

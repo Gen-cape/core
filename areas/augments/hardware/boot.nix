@@ -1,10 +1,16 @@
 {
   boot = {
-    loader = {
-      systemd-boot.enable = true;
-      systemd-boot.configurationLimit = 5;
-      efi.canTouchEfiVariables = true;
-      timeout = 1;
+    # loader = {
+    #   systemd-boot.enable = true;
+    #   systemd-boot.configurationLimit = 5;
+    #   efi.canTouchEfiVariables = true;
+    #   timeout = 1;
+    # };
+
+    loader.grub = {
+      efiSupport = true;
+      efiInstallAsRemovable = true;
+      device = "nodev";
     };
     initrd.verbose = false;
     consoleLogLevel = 0;

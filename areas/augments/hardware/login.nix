@@ -1,19 +1,30 @@
-{pkgs, ...}: {
-  services.displayManager.ly = {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  services.displayManager.noctalia-greeter = {
     enable = true;
+    cursorTheme = {
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
+    };
     settings = {
-      hide_borders = true;
-      save = true;
-      clock = "%H:%M:%S";
-      box_title = "CONNECT TO SYSTEM";
-      text_in_center = true;
-      blank_box = true;
-      asterisk = ">";
-      login_cmd = "mango";
+      session.default = "mango";
+
+      user.default = "john";
+
+      keyboard.layout = "us";
+      cursor.size = 20;
+      appearance = {
+        scheme = "Synced";
+        password_style = "random";
+        hide_logo = true;
+      };
     };
   };
 
-  # Automatically unlocks gnome-keyring on login if you use it
+  # Automatically unlock gnome-keyring on login
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.ly.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 }

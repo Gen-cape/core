@@ -1,4 +1,8 @@
-{inputs', ...}: let
+{
+  inputs',
+  config,
+  ...
+}: let
   lock-false = {
     Value = false;
     Status = "locked";
@@ -10,6 +14,7 @@
 in {
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     # package = inputs'.chaotic.packages.firefox_nightly;
     policies = {
       DisableTelemetry = true;

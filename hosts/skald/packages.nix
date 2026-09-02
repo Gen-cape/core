@@ -7,6 +7,23 @@
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
+    (
+      writeShellScriptBin "satty-screenshot" ''
+        set -e
+
+        SCREENSHOT_DIR=~/Pictures/screenshots
+
+        ${coreutils}/bin/mkdir -p "$SCREENSHOT_DIR"
+        ${grim}/bin/grim -g "$(${slurp}/bin/slurp)" - | ${satty}/bin/satty -f - \
+          -o "$SCREENSHOT_DIR/screenshot-$(${coreutils}/bin/date +'%Y-%m-%d_%H-%M-%S').png" \
+          --early-exit \
+          --save-after-copy \
+          --actions-on-enter save-to-clipboard \
+          --copy-command '${wl-clipboard}/bin/wl-copy' \
+          --initial-tool brush \
+          --no-window-decoration
+      ''
+    )
     # inputs'.search-flake-inputs.packages.default
     # inputs'.zen-browser.packages.twilight
     inputs'.neovim-riptide.packages.default
@@ -16,6 +33,8 @@
     # inputs'.riptide.packages.ulss
 
     # Gaming & Launchers (umu-launcher is in gaming.nix)
+    ghostty
+    home-manager
     heroic
     hydralauncher
     r2modman

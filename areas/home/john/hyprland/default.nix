@@ -2,12 +2,9 @@
   lib,
   inputs,
   pkgs,
-  hostname,
   ...
 }: let
   inherit (lib) mkIf optionals concatLists;
-  definitions = inputs.self.nixosConfigurations.${hostname}.config.core;
-  inherit (definitions) scaling;
 
   mod = "Mod4"; # SUPER
 
@@ -26,24 +23,17 @@ in {
     playerctl
   ];
 
-  home.sessionVariables =
-    {
-      XDG_SESSION_TYPE = "wayland";
-      GDK_BACKEND = "wayland,x11";
-      CLUTTER_BACKEND = "wayland";
-      QT_QPA_PLATFORM = "wayland;xcb";
-      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      NIXOS_OZONE_WL = "1";
-      MOZ_ENABLE_WAYLAND = "1";
-      ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    }
-    // (lib.optionalAttrs (definitions.gpu.type == "nvidia") {
-      LIBVA_DRIVER_NAME = "nvidia";
-      GBM_BACKEND = "nvidia-drm";
-      __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-      NVD_BACKEND = "direct";
-    });
+  home.sessionVariables = {
+    XDG_SESSION_TYPE = "wayland";
+    GDK_BACKEND = "wayland,x11";
+    CLUTTER_BACKEND = "wayland";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+  };
 
   # Noctalia Shell Configuration & Autostart
   xdg.configFile."noctalia/config.toml".text = ''
@@ -67,7 +57,7 @@ in {
     # --- Monitors ---
     [output]
     name = "*"
-    scale = ${scaling}
+    scale = 1.6
     mode = "preferred"
 
     # --- Autostart ---
@@ -125,7 +115,8 @@ in {
 
     # --- Keybindings ---
     [keybinds]
-    "${mod}+Return" = "exec ghostty"
+    "f10" = "exec alacritty"
+    "${mod}+Return" = "exec alacritty"
     "${mod}+q" = "close"
     "${mod}+v" = "toggle_floating"
     "${mod}+f" = "fullscreen"

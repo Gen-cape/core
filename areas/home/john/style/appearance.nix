@@ -12,14 +12,6 @@
   # GTK Theme & Icons
   gtk = {
     enable = true;
-    theme = {
-      name = "Sweet-Dark";
-      package = pkgs.sweet;
-    };
-    iconTheme = {
-      name = "Sweet-Rainbow";
-      package = pkgs.sweet-folders;
-    };
     font = {
       name = "DejaVu Sans";
       size = 10;
