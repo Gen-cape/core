@@ -33,6 +33,8 @@
     # inputs'.riptide.packages.ulss
 
     # Gaming & Launchers (umu-launcher is in gaming.nix)
+    just
+    dotter
     ghostty
     home-manager
     heroic
