@@ -118,3 +118,4 @@ gtk-single-instance = true
 gtk-titlebar = false
 gtk-wide-tabs = false
 auto-update = off
+theme = noctalia
