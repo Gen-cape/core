@@ -27,6 +27,7 @@
     # inputs'.search-flake-inputs.packages.default
     # inputs'.zen-browser.packages.twilight
     inputs'.neovim-riptide.packages.default
+    evtest
     # inputs'.hover-rs.packages.default
     # inputs'.flint.packages.default
     # inputs'.nix-search-tv.packages.default
