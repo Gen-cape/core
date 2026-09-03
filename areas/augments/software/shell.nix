@@ -42,5 +42,6 @@ in {
   environment.systemPackages = with pkgs; [
     eza
     comma
+    killall
   ];
 }
