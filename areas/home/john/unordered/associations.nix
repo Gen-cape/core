@@ -3,18 +3,18 @@
     enable = true;
     defaultApplications = {
       # Browser handlers
-      "text/html" = "zen-twilight.desktop";
-      "application/xhtml+xml" = "zen-twilight.desktop";
-      "application/x-extension-htm" = "zen-twilight.desktop";
-      "application/x-extension-html" = "zen-twilight.desktop";
-      "application/x-extension-shtml" = "zen-twilight.desktop";
-      "application/x-extension-xhtml" = "zen-twilight.desktop";
-      "application/x-extension-xht" = "zen-twilight.desktop";
-      "x-scheme-handler/http" = "zen-twilight.desktop";
-      "x-scheme-handler/https" = "zen-twilight.desktop";
-      "x-scheme-handler/about" = "zen-twilight.desktop";
-      "x-scheme-handler/unknown" = "zen-twilight.desktop";
-      "x-scheme-handler/chrome" = "zen-twilight.desktop";
+      "text/html" = "zen-beta.desktop";
+      "application/xhtml+xml" = "zen-beta.desktop";
+      "application/x-extension-htm" = "zen-beta.desktop";
+      "application/x-extension-html" = "zen-beta.desktop";
+      "application/x-extension-shtml" = "zen-beta.desktop";
+      "application/x-extension-xhtml" = "zen-beta.desktop";
+      "application/x-extension-xht" = "zen-beta.desktop";
+      "x-scheme-handler/http" = "zen-beta.desktop";
+      "x-scheme-handler/https" = "zen-beta.desktop";
+      "x-scheme-handler/about" = "zen-beta.desktop";
+      "x-scheme-handler/unknown" = "zen-beta.desktop";
+      "x-scheme-handler/chrome" = "zen-beta.desktop";
 
       # Chat & Protocols
       "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
@@ -24,7 +24,7 @@
       "inode/directory" = "org.gnome.Nautilus.desktop";
 
       # Documents
-      "application/pdf" = ["org.pwmt.zathura.desktop" "zen-twilight.desktop"];
+      "application/pdf" = ["org.pwmt.zathura.desktop" "zen-beta.desktop"];
       "application/doc" = "onlyoffice-desktopeditors.desktop";
       "application/docx" = "onlyoffice-desktopeditors.desktop";
       "application/msword" = "onlyoffice-desktopeditors.desktop";
