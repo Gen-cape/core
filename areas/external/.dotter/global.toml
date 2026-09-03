@@ -3,6 +3,9 @@
 [settings]
 default_target_type = "symbolic"
 
+[mango.files]
+"mango" = "~/.config/mango/"
+
 [kanata.files]
 "kanata" = "~/.config/kanata"
 
@@ -24,4 +27,4 @@ default_target_type = "symbolic"
 "rofi" = "~/.config/rofi"
 
 [bundle]
-depends = ["kanata", "ghostty", "walls", "direnv", "rofi"]
+depends = ["kanata", "ghostty", "walls", "direnv", "rofi", "mango"] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
