@@ -10,4 +10,6 @@
     enable = false;
     useRoutingFeatures = "client";
   };
+
+  programs.dconf.enable = true;
 }
