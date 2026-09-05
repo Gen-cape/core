@@ -6,6 +6,16 @@
   programs.mango = {
     enable = true;
   };
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors = {
+      mango = {
+        prettyName = "Mango";
+        comment = "Mango Wayland Compositor";
+        binPath = "/run/current-system/sw/bin/mango";
+      };
+    };
+  };
 
   programs.noctalia = {
     enable = true;
