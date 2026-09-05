@@ -35,6 +35,7 @@
 
     # Gaming & Launchers (umu-launcher is in gaming.nix)
     just
+    openjdk21
     dotter
     ghostty
     home-manager
