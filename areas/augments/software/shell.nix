@@ -44,5 +44,7 @@ in {
     comma
     killall
     tealdeer
+
+    ghostty
   ];
 }
