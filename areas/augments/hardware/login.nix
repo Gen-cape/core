@@ -10,8 +10,6 @@
       package = pkgs.bibata-cursors;
     };
     settings = {
-      session.default = "mango";
-
       user.default = "john";
 
       keyboard.layout = "us";

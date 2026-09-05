@@ -26,5 +26,20 @@ default_target_type = "symbolic"
 [rofi.files]
 "rofi" = "~/.config/rofi"
 
+[hyprland.files]
+"hyprland" = "~/.config/hypr"
+
+[noctalia.files]
+"noctalia" = "~/.config/noctalia"
+
 [bundle]
-depends = ["kanata", "ghostty", "walls", "direnv", "rofi", "mango"] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
+depends = [
+		"kanata",
+		"ghostty",
+		"walls",
+		"direnv",
+		"rofi",
+		"mango",
+		"hyprland",
+		"noctalia"
+] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
