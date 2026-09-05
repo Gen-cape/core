@@ -43,5 +43,6 @@ in {
     eza
     comma
     killall
+    tealdeer
   ];
 }
