@@ -1,4 +1,11 @@
 {pkgs, ...}: {
+  documentation = {
+    enable = false;
+    doc.enable = false;
+    man.enable = false;
+    nixos.enable = false;
+  };
+  programs.command-not-found.enable = false;
   programs.nh = {
     enable = true;
     flake = "/home/john/core";
