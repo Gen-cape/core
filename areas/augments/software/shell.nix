@@ -19,6 +19,7 @@ in {
       jk = "jj-fzf";
       cd = "z";
       j = "just";
+      g = "just -g";
 
       switch = "nh os switch ${flakeDir}";
       boot-switch = "nh os boot ${flakeDir} && reboot";
