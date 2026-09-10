@@ -4,7 +4,7 @@
 {
   description = "The heart of my system";
 
-  outputs = {self, ...} @ inputs: import ./outputs.nix {inherit inputs self;};
+  outputs = { self, ... }@inputs: import ./outputs.nix { inherit inputs self; };
 
   inputs = {
     gate = {
@@ -38,13 +38,6 @@
 
     nix-index-db = {
       url = "github:nix-community/nix-index-database";
-    };
-
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
     };
 
     nix-gaming = {

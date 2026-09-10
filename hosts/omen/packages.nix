@@ -2,14 +2,15 @@
   pkgs,
   inputs',
   ...
-}: {
+}:
+{
   programs.gpu-screen-recorder.enable = true;
 
   environment.systemPackages = with pkgs; [
     # inputs'.quickshell.packages.quickshell
     # inputs'.search-flake-inputs.packages.default
     # inputs'.zen-browser.packages.default
-    inputs'.zen-browser.packages.twilight
+    # inputs'.zen-browser.packages.twilight
     inputs'.neovim-riptide.packages.default
     # inputs'.hover-rs.packages.default
     # inputs'.flint.packages.default
