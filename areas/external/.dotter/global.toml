@@ -32,6 +32,9 @@ default_target_type = "symbolic"
 [noctalia.files]
 "noctalia" = "~/.config/noctalia"
 
+[just.files]
+"just" = "~/.config/just"
+
 [bundle]
 depends = [
 		"kanata",
@@ -41,5 +44,6 @@ depends = [
 		"rofi",
 		"mango",
 		"hyprland",
-		"noctalia"
+		"noctalia",
+		"just"
 ] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
