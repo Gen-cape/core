@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   networking = {
     networkmanager.enable = true;
     nameservers = ["1.1.1.1" "1.0.0.1"];
@@ -25,6 +29,7 @@
     enable = true;
     package = pkgs.amnezia-vpn;
   };
+  systemd.services.AmneziaVPN.path = lib.mkAfter [pkgs.iptables pkgs.gawk];
 
   # Zapret DPI Bypass
   services.zapret = {
