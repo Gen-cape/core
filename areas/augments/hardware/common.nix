@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -9,5 +9,13 @@
 
   services.libinput.enable = true;
 
-  environment.systemPackages = [pkgs.brightnessctl];
+  services.earlyoom = {
+    enable = true;
+    freeMemThreshold = 1;
+    enableNotifications = true;
+  };
+
+  systemd.oomd.enable = false;
+
+  environment.systemPackages = [ pkgs.brightnessctl ];
 }
