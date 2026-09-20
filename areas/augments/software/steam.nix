@@ -15,6 +15,4 @@
     remotePlay.openFirewall = true;
     extraCompatPackages = [pkgs.proton-ge-bin];
   };
-
-  environment.systemPackages = [pkgs.mangohud];
 }

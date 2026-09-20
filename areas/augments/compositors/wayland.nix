@@ -11,7 +11,10 @@
     wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config = {
-      common.default = ["wlr" "gtk"];
+      common.default = [
+        "wlr"
+        "gtk"
+      ];
       mango = {
         default = ["gtk"];
         "org.freedesktop.impl.portal.ScreenCast" = "wlr";
@@ -23,12 +26,4 @@
   systemd.user.services.xdg-desktop-portal.unitConfig = {
     Requisite = lib.mkForce [];
   };
-
-  environment.systemPackages = with pkgs; [
-    vesktop
-
-    (discord.override {
-      withOpenASAR = true;
-    })
-  ];
 }

@@ -16,6 +16,4 @@
   };
 
   systemd.oomd.enable = false;
-
-  environment.systemPackages = [ pkgs.brightnessctl ];
 }

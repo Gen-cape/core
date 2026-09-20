@@ -6,17 +6,6 @@
 }: let
   inherit (lib) mkIf optionals concatLists;
 in {
-  home.packages = with pkgs; [
-    grim
-    slurp
-    wl-clipboard
-    wluma
-    hypridle
-    brightnessctl
-    pamixer
-    playerctl
-  ];
-
   home.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
     GDK_BACKEND = "wayland,x11";

@@ -1,9 +1,4 @@
 {pkgs, ...}: {
-  home.packages = [
-    pkgs.fzf
-    pkgs.grc
-    pkgs.fd
-  ];
   programs = {
     fzf = {
       enableFishIntegration = true;

@@ -40,13 +40,4 @@ in {
   };
 
   programs.git.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    eza
-    comma
-    killall
-    tealdeer
-
-    ghostty
-  ];
 }

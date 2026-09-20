@@ -34,11 +34,4 @@
     wlr.enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-wlr];
   };
-
-  environment.systemPackages = with pkgs; [
-    wl-clipboard
-    libnotify
-    foot # or your preferred terminal
-    alacritty
-  ];
 }

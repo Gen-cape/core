@@ -3,36 +3,6 @@
     EDITOR = "nvim";
   };
 
-  home.packages = with pkgs; [
-    # Terminal UI & Tooling
-    neovide
-    gnumake
-    tree-sitter
-    shfmt
-    fixjson
-    nix-init
-
-    # Languages & Toolchains
-    python3
-    python3Packages.pip
-    pyright
-    llvmPackages.clang
-    llvmPackages.lldb
-    llvmPackages.clang-tools
-    lua51Packages.lua
-    luajitPackages.luarocks
-    lua-language-server
-    stylua
-    nixd
-
-    # Typesetting & Documentation
-    typst
-    tinymist
-    typstyle
-    vale
-    mdformat
-  ];
-
   # Nix-Init Configuration
   xdg.configFile."nix-init/config.toml".text = ''
     commit = true

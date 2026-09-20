@@ -3,12 +3,6 @@
   config,
   ...
 }: {
-  home.packages = with pkgs; [
-    fzf
-    grc
-    fd
-  ];
-
   home.sessionVariables = {
     STARSHIP_CACHE = "${config.xdg.cacheHome}/starship";
   };

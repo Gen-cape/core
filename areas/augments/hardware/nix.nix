@@ -17,10 +17,6 @@
 
   programs.nix-ld.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    comma
-  ];
-
   nixpkgs.config = {
     allowUnfree = true;
   };
