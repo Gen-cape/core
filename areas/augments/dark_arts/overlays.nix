@@ -2,12 +2,14 @@
   config,
   pkgs,
   ...
-}: let
-  # amnezia-vpn = final: prev: {
-  #   amnezia-vpn = final.callPackage ./__amnezia-vpn {};
+}:
+let
+  # overlayed-pkg = final: prev: {
+  #   overlayed-pkg = final.callPackage ./__pkg {};
   # };
-in {
-  # nixpkgs.overlays = [
-  #   amnezia-vpn
-  # ];
+in
+{
+  nixpkgs.overlays = [
+    #   overlayed-pkg
+  ];
 }
