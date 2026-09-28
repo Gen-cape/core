@@ -35,6 +35,21 @@ default_target_type = "symbolic"
 [just.files]
 "just" = "~/.config/just"
 
+[fish.files]
+"fish/functions/mkcd.fish" = "~/.config/fish/functions/mkcd.fish"
+
+[kde.files]
+"kde/kdeglobals" = "~/.config/kdeglobals"
+
+[nix-init.files]
+"nix-init/config.toml" = "~/.config/nix-init/config.toml"
+
+[vale.files]
+"vale/.vale.ini" = "~/.config/vale/.vale.ini"
+
+[prettypst.files]
+"prettypst/prettypst.toml" = "~/.config/prettypst/prettypst.toml"
+
 [bundle]
 depends = [
 		"kanata",
@@ -45,5 +60,10 @@ depends = [
 		"mango",
 		"hyprland",
 		"noctalia",
-		"just"
+		"just",
+		"fish",
+        "kde",
+        "nix-init",
+        "vale",
+        "prettypst"
 ] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!

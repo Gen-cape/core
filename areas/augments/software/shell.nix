@@ -26,12 +26,6 @@ in {
       upd = "nix flake update --flake ${flakeDir}";
     };
   };
-  environment.etc."fish/functions/mkcd.fish".text = ''
-    function mkcd
-      mkdir -p $argv[1]
-      and cd $argv[1]
-    end
-  '';
 
   programs.direnv = {
     enable = true;
