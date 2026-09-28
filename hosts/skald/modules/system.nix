@@ -9,11 +9,5 @@
   };
 
   services.flatpak.enable = true;
-  services.input-remapper.enable = true;
   programs.kdeconnect.enable = true;
-
-  security.pam.services.swaylock = {
-    fprintAuth = false;
-  };
-  security.pam.services.hyprlock = {};
 }
