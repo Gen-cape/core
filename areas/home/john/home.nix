@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   home = {
     username = "john";
     homeDirectory = "/home/john";
@@ -6,8 +6,6 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  nix.package = pkgs.lix;
 
   systemd.user.startServices = "sd-switch";
 }

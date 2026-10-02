@@ -12,14 +12,6 @@ default_target_type = "symbolic"
 [ghostty.files]
 "ghostty" = "~/.config/ghostty"
 
-[walls.files]
-"walls/wall.gif" = "~/wall.gif"
-"walls/.current_wallpaper.png" = "~/.current_wallpaper.png"
-"walls/wall.png" = "~/wall.png"
-
-# [makima.files]
-# "makima" = "~/.config/makima"
-
 [direnv.files]
 "misc/direnv.toml" = "~/.config/direnv/direnv.toml"
 
@@ -37,6 +29,10 @@ default_target_type = "symbolic"
 
 [fish.files]
 "fish/functions/mkcd.fish" = "~/.config/fish/functions/mkcd.fish"
+"fish/config.fish" = "~/.config/fish/config.fish"
+
+[starship.files]
+"starship/starship.toml" = "~/.config/starship.toml"
 
 [kde.files]
 "kde/kdeglobals" = "~/.config/kdeglobals"
@@ -50,11 +46,20 @@ default_target_type = "symbolic"
 [prettypst.files]
 "prettypst/prettypst.toml" = "~/.config/prettypst/prettypst.toml"
 
+[alacritty.files]
+"alacritty" = "~/.config/alacritty"
+
+[xdg.files]
+"xdg/mimeapps.list" = "~/.config/mimeapps.list"
+"xdg/xdg-terminals.list" = "~/.config/xdg-terminals.list"
+
+[mpv.files]
+"mpv" = "~/.config/mpv"
+
 [bundle]
 depends = [
 		"kanata",
 		"ghostty",
-		"walls",
 		"direnv",
 		"rofi",
 		"mango",
@@ -62,8 +67,12 @@ depends = [
 		"noctalia",
 		"just",
 		"fish",
+		"starship",
         "kde",
         "nix-init",
         "vale",
-        "prettypst"
+        "prettypst",
+        "alacritty",
+        "xdg",
+        "mpv"
 ] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!

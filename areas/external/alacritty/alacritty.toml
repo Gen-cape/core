@@ -1,0 +1,10 @@
+[general]
+import = ["~/.config/alacritty/themes/noctalia.toml"]
+
+[window]
+opacity = 0.85
+decorations = "None"
+
+[window.padding]
+x = 10
+y = 10

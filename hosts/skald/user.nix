@@ -1,11 +1,5 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  inherit (lib) mkIf optionals concatLists;
-in {
-  config.users.users = {
+{pkgs, ...}: {
+  users.users = {
     john = {
       isNormalUser = true;
       createHome = true;
@@ -15,32 +9,16 @@ in {
 
       initialHashedPassword = "$y$j9T$fKO6wXRW2QGevOeV.bLa0.$ffoiNdmKJnQGUwHrg.12NE6.sFNUu.Fa1kpUvL8aJD/";
 
-      extraGroups = concatLists [
-        [
-          "wheel"
-          "systemd-journal"
-          "audio"
-          "video"
-          "input"
-          "plugdev"
-          "lp"
-          "tss"
-          "power"
-          "nix"
-          "network"
-          "networkmanager"
-          "wireshark"
-          "mysql"
-          "docker"
-          "podman"
-          "git"
-          "libvirtd"
-        ]
-        [
-          "ydotool"
-        ]
+      extraGroups = [
+        "wheel" # sudo, trusted-user Nix
+        "networkmanager" # wifi/vpn toggles without root
+        "i2c" # Vial
+        "video" # Brightness
+        "input" # evtest, kanata, bongo cat
       ];
     };
     root.hashedPassword = "*";
   };
+
+  system.stateVersion = "24.05";
 }

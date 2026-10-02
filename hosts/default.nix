@@ -13,11 +13,7 @@
   mkUserModules = user: gate.importModules {rootPath = areas + "/home/${user}";};
 
   # Reusable module bundles
-  desktopModules =
-    baseAugments
-    ++ [
-      inputs.nix-gaming.nixosModules.pipewireLowLatency
-    ];
+  desktopModules = baseAugments ++ [];
 
   diskoNvme = [
     inputs.disko.nixosModules.disko
@@ -33,15 +29,6 @@ in {
         ++ desktopModules;
     };
 
-    omen = gate.nixos {
-      inherit system inputs;
-      modules =
-        [{networking.hostName = "omen";}]
-        ++ (mkHostModules "omen")
-        ++ desktopModules
-        ++ diskoNvme;
-    };
-
     snake = gate.nixos {
       inherit system inputs;
       modules =
@@ -49,26 +36,10 @@ in {
         ++ (mkHostModules "snake")
         ++ diskoNvme;
     };
-
-    kitsune = gate.nixos {
-      inherit system inputs;
-      modules =
-        [
-          {networking.hostName = "kitsune";}
-          inputs.disko.nixosModules.disko
-        ]
-        ++ (mkHostModules "kitsune");
-    };
   };
 
   homeConfigurations = {
     "john@skald" = gate.homeManager {
-      inherit system inputs;
-      modules =
-        mkUserModules "john";
-    };
-
-    "john@omen" = gate.homeManager {
       inherit system inputs;
       modules =
         mkUserModules "john";

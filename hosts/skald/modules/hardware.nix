@@ -1,20 +1,10 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  services.xserver.videoDrivers = lib.mkDefault ["modesetting"];
-  hardware.amdgpu.initrd.enable = lib.mkDefault true;
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
+{pkgs, ...}: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
   };
   services.blueman.enable = true;
+
   hardware.opentabletdriver = {
     enable = true;
     daemon.enable = true;
@@ -28,17 +18,16 @@
     packages = with pkgs; [via vial];
   };
 
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
-
-  environment.systemPackages = with pkgs; [vial];
-  zramSwap.enable = true;
   swapDevices = [
     {
       device = "/var/lib/swapfile";
       size = 8 * 1024; # in megabytes
+      priority = 0;
     }
   ];
+
+  programs.kdeconnect.enable = true;
+
+  # Webcam killswitch
+  boot.blacklistedKernelModules = ["uvcvideo"];
 }
