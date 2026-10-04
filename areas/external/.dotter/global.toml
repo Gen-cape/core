@@ -56,6 +56,9 @@ default_target_type = "symbolic"
 [mpv.files]
 "mpv" = "~/.config/mpv"
 
+[zathura.files]
+"zathura" = "~/.config/zathura"
+
 [bundle]
 depends = [
 		"kanata",
@@ -74,5 +77,6 @@ depends = [
         "prettypst",
         "alacritty",
         "xdg",
-        "mpv"
+        "mpv",
+        "zathura"
 ] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
