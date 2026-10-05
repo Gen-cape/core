@@ -26,6 +26,9 @@
   nix = {
     package = pkgs.lix;
 
+    channel.enable = false;
+    settings.nix-path = [ "nixpkgs=flake:nixpkgs" ];
+
     daemonCPUSchedPolicy = "batch";
     daemonIOSchedClass = "best-effort";
     daemonIOSchedPriority = 7;
