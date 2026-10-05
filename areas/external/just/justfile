@@ -1,0 +1,39 @@
+export NIXPKGS_ALLOW_UNFREE := "1"
+
+# Drop into a temporary shell with one or more packages
+shell +packages:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    pkgs=()
+    for p in {{packages}}; do
+        pkgs+=("nixpkgs#$p")
+    done
+    nix shell --impure "${pkgs[@]}"
+
+# Install one or more packages via nix profile
+install +packages:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    pkgs=()
+    for p in {{packages}}; do
+        pkgs+=("nixpkgs#$p")
+    done
+    nix profile install --impure "${pkgs[@]}"
+
+# Upgrade packages in your profile (upgrades all if no package is specified)
+upgrade *packages:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    if [ -z "{{packages}}" ]; then
+        nix profile upgrade --impure '.*'
+    else
+        pkgs=()
+        for p in {{packages}}; do
+            pkgs+=("nixpkgs#$p")
+        done
+        nix profile upgrade --impure "${pkgs[@]}"
+    fi
+
+# Run a single package with optional arguments
+run package *args:
+    nix run --impure "nixpkgs#{{package}}" -- {{args}}
