@@ -1,6 +1,8 @@
 # Disable welcome greeting
 set -g fish_greeting
 
+set -gx EDITOR nvim
+
 zoxide init fish | source
 
 # Hook Starship prompt
