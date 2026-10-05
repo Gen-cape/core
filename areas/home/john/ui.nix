@@ -7,6 +7,8 @@
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    EDITOR = "nvim";
+    NIX_AUTO_RUN = "1";
   };
 
   home.pointerCursor = {
