@@ -10,6 +10,7 @@ vim.g.loaded_netrw, vim.g.loaded_netrwPlugin = 1, 1
 vim.opt.clipboard, vim.opt.undofile = "unnamedplus", true
 vim.opt.number, vim.opt.relativenumber = true, true
 vim.opt.shiftwidth, vim.opt.expandtab = 4, true
+vim.opt.autoindent, vim.opt.smartindent = true, true
 vim.opt.shortmess:append("I")
 
 vim.lsp.enable({ "nixd", "lua_ls", "rust_analyzer" })
