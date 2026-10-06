@@ -13,17 +13,6 @@ vim.opt.shiftwidth, vim.opt.expandtab = 4, true
 vim.opt.autoindent, vim.opt.smartindent = true, true
 vim.opt.shortmess:append("I")
 
-vim.lsp.enable({ "nixd", "lua_ls", "rust_analyzer" })
-vim.lsp.inlay_hint.enable(true)
-vim.lsp.config("nixd", {
-    settings = {
-        nixd = {
-            formatting = {
-                command = { "alejandra" },
-            },
-        },
-    },
-})
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function() vim.lsp.buf.format({ timeout_ms = 500 }) end,
 })
@@ -31,10 +20,38 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 require("lazy").setup({
     {
         "neovim/nvim-lspconfig",
-        dependencies = { "Saghen/blink.cmp" },
+        dependencies = { "saghen/blink.cmp" },
         config = function()
+            vim.lsp.config("*", {
+                capabilities = require("blink.cmp").get_lsp_capabilities(),
+            })
+
+            vim.lsp.config.nixd = {
+                settings = {
+                    nixd = {
+                        nixpkgs = { expr = "import <nixpkgs> {}" },
+                        formatting = { command = { "alejandra" } },
+                    },
+                },
+            }
+
+            for _, s in ipairs({ "nixd", "lua_ls", "rust_analyzer" }) do
+                vim.lsp.enable(s)
+            end
+            vim.lsp.inlay_hint.enable(true)
         end,
     },
+    {
+        "saghen/blink.cmp",
+        version = "1.*",
+        opts = {
+            keymap = { preset = "default" },
+            sources = { default = { "lsp", "path", "snippets", "buffer" } },
+        },
+    },
+    { "echasnovski/mini.pairs",    opts = {} },
+    { "echasnovski/mini.icons",    opts = {} },
+    { "echasnovski/mini.surround", version = "*", opts = {} },
     {
         "EdenEast/nightfox.nvim",
         priority = 1000,
@@ -54,16 +71,6 @@ require("lazy").setup({
         end,
     },
     {
-        "Saghen/blink.cmp",
-        version = "*",
-        opts = { keymap = { preset = "default" } },
-        config = function(_, opts)
-            require("blink.cmp").setup(opts)
-            vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities() })
-        end,
-    },
-    { "echasnovski/mini.icons",    opts = {} },
-    {
         "FylerOrg/fyler.nvim",
         opts = {},
         keys = { { "-", "<cmd>Fyler<cr>" } },
@@ -76,14 +83,13 @@ require("lazy").setup({
             })
         end,
     },
-    { "echasnovski/mini.surround", version = "*", opts = {} },
     {
         "folke/flash.nvim",
         event = "VeryLazy",
         opts = {},
         keys = {
             { "<leader><space>", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
-            { "<C-Space>",       mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+            { "<leader>c",       mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
         },
     },
     {
