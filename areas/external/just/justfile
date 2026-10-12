@@ -27,11 +27,7 @@ upgrade *packages:
     if [ -z "{{packages}}" ]; then
         nix profile upgrade --impure '.*'
     else
-        pkgs=()
-        for p in {{packages}}; do
-            pkgs+=("nixpkgs#$p")
-        done
-        nix profile upgrade --impure "${pkgs[@]}"
+        nix profile upgrade --impure {{packages}}
     fi
 
 # Run a single package with optional arguments
