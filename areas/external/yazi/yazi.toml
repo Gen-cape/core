@@ -1,0 +1,21 @@
+[mgr]
+ratio          = [ 1, 4, 3 ]
+sort_by        = "alphabetical"
+sort_sensitive = false
+sort_reverse   = false
+sort_dir_first = true
+show_hidden    = false
+
+[opener]
+edit = [
+  { run = "nvim %s", block = true, for = "unix", desc = "Neovim" },
+]
+
+[open]
+prepend_rules = [
+  { mime = "inode/directory", use = [ "edit" ] },
+  { mime = "text/*",          use = [ "edit" ] },
+  { mime = "*/javascript",    use = [ "edit" ] },
+  { mime = "application/{json,ndjson,toml,yaml,x-sh}", use = [ "edit" ] },
+  { url  = "*",               use = [ "edit" ] },
+]

@@ -1,0 +1,9 @@
+[[mgr.prepend_keymap]]
+on   = [ "<C-n>" ]
+run  = "plugin ripdrag"
+desc = "Ripdrag: drag selected/hovered files"
+
+[[mgr.prepend_keymap]]
+on   = [ "<C-A-n>" ]
+run  = "plugin ripdrag -- --all-compact"
+desc = "Ripdrag: drag all selected files as a single bundle"

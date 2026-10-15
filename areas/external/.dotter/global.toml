@@ -62,18 +62,21 @@ default_target_type = "symbolic"
 [nvim.files]
 "nvim" = "~/.config/nvim"
 
+[yazi.files]
+"yazi" = "~/.config/yazi"
+
 [bundle]
 depends = [
-		"kanata",
-		"ghostty",
-		"direnv",
-		"rofi",
-		"mango",
-		"hyprland",
-		"noctalia",
-		"just",
-		"fish",
-		"starship",
+	"kanata",
+	"ghostty",
+	"direnv",
+	"rofi",
+	"mango",
+	"hyprland",
+	"noctalia",
+	"just",
+	"fish",
+	"starship",
         "kde",
         "nix-init",
         "vale",
@@ -82,5 +85,6 @@ depends = [
         "xdg",
         "mpv",
         "zathura",
-        "nvim"
+        "nvim",
+        "yazi"
 ] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
