@@ -73,13 +73,20 @@ require("lazy").setup({
     },
     {
         "FylerOrg/fyler.nvim",
-        opts = {},
-        keys = { { "-", "<cmd>Fyler<cr>" } },
+        lazy = false,
+        opts = { views = { finder = { default_explorer = true, }, }, },
+        keys = {
+            { "-", "<cmd>Fyler<cr>", desc = "Open Fyler" },
+        },
         init = function()
             vim.api.nvim_create_autocmd("VimEnter", {
                 callback = function()
                     local p = vim.fn.argv(0)
-                    if vim.fn.isdirectory(p) == 1 then require("fyler").open({ root_path = vim.fn.fnamemodify(p, ":p") }) end
+                    if p ~= "" and vim.fn.isdirectory(p) == 1 then
+                        local full_dir = vim.fn.fnamemodify(p, ":p")
+                        vim.cmd.cd(full_dir)
+                        require("fyler").open({ dir = full_dir })
+                    end
                 end,
             })
         end,
