@@ -121,7 +121,7 @@ duration_ms = 400
 # Extra App / Panel Binds
 "Mod+Z" = { action = "spawn:alacritty", repeat = false }
 "Mod+X" = { action = "spawn:noctalia msg panel-toggle noctalia/notes:panel", repeat = false }
-"Mod+I" = { action = "spawn:noctalia msg panel-toggle reaperhound/ambient-sounds:main", repeat = false }
+"Mod+I" = { action = "spawn:noctalia msg plugin alexander/screen-toolkit:service all toggle", repeat = false }
 
 # Screenshots & Annotations
 "Mod+Alt+S" = { action = "spawn:noctalia msg screenshot-fullscreen", repeat = false }
