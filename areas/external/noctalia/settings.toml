@@ -8,64 +8,59 @@ enable_overdrive = true
 
 [bar.default]
 capsule = true
+center = [ "group:g4", "clock", "cat", "notifications" ]
 concave_edge_corners = false
+end = [ "group:g2", "network", "battery", "group:g3" ]
 font_family = "DepartureMono Nerd Font Mono"
 padding = 10
 radius = 8
-thickness = 28
 start = [ "launcher", "bar", "workspaces", "group:g1" ]
-center = [ "group:g4", "clock", "cat", "notifications" ]
-end = [ "group:g2", "network", "battery", "group:g3" ]
+thickness = 28
 
-    # Creative, Notes & Wallpaper Tools
     [[bar.default.capsule_group]]
-    id = "g1"
-    enabled = true
     accordion = true
     accordion_direction = "end"
     border_width = 1.5
+    enabled = true
     fill = "surface_variant"
-    opacity = 0.78
-    padding = 6.0
+    id = "g1"
     members = [ "notes", "wallpaper", "wallhaven", "kaomoji", "ambient-sounds" ]
+    opacity = 0.78000000000000003
+    padding = 6.0
 
-    # Hardware & Audio Controls
     [[bar.default.capsule_group]]
-    id = "g2"
-    enabled = true
     accordion = true
     accordion_direction = "start"
     border_width = 1.5
+    enabled = true
     fill = "surface_variant"
-    opacity = 0.78
-    padding = 6.0
+    id = "g2"
     members = [ "volume", "input_volume", "brightness", "bluetooth", "power_profile", "indicator" ]
+    opacity = 0.78000000000000003
+    padding = 6.0
 
-    # System Tray & Session
     [[bar.default.capsule_group]]
-    id = "g3"
-    enabled = true
     accordion = true
     accordion_direction = "start"
     border_width = 1.5
-    fill = "secondary"
-    foreground = "on_secondary"
-    opacity = 0.85
-    padding = 6.0
-    members = [ "tray", "session", "control-center" ]
-
-    # Dynamic Media Island (Always expanded, hides when idle)
-    [[bar.default.capsule_group]]
-    id = "g4"
     enabled = true
+    fill = "surface_variant"
+    foreground = "on_secondary"
+    id = "g3"
+    members = [ "tray", "session", "control-center" ]
+    opacity = 0.84999999999999998
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
     accordion = false
     accordion_direction = "end"
     border_width = 1.5
-    fill = "primary"
-    foreground = "on_primary"
-    opacity = 0.85
-    padding = 6.0
+    enabled = true
+    fill = "surface_variant"
+    id = "g4"
     members = [ "media", "audio_visualizer" ]
+    opacity = 0.84999999999999998
+    padding = 6.0
 
 [desktop_widgets]
 schema_version = 2
@@ -86,22 +81,20 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     enabled = true
     timeout = 600.0
 
-    [idle.behavior.screen-off]
-    action = "screen_off"
-    enabled = true
-    timeout = 660.0
-
     [idle.behavior.lock-and-suspend]
     action = "lock_and_suspend"
     enabled = true
     timeout = 900.0
 
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [
-    "lockscreen-login-box@eDP-1"
-]
+widget_order = [ "lockscreen-login-box@eDP-1" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -218,13 +211,12 @@ type = "noctalia/umbriel-companion:bar"
 input_devices = [ "/dev/input/by-path/platform-i8042-serio-0-event-kbd" ]
 type = "noctalia/bongocat:cat"
 
-
 [widget.clock]
 anchor = true
 color = "#ECE5D8"
 format = "⟨ %a ✦ %d %b ⟩ ∷「%H:%M」//·"
 icon_color = "#E3B342"
-scale = 1.15
+scale = 1.1499999999999999
 
 [widget.control-center]
 glyph = "snowflake"
