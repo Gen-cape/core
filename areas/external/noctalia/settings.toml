@@ -147,6 +147,10 @@ enabled = [
 font_family = "DepartureMono Nerd Font Mono"
 polkit_agent = true
 
+    [shell.launcher]
+    category_icons_only = true
+    layout = "simple"
+
     [shell.panel]
     transparency_mode = "glass"
 
