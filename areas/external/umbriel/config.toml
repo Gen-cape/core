@@ -1,0 +1,180 @@
+[include.optional]
+files = [
+  "~/.config/umbriel/noctalia.toml",
+]
+
+[general]
+mod_key = "Super"
+autostart = [
+  "noctalia",
+  "wl-clip-persist --clipboard regular",
+  "sh -c 'echo \"Xft.dpi: 154\" | xrdb -merge'",
+]
+xwayland = true
+xwayland_native_resolution = true
+show_cheatsheet = false
+
+[environment]
+GDK_BACKEND = "wayland,x11"
+QT_QPA_PLATFORM = "wayland;xcb"
+MOZ_ENABLE_WAYLAND = "1"
+ELECTRON_OZONE_PLATFORM_HINT = "auto"
+
+[output.eDP-1]
+scale = 1.6
+vrr = "always" # Options: "disabled", "always", or "fullscreen"
+
+[input.keyboard]
+layout = "us,ru"
+options = "grp:win_space_toggle"
+repeat_rate = 50
+repeat_delay = 300
+
+[input.mouse]
+sensitivity = 0.6
+
+[input.touchpad]
+tap = true
+natural_scroll = true
+sensitivity = 0.6
+scroll_factor = 0.422
+disable_while_typing = false
+
+[layout]
+mode = "scrolling"
+gap = 5
+extent_presets = [0.333, 0.5, 0.667]
+
+[layout.struts]
+left = 22
+right = 22
+top = 12
+bottom = 12
+
+[layout.scrolling]
+default_extent_fraction = 0.5
+center_underfull_strip = true
+center_focused = "never" # Options: "never", "on_overflow", "always"
+
+[appearance]
+prefer_no_csd = true
+border_width = 2
+corner_radius = 13
+opaque_fullscreen = true
+
+[appearance.blur]
+enabled = true
+optimized = true
+passes = 3
+
+[appearance.shadow]
+enabled = true
+softness = 10
+
+[animation]
+enabled = true
+duration_ms = 250
+curve = "easeout"
+
+[animation.windows_in]
+enabled = true
+style = "slide"
+duration_ms = 400
+
+[keybinds]
+# Core Apps & Actions
+"Mod+Ctrl+S" = { action = "spawn:sh -c 'satty-screenshot'", repeat = false }
+"Mod+Shift+G" = { action = "workspace-set-layout:toggle", repeat = false }
+"Mod+W" = "window-focus-next"
+"Mod+S" = "window-focus-previous"
+"Mod+P" = "window-toggle-floating"
+"Mod+Shift+S" = { action = "spawn:noctalia msg screenshot-region", repeat = false }
+"Mod+Shift+E" = { action = "spawn:noctalia msg panel-toggle clipboard", repeat = false }
+"Mod+Shift+C" = { action = "spawn:noctalia msg bar-toggle default", repeat = false }
+"Mod+B" = { action = "spawn:alacritty -e btop", repeat = false }
+"Mod+Return" = { action = "spawn:alacritty", repeat = false }
+"Mod+Shift+Q" = { action = "window-close", repeat = false }
+"Mod+V" = "window-toggle-floating"
+"Mod+F" = "window-toggle-fullscreen"
+"Mod+R" = { action = "spawn:noctalia msg panel-toggle launcher", repeat = false }
+"Mod+T" = { action = "config-reload", repeat = false }
+"Mod+E" = { action = "spawn:ghostty -e yazi", repeat = false }
+"Mod+O" = { action = "spawn:alacritty -e nvim ~/.config/umbriel/config.toml", repeat = false }
+
+# Directional Focus & Scrolling Strip Navigation
+"Mod+Left" = "window-focus-left"
+"Mod+Right" = "window-focus-right"
+"Mod+Up" = "window-focus-up"
+"Mod+Down" = "window-focus-down"
+
+# Useful Scrolling Layout additions (wheel & column sizing)
+"Mod+WheelUp" = "window-focus-left"
+"Mod+WheelDown" = "window-focus-right"
+"Mod+Shift+WheelUp" = "column-move-left"
+"Mod+Shift+WheelDown" = "column-move-right"
+"Mod+MouseMiddle" = "layout-scroll-drag"
+
+# Extra App / Panel Binds
+"Mod+Z" = { action = "spawn:alacritty", repeat = false }
+"Mod+X" = { action = "spawn:noctalia msg panel-toggle noctalia/notes:panel", repeat = false }
+
+# Screenshots & Annotations
+"Mod+Alt+S" = { action = "spawn:noctalia msg screenshot-fullscreen", repeat = false }
+"Mod+Shift+A" = { action = "spawn:noctalia msg screenshot-annotate", repeat = false }
+"Mod+I" = { action = "spawn:noctalia msg plugin alexander/screen-toolkit:service all toggle", repeat = false }
+
+# Session / Power Menu
+"Mod+Escape" = { action = "spawn:noctalia msg panel-toggle session", repeat = false }
+
+# Overview
+"Mod+Tab" = { action = "overview-toggle", repeat = false }
+"Mod+C" = {action = "cheatsheet-toggle", repeat = false}
+"Mod+Shift+P" = { action = "spawn:sh -c 'spam'", repeat = false }
+
+# Workspaces (1-9)
+"Mod+1" = "workspace-switch:1"
+"Mod+2" = "workspace-switch:2"
+"Mod+3" = "workspace-switch:3"
+"Mod+4" = "workspace-switch:4"
+"Mod+5" = "workspace-switch:5"
+"Mod+6" = "workspace-switch:6"
+"Mod+7" = "workspace-switch:7"
+"Mod+8" = "workspace-switch:8"
+"Mod+9" = "workspace-switch:9"
+
+# Scratchpad
+"Mod+D" = "scratchpad-toggle"              # Index finger: Show/hide scratchpad
+"Mod+Shift+D" = "window-toggle-scratchpad" # Stash focused window OR restore it to workspace
+"Mod+A" = "scratchpad-window-show-next"    # Ring finger: Cycle stored windows one by one
+
+# Move Window to Workspace
+"Mod+Shift+1" = "window-move-to-workspace-silent:1"
+"Mod+Shift+2" = "window-move-to-workspace-silent:2"
+"Mod+Shift+3" = "window-move-to-workspace-silent:3"
+"Mod+Shift+4" = "window-move-to-workspace-silent:4"
+"Mod+Shift+5" = "window-move-to-workspace-silent:5"
+"Mod+Shift+6" = "window-move-to-workspace-silent:6"
+"Mod+Shift+7" = "window-move-to-workspace-silent:7"
+"Mod+Shift+8" = "window-move-to-workspace-silent:8"
+"Mod+Shift+9" = "window-move-to-workspace-silent:9"
+
+# Hijacker Controls
+"Mod+Alt+H" = { action = "spawn:sh -c 'hijacker-ctl toggle'", repeat = false }
+"Mod+Alt+0" = { action = "spawn:pkill hijacker", repeat = false }
+"Mod+Alt+1" = { action = "spawn:sh -c 'hijacker-ctl clever-play 1'", repeat = false }
+"Mod+Alt+2" = { action = "spawn:sh -c 'hijacker-ctl clever-play 2'", repeat = false }
+"Mod+Alt+3" = { action = "spawn:sh -c 'hijacker-ctl clever-play 3'", repeat = false }
+"Mod+Alt+4" = { action = "spawn:sh -c 'hijacker-ctl clever-play 4'", repeat = false }
+"Mod+Alt+5" = { action = "spawn:sh -c 'hijacker-ctl clever-play 5'", repeat = false }
+"Mod+Alt+6" = { action = "spawn:sh -c 'hijacker-ctl clever-play 6'", repeat = false }
+"Mod+Alt+7" = { action = "spawn:sh -c 'hijacker-ctl clever-play 7'", repeat = false }
+"Mod+Alt+8" = { action = "spawn:sh -c 'hijacker-ctl clever-play 8'", repeat = false }
+"Mod+Alt+9" = { action = "spawn:sh -c 'hijacker-ctl clever-play 9'", repeat = false }
+
+# Media / Brightness Controls
+"XF86AudioRaiseVolume" = "spawn:pamixer -i 5 --allow-boost --set-limit 200"
+"XF86AudioLowerVolume" = "spawn:pamixer -d 5 --allow-boost --set-limit 200"
+"XF86AudioMute" = { action = "spawn:pamixer -t", repeat = false }
+"XF86MonBrightnessUp" = "spawn:brightnessctl -c backlight s 5%+"
+"XF86MonBrightnessDown" = "spawn:brightnessctl -c backlight s 5%-"
+"Print" = { action = "spawn:sh -c 'grim - | wl-copy'", repeat = false }

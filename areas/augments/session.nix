@@ -45,6 +45,7 @@
       };
     };
   };
+  programs.umbriel.enable = true;
 
   programs.noctalia = {
     enable = true;

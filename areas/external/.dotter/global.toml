@@ -65,6 +65,9 @@ default_target_type = "symbolic"
 [yazi.files]
 "yazi" = "~/.config/yazi"
 
+[umbriel.files]
+"umbriel" = "~/.config/umbriel"
+
 [bundle]
 depends = [
 	"kanata",
@@ -86,5 +89,6 @@ depends = [
         "mpv",
         "zathura",
         "nvim",
-        "yazi"
+        "yazi",
+        "umbriel"
 ] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
