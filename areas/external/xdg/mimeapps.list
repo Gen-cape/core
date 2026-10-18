@@ -42,6 +42,8 @@ audio/opus=org.gnome.Decibels.desktop
 audio/mp3=org.gnome.Decibels.desktop
 audio/webm=org.gnome.Decibels.desktop
 x-scheme-handler/affine=affine.desktop
+x-scheme-handler/obsidian=md.obsidian.Obsidian.desktop
 
 [Added Associations]
 x-scheme-handler/affine=affine.desktop;
+x-scheme-handler/obsidian=md.obsidian.Obsidian.desktop;
