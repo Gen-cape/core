@@ -152,6 +152,9 @@ polkit_agent = true
     [shell.panel]
     transparency_mode = "glass"
 
+    [shell.screenshot]
+    directory = "/home/john/Pictures/screenshots"
+
 [theme]
 builtin = "Catppuccin"
 community_palette = "Catppuccin Frappe Rosewater"
