@@ -1,65 +1,71 @@
 config_version = 15
 
 [accessibility]
-ui_scale = 1.2000000104308128
+ui_scale = 1.2
 
 [audio]
 enable_overdrive = true
 
 [bar.default]
 capsule = true
-center = [ "clock", "cat" ]
 concave_edge_corners = false
-end = [ "network", "battery", "group:g3" ]
 font_family = "DepartureMono Nerd Font Mono"
-padding = 12
-radius = 40
-start = [ "group:g1", "bar", "workspaces", "group:g2", "group:g4" ]
-thickness = 24
+padding = 10
+radius = 8
+thickness = 28
+start = [ "launcher", "bar", "workspaces", "group:g1" ]
+center = [ "group:g4", "clock", "cat", "notifications" ]
+end = [ "group:g2", "network", "battery", "group:g3" ]
 
+    # Creative, Notes & Wallpaper Tools
     [[bar.default.capsule_group]]
-    accordion = true
-    accordion_direction = "end"
-    border_width = 1.0
-    enabled = true
-    fill = "surface_variant"
     id = "g1"
-    members = [ "launcher", "wallpaper", "power_profile", "indicator", "notes", "bluetooth", "brightness", "wallhaven" ]
-    opacity = 1.0
-    padding = 6.0
-
-    [[bar.default.capsule_group]]
+    enabled = true
     accordion = true
     accordion_direction = "end"
-    border_width = 1.0
-    enabled = true
+    border_width = 1.5
     fill = "surface_variant"
-    id = "g2"
-    members = [ "input_volume", "volume" ]
-    opacity = 1.0
+    opacity = 0.78
     padding = 6.0
+    members = [ "notes", "wallpaper", "wallhaven", "kaomoji", "ambient-sounds" ]
 
+    # Hardware & Audio Controls
     [[bar.default.capsule_group]]
+    id = "g2"
+    enabled = true
     accordion = true
     accordion_direction = "start"
-    border_width = 1.0
-    enabled = true
+    border_width = 1.5
     fill = "surface_variant"
-    id = "g3"
-    members = [ "tray", "session", "control-center" ]
-    opacity = 1.0
+    opacity = 0.78
     padding = 6.0
+    members = [ "volume", "input_volume", "brightness", "bluetooth", "power_profile", "indicator" ]
 
+    # System Tray & Session
     [[bar.default.capsule_group]]
-    accordion = true
-    accordion_direction = "end"
-    border_width = 1.0
+    id = "g3"
     enabled = true
-    fill = "surface_variant"
-    id = "g4"
-    members = [ "media", "audio_visualizer" ]
-    opacity = 1.0
+    accordion = true
+    accordion_direction = "start"
+    border_width = 1.5
+    fill = "secondary"
+    foreground = "on_secondary"
+    opacity = 0.85
     padding = 6.0
+    members = [ "tray", "session", "control-center" ]
+
+    # Dynamic Media Island (Always expanded, hides when idle)
+    [[bar.default.capsule_group]]
+    id = "g4"
+    enabled = true
+    accordion = false
+    accordion_direction = "end"
+    border_width = 1.5
+    fill = "primary"
+    foreground = "on_primary"
+    opacity = 0.85
+    padding = 6.0
+    members = [ "media", "audio_visualizer" ]
 
 [desktop_widgets]
 schema_version = 2
@@ -80,31 +86,20 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     enabled = true
     timeout = 600.0
 
-    [idle.behavior.lock-and-suspend]
-    action = "lock_and_suspend"
-    enabled = true
-    timeout = 900.0
-
     [idle.behavior.screen-off]
     action = "screen_off"
     enabled = true
     timeout = 660.0
 
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
 widget_order = [
-    "lockscreen-login-box@WAYLAND-1",
-    "lockscreen-login-box@HEADLESS-10",
-    "lockscreen-login-box@HEADLESS-9",
-    "lockscreen-login-box@HEADLESS-8",
-    "lockscreen-login-box@HEADLESS-7",
-    "lockscreen-login-box@HEADLESS-6",
-    "lockscreen-login-box@HEADLESS-5",
-    "lockscreen-login-box@HEADLESS-4",
-    "lockscreen-login-box@HEADLESS-3",
-    "lockscreen-login-box@HEADLESS-2",
-    "lockscreen-login-box@HEADLESS-1",
     "lockscreen-login-box@eDP-1"
 ]
 
@@ -113,318 +108,10 @@ widget_order = [
     major_interval = 4
     visible = true
 
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-1"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 600.0
-    cy = 447.5
-    output = "HEADLESS-1"
-    placement_height = 675.0
-    placement_width = 1200.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-10"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 898.0
-    output = "HEADLESS-10"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-10".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-2"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 600.0
-    cy = 447.5
-    output = "HEADLESS-2"
-    placement_height = 675.0
-    placement_width = 1200.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-2".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-3"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 600.0
-    cy = 447.5
-    output = "HEADLESS-3"
-    placement_height = 675.0
-    placement_width = 1200.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-3".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-4"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 600.0
-    cy = 447.5
-    output = "HEADLESS-4"
-    placement_height = 675.0
-    placement_width = 1200.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-4".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-5"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 898.0
-    output = "HEADLESS-5"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-5".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-6"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 898.0
-    output = "HEADLESS-6"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-6".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-7"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 898.0
-    output = "HEADLESS-7"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-7".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-8"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 898.0
-    output = "HEADLESS-8"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-8".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-9"]
-    box_height = 196.0
-    box_width = 810.0
-    cx = 960.0
-    cy = 898.0
-    output = "HEADLESS-9"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@HEADLESS-9".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
-    [lockscreen_widgets.widget."lockscreen-login-box@WAYLAND-1"]
-    box_height = 196.0
-    box_width = 720.0
-    cx = 320.0
-    cy = 178.0
-    output = "WAYLAND-1"
-    placement_height = 360.0
-    placement_width = 640.0
-    rotation = 0.0
-    type = "login_box"
-
-        [lockscreen_widgets.widget."lockscreen-login-box@WAYLAND-1".settings]
-        background_color = "surface_variant"
-        background_opacity = 0.88
-        background_radius = 12.0
-        center_password_text = false
-        input_opacity = 1.0
-        input_radius = 6.0
-        layout = "regular"
-        show_caps_lock = true
-        show_keyboard_layout = true
-        show_login_button = true
-        show_media = true
-        show_password_reveal = true
-        show_session_buttons = true
-        show_unlock_hint = true
-        show_weather = true
-
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 196.0
     box_width = 810.0
-    cx = 1000.0000610351562
+    cx = 1000.0
     cy = 1136.25
     output = "eDP-1"
     placement_height = 1250.0
@@ -518,8 +205,11 @@ path = "/home/john/Pictures/wallhaven-vp23lp.png"
 [wallpaper.monitors.eDP-1]
 path = "/home/john/Pictures/wallhaven-vp23lp.png"
 
+[widget.ambient-sounds]
+type = "reaperhound/ambient-sounds:ambient-sounds"
+
 [widget.audio_visualizer]
-enabled = false
+enabled = true
 
 [widget.bar]
 type = "noctalia/umbriel-companion:bar"
@@ -528,21 +218,22 @@ type = "noctalia/umbriel-companion:bar"
 input_devices = [ "/dev/input/by-path/platform-i8042-serio-0-event-kbd" ]
 type = "noctalia/bongocat:cat"
 
-[widget.cat1]
-type = "noctalia/bongocat:cat"
 
 [widget.clock]
 anchor = true
 color = "#ECE5D8"
-format = "⟨ %a ✦ %d %b ⟩ ·「%H:%M」"
+format = "⟨ %a ✦ %d %b ⟩ ∷「%H:%M」//·"
 icon_color = "#E3B342"
-scale = 1.2
+scale = 1.15
 
 [widget.control-center]
 glyph = "snowflake"
 
 [widget.indicator]
 type = "detluck/performance-plus:indicator"
+
+[widget.kaomoji]
+type = "noctalia/kaomoji:kaomoji"
 
 [widget.media]
 hide_when_no_media = true
@@ -561,5 +252,5 @@ hide_when_no_unread = true
 type = "noctalia/wallhaven:wallhaven"
 
 [widget.workspaces]
-labels_only_when_occupied = true
+labels_only_when_occupied = false
 style = "focus_hint"
