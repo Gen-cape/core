@@ -23,6 +23,7 @@ default_target_type = "symbolic"
 
 [noctalia.files]
 "noctalia" = "~/.config/noctalia"
+"./noctalia" = "~/.local/state/noctalia" # This trick OMG. ./././././ for more chains
 
 [just.files]
 "just" = "~/.config/just"
