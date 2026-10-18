@@ -52,7 +52,7 @@ top = 12
 bottom = 12
 
 [layout.scrolling]
-default_extent_fraction = 0.5
+default_extent_fraction = 0.667 # how much space for new window, 2/3
 center_underfull_strip = true
 center_focused = "never" # Options: "never", "on_overflow", "always"
 
