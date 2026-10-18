@@ -7,7 +7,7 @@
       owner = "Aleph1-9012";
       repo = "Sidonia";
       rev = "ecc568e5dc45996e287ff19bf245569744e7e941";
-      hash = "sha256-9gnLWD0cT/rz5oGbsnBi9ky5NG2ELkFgV5Lrr0gCXnA=";
+      hash = "sha256-DDvIr86GWdc60XRsHYtHzfAJybktDWoPG2qc74PB8nY=";
     };
 
     dontBuild = true;
