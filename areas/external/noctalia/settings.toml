@@ -137,9 +137,7 @@ enabled = [
     "noctalia/bongocat",
     "noctalia/notes",
     "detluck/performance-plus",
-    "noctalia/umbriel-companion",
     "noctalia/kaomoji",
-    "reaperhound/ambient-sounds",
     "noctalia/wallhaven"
 ]
 
