@@ -138,7 +138,8 @@ enabled = [
     "noctalia/notes",
     "detluck/performance-plus",
     "noctalia/kaomoji",
-    "noctalia/wallhaven"
+    "noctalia/wallhaven",
+    "alexander/screen-toolkit"
 ]
 
 [shell]
