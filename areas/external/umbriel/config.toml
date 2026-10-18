@@ -56,6 +56,10 @@ default_extent_fraction = 0.667 # how much space for new window, 2/3
 center_underfull_strip = true
 center_focused = "never" # Options: "never", "on_overflow", "always"
 
+[layout.master]
+position = "right"
+new_becomes_master = true
+
 [appearance]
 prefer_no_csd = true
 border_width = 2
