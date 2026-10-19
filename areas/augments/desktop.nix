@@ -61,6 +61,17 @@
 
   # Usb mounting
   services.udisks2.enable = true;
+  systemd.user.services.udiskie = {
+    description = "udiskie automount daemon";
+    wantedBy = ["graphical-session.target"];
+    partOf = ["graphical-session.target"];
+    after = ["graphical-session.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.udiskie}/bin/udiskie --automount --notify --smart-tray --appindicator";
+      Restart = "on-failure";
+      RestartSec = "5";
+    };
+  };
 
   hardware.graphics = {
     enable = true;
