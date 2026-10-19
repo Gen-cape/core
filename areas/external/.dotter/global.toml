@@ -1,95 +1,36 @@
 # Path to your dotfile directory containing this config file (relative to $HOME) is: core/areas/external
+# left = what, right = where to.
 
 [settings]
 default_target_type = "symbolic"
 
-[mango.files]
+[main.files]
 "mango" = "~/.config/mango/"
-
-[kanata.files]
 "kanata" = "~/.config/kanata"
-
-[ghostty.files]
 "ghostty" = "~/.config/ghostty"
-
-[direnv.files]
 "misc/direnv.toml" = "~/.config/direnv/direnv.toml"
-
-[rofi.files]
 "rofi" = "~/.config/rofi"
-
-[hyprland.files]
 "hyprland" = "~/.config/hypr"
-
-[noctalia.files]
 "noctalia" = "~/.config/noctalia"
 "./noctalia" = "~/.local/state/noctalia" # This trick OMG. ./././././ for more chains
-
-[just.files]
 "just" = "~/.config/just"
-
-[fish.files]
 "fish/functions/mkcd.fish" = "~/.config/fish/functions/mkcd.fish"
 "fish/config.fish" = "~/.config/fish/config.fish"
-
-[starship.files]
 "starship/starship.toml" = "~/.config/starship.toml"
-
-[kde.files]
 "kde/kdeglobals" = "~/.config/kdeglobals"
-
-[nix-init.files]
 "nix-init/config.toml" = "~/.config/nix-init/config.toml"
-
-[vale.files]
 "vale/.vale.ini" = "~/.config/vale/.vale.ini"
-
-[prettypst.files]
 "prettypst/prettypst.toml" = "~/.config/prettypst/prettypst.toml"
-
-[alacritty.files]
 "alacritty" = "~/.config/alacritty"
-
-[xdg.files]
 "xdg/mimeapps.list" = "~/.config/mimeapps.list"
 "xdg/xdg-terminals.list" = "~/.config/xdg-terminals.list"
-
-[mpv.files]
 "mpv" = "~/.config/mpv"
-
-[zathura.files]
 "zathura" = "~/.config/zathura"
-
-[nvim.files]
 "nvim" = "~/.config/nvim"
-
-[yazi.files]
 "yazi" = "~/.config/yazi"
-
-[umbriel.files]
 "umbriel" = "~/.config/umbriel"
+# DONT FORGET TO UPDATE THESE!!!!!!!!!!!
+
 
 [bundle]
-depends = [
-	"kanata",
-	"ghostty",
-	"direnv",
-	"rofi",
-	"mango",
-	"hyprland",
-	"noctalia",
-	"just",
-	"fish",
-	"starship",
-        "kde",
-        "nix-init",
-        "vale",
-        "prettypst",
-        "alacritty",
-        "xdg",
-        "mpv",
-        "zathura",
-        "nvim",
-        "yazi",
-        "umbriel"
-] # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
+depends = [ "main" ] # keeping it that way so I can inject more experimental profiles
