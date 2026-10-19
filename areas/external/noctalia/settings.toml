@@ -204,6 +204,12 @@ path = "/home/john/Pictures/wallhaven-vp23lp.png"
 [wallpaper.monitors.eDP-1]
 path = "/home/john/Pictures/wallhaven-vp23lp.png"
 
+[[wallpaper.favorite]]
+palette_source = "wallpaper"
+path = "/home/john/Pictures/wallhaven-vp23lp.png"
+theme_mode = "dark"
+wallpaper_scheme = "m3-rainbow"
+
 [widget.ambient-sounds]
 type = "reaperhound/ambient-sounds:ambient-sounds"
 
