@@ -45,5 +45,4 @@ x-scheme-handler/affine=affine.desktop
 x-scheme-handler/obsidian=md.obsidian.Obsidian.desktop
 
 [Added Associations]
-x-scheme-handler/affine=affine.desktop;
 x-scheme-handler/obsidian=md.obsidian.Obsidian.desktop;
