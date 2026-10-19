@@ -11,7 +11,7 @@ if type -q starship
 end
 
 # Hook FZF (Ctrl+T for files, Alt+C for directory jump)
-if type -q fzf
+if status is-interactive; and type -q fzf
     fzf --fish | source
 end
 
