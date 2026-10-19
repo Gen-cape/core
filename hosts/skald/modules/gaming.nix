@@ -8,7 +8,7 @@
 
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    # capSysNice = true;
     args = [
       "--rt"
       "--adaptive-sync"
