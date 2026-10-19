@@ -103,6 +103,7 @@ duration_ms = 400
 "Mod+R" = { action = "spawn:noctalia msg panel-toggle launcher", repeat = false }
 "Mod+T" = { action = "config-reload", repeat = false }
 "Mod+E" = { action = "spawn:ghostty -e yazi", repeat = false }
+"Mod+H" = { action = "spawn:wooz --invert-scroll --map-close q", repeat = false }
 "Mod+O" = { action = "spawn:alacritty -e nvim ~/.config/umbriel/config.toml", repeat = false }
 
 # Directional Focus & Scrolling Strip Navigation
