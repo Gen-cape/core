@@ -16,10 +16,7 @@
     useRoutingFeatures = "client";
   };
 
-  programs.amnezia-vpn = {
-    enable = true;
-    package = pkgs.amnezia-vpn;
-  };
+  programs.amnezia-vpn.enable = true;
 
   services.zapret = {
     enable = false;
