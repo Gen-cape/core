@@ -12,7 +12,6 @@
       extraGroups = [
         "wheel" # sudo, trusted-user Nix
         "networkmanager" # wifi/vpn toggles without root
-        "i2c" # Vial
         "video" # Brightness
         "input" # evtest, kanata, bongo cat
       ];
