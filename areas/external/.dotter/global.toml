@@ -29,6 +29,7 @@ default_target_type = "symbolic"
 "nvim" = "~/.config/nvim"
 "yazi" = "~/.config/yazi"
 "umbriel" = "~/.config/umbriel"
+"nix/subs.conf" = "~/subs.conf"
 # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
 
 
