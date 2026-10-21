@@ -14,24 +14,6 @@
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
 
-  # Power
-  services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
-  services.libinput.enable = true;
-
-  # Memory
-  services.earlyoom = {
-    enable = true;
-    freeMemThreshold = 5;
-    freeSwapThreshold = 10;
-    enableNotifications = true;
-  };
-  systemd.oomd.enable = false;
-  zramSwap = {
-    enable = true;
-    priority = 100;
-  };
-
   # Base tools I want to have during problems
   programs.git.enable = true;
   environment.systemPackages = with pkgs; [
