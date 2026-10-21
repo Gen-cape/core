@@ -8,7 +8,6 @@ mod_key = "Super"
 autostart = [
   "noctalia",
   "wl-clip-persist --clipboard regular",
-  "sh -c 'echo \"Xft.dpi: 154\" | xrdb -merge'",
 ]
 xwayland = true
 xwayland_native_resolution = true
@@ -19,6 +18,7 @@ GDK_BACKEND = "wayland,x11"
 QT_QPA_PLATFORM = "wayland;xcb"
 MOZ_ENABLE_WAYLAND = "1"
 ELECTRON_OZONE_PLATFORM_HINT = "auto"
+STEAM_FORCE_DESKTOPUI_SCALING = "1.6"
 
 [output.eDP-1]
 scale = 1.6
