@@ -75,3 +75,33 @@ upgrade *packages:
     #!/usr/bin/env bash
     set -euo pipefail
     [ -z "{{packages}}" ] && nix profile upgrade --impure '.*' || nix profile upgrade --impure {{packages}}
+
+# Find configuration, state, and cache directories of pkg
+find-data package:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    search_dirs=(
+        "${XDG_CONFIG_HOME:-$HOME/.config}"
+        "${XDG_DATA_HOME:-$HOME/.local/share}"
+        "${XDG_STATE_HOME:-$HOME/.local/state}"
+        "${XDG_CACHE_HOME:-$HOME/.cache}"
+        "/etc/nixos"
+    )
+    [[ -d "$HOME/Library" ]] && search_dirs+=("$HOME/Library/Application Support" "$HOME/Library/Caches")
+    valid_dirs=()
+    for d in "${search_dirs[@]}"; do
+        [[ -d "$d" ]] && valid_dirs+=("$d")
+    done
+    results=$(find "${valid_dirs[@]}" -maxdepth 3 -iname "*{{package}}*" 2>/dev/null || true)
+    if [[ -z "$results" ]]; then
+        echo "No paths found matching '{{package}}'."
+        exit 0
+    fi
+    if command -v fzf >/dev/null 2>&1; then
+        echo "$results" | fzf --prompt="Select path > " \
+                              --preview 'bash -c "if [ -d \"\$1\" ]; then ls -lah \"\$1\"; else cat \"\$1\"; fi" _ {}' \
+                              --header="Press ENTER to print path, ESC to exit"
+    else
+        echo "$results"
+    fi
