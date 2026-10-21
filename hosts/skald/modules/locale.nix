@@ -1,11 +1,6 @@
 {
   time.timeZone = "Europe/Moscow";
 
-  services.xserver.xkb = {
-    layout = "us,ru";
-    options = "grp:alt_shift_toggle";
-  };
-
   i18n = {
     defaultLocale = "en_US.UTF-8";
     supportedLocales = [
