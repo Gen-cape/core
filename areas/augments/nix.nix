@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   documentation = {
     enable = false;
     doc.enable = false;
@@ -27,7 +23,7 @@
     package = pkgs.lix;
 
     channel.enable = false;
-    settings.nix-path = [ "nixpkgs=flake:nixpkgs" ];
+    settings.nix-path = ["nixpkgs=flake:nixpkgs"];
 
     daemonCPUSchedPolicy = "batch";
     daemonIOSchedClass = "best-effort";
@@ -37,6 +33,7 @@
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["root" "@wheel"];
       connect-timeout = 5;
+      fallback = true; # build from source if cache server error
       stalled-download-timeout = 20;
       min-free = toString (5 * 1024 * 1024 * 1024); # 5 GiB
       max-free = toString (10 * 1024 * 1024 * 1024); # 10 GiB
