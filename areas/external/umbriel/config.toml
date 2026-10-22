@@ -10,7 +10,7 @@ autostart = [
   "wl-clip-persist --clipboard regular",
 ]
 xwayland = true
-xwayland_native_resolution = true
+# xwayland_native_resolution = true
 show_cheatsheet = false
 
 [environment]
