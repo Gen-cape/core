@@ -1,4 +1,22 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  mkSimpleService = {
+    desc,
+    exec,
+    target ? "graphical-session.target",
+    restart ? "on-failure",
+    restartSec ? "5",
+  }: {
+    description = desc;
+    wantedBy = [target];
+    partOf = [target];
+    after = [target];
+    serviceConfig = {
+      ExecStart = exec;
+      Restart = restart;
+      RestartSec = restartSec;
+    };
+  }; # target = "default.target"; for terminal services
+in {
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.monaspace
@@ -40,16 +58,9 @@
 
   # Usb mounting
   services.udisks2.enable = true;
-  systemd.user.services.udiskie = {
-    description = "udiskie automount daemon";
-    wantedBy = ["graphical-session.target"];
-    partOf = ["graphical-session.target"];
-    after = ["graphical-session.target"];
-    serviceConfig = {
-      ExecStart = "${pkgs.udiskie}/bin/udiskie --automount --notify --smart-tray --appindicator";
-      Restart = "on-failure";
-      RestartSec = "5";
-    };
+  systemd.user.services.udiskie = mkSimpleService {
+    desc = "udiskie automount daemon";
+    exec = "${pkgs.udiskie}/bin/udiskie --automount --notify --smart-tray --appindicator";
   };
 
   hardware.graphics = {
