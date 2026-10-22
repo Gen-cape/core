@@ -30,6 +30,7 @@ default_target_type = "symbolic"
 "yazi" = "~/.config/yazi"
 "umbriel" = "~/.config/umbriel"
 "nix/subs.conf" = "~/subs.conf"
+"nix/config.nix" = "~/.config/nixpkgs/config.nix"
 # DONT FORGET TO UPDATE THESE!!!!!!!!!!!
 
 
