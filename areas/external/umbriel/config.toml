@@ -26,7 +26,7 @@ vrr = "always" # Options: "disabled", "always", or "fullscreen"
 
 [input.keyboard]
 layout = "us,ru"
-options = "grp:win_space_toggle,fkeys:basic_13-24"
+options = "grp:caps_switch, grp:win_space_toggle, fkeys:basic_13-24"
 repeat_rate = 50
 repeat_delay = 300
 
