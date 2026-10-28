@@ -38,13 +38,13 @@
   };
 
   # caps is f13
-  services.udev.extraHwdb = ''
-    evdev:atkbd:dmi:*
-     KEYBOARD_KEY_3a=f13
-
-    evdev:input:b0003*
-     KEYBOARD_KEY_70039=f13
-  '';
+  # services.udev.extraHwdb = ''
+  #   evdev:atkbd:dmi:*
+  #    KEYBOARD_KEY_3a=f13
+  #
+  #   evdev:input:b0003*
+  #    KEYBOARD_KEY_70039=f13
+  # '';
 
   programs.kdeconnect.enable = true;
 
