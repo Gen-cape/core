@@ -129,6 +129,9 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+[osd.kinds]
+keyboard_layout = false
+
 [plugin_settings."noctalia/notes"]
 panel_position = "center"
 
