@@ -11,11 +11,11 @@ edit = [
   { run = "nvim %s", block = true, for = "unix", desc = "Neovim" },
 ]
 
-[open]
-prepend_rules = [
-  { mime = "inode/directory", use = [ "edit" ] },
-  { mime = "text/*",          use = [ "edit" ] },
-  { mime = "*/javascript",    use = [ "edit" ] },
-  { mime = "application/{json,ndjson,toml,yaml,x-sh}", use = [ "edit" ] },
-  { url  = "*",               use = [ "edit" ] },
-]
+# [open]
+# prepend_rules = [
+#   { mime = "inode/directory", use = [ "edit" ] },
+#   { mime = "text/*",          use = [ "edit" ] },
+#   { mime = "*/javascript",    use = [ "edit" ] },
+#   { mime = "application/{json,ndjson,toml,yaml,x-sh}", use = [ "edit" ] },
+#   { url  = "*",               use = [ "edit" ] },
+# ]
