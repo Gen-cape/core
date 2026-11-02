@@ -65,7 +65,7 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter.configs").setup({})
+            require("nvim-treesitter.configs").setup({ auto_install = true, })
             vim.api.nvim_create_autocmd("FileType", {
                 callback = function(a) pcall(vim.treesitter.start, a.buf) end,
             })
