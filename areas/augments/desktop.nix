@@ -17,11 +17,29 @@
     };
   }; # target = "default.target"; for terminal services
 in {
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.monaspace
-    nerd-fonts.departure-mono
-  ];
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.monaspace
+      nerd-fonts.departure-mono
+
+      inter
+      source-serif
+      twemoji-color-font
+      noto-fonts-color-emoji
+    ];
+
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        sansSerif = ["Inter"];
+        serif = ["Source Serif 4"];
+        monospace = ["JetBrainsMono Nerd Font" "MonaspiceNe Nerd Font" "DepartureMono Nerd Font"];
+        # emoji = ["Twitter Color Emoji"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
 
   # Compats for desktop
   # programs.appimage = {
