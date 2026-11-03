@@ -45,7 +45,6 @@ thickness = 28
     border_width = 1.5
     enabled = true
     fill = "surface_variant"
-    foreground = "on_secondary"
     id = "g3"
     members = [ "tray", "session", "control-center" ]
     opacity = 0.84999999999999998
