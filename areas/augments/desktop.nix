@@ -80,7 +80,7 @@ in {
   services.udisks2.enable = true;
   systemd.user.services.udiskie = mkSimpleService {
     desc = "udiskie automount daemon";
-    exec = "${pkgs.udiskie}/bin/udiskie --automount --notify --smart-tray --appindicator";
+    exec = "${pkgs.udiskie}/bin/udiskie --automount --notify --smart-tray --appindicator -F";
   };
 
   hardware.graphics = {
