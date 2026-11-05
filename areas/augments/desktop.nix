@@ -2,6 +2,7 @@
   mkSimpleService = {
     desc,
     exec,
+    path ? [],
     target ? "graphical-session.target",
     restart ? "on-failure",
     restartSec ? "5",
@@ -10,6 +11,7 @@
     wantedBy = [target];
     partOf = [target];
     after = [target];
+    path = path;
     serviceConfig = {
       ExecStart = exec;
       Restart = restart;
