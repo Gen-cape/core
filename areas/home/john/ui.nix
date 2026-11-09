@@ -22,10 +22,15 @@
       package = pkgs.kora-icon-theme;
     };
   };
-
   qt = {
     enable = true;
-    platformTheme.name = "kde";
-    style.name = "breeze";
+    platformTheme = {
+      name = "kde";
+      package = pkgs.kdePackages.plasma-integration;
+    };
+    style = {
+      name = "breeze";
+      package = pkgs.kdePackages.breeze;
+    };
   };
 }
