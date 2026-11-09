@@ -95,7 +95,7 @@ duration_ms = 400
 "Mod+Shift+S" = { action = "spawn noctalia msg screenshot-region", repeat = false }
 "Mod+Shift+E" = { action = "spawn noctalia msg panel-toggle clipboard", repeat = false }
 "Mod+Shift+C" = { action = "spawn noctalia msg bar-toggle default", repeat = false }
-"Mod+B" = { action = "spawn alacritty -e btop", repeat = false }
+"Mod+B" = { action = "spawn alacritty -e btm", repeat = false }
 "Mod+Return" = { action = "spawn alacritty", repeat = false }
 "Mod+Shift+Q" = { action = "window-close", repeat = false }
 "Mod+V" = "window-toggle-floating"
