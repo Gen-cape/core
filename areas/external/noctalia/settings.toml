@@ -93,12 +93,40 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@eDP-1" ]
+widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-login-box@WL-1" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@WL-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 646.0
+    cy = 1002.0
+    output = "WL-1"
+    placement_height = 1184.0
+    placement_width = 1292.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@WL-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 196.0
@@ -198,13 +226,13 @@ wallpaper_scheme = "m3-rainbow"
     ]
 
 [wallpaper.default]
-path = "/home/john/Pictures/wallhaven-vp23lp.png"
+path = "/home/john/Pictures/wallhaven-vp9eg5.jpg"
 
 [wallpaper.last]
-path = "/home/john/Pictures/wallhaven-vp23lp.png"
+path = "/home/john/Pictures/wallhaven-vp9eg5.jpg"
 
 [wallpaper.monitors.eDP-1]
-path = "/home/john/Pictures/wallhaven-vp23lp.png"
+path = "/home/john/Pictures/wallhaven-vp9eg5.jpg"
 
 [[wallpaper.favorite]]
 palette_source = "wallpaper"
