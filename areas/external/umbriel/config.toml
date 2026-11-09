@@ -38,7 +38,7 @@ tap = true
 natural_scroll = true
 sensitivity = 0.6
 scroll_factor = 0.422
-disable_while_typing = false
+disable_while_typing = true
 
 [layout]
 mode = "scrolling"
