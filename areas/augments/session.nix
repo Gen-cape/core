@@ -5,6 +5,7 @@
     GDK_BACKEND = "wayland,x11";
     QT_QPA_PLATFORM = "wayland;xcb";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_QPA_PLATFORMTHEME = "kde";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     NIXPKGS_ALLOW_UNFREE = "1";
     EDITOR = "nvim";
