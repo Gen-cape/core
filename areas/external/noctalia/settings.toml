@@ -226,13 +226,13 @@ wallpaper_scheme = "m3-rainbow"
     ]
 
 [wallpaper.default]
-path = "/home/john/Pictures/wallhaven-vp9eg5.jpg"
+path = "/home/john/Pictures/wallhaven-d8k5rm.jpg"
 
 [wallpaper.last]
-path = "/home/john/Pictures/wallhaven-vp9eg5.jpg"
+path = "/home/john/Pictures/wallhaven-d8k5rm.jpg"
 
 [wallpaper.monitors.eDP-1]
-path = "/home/john/Pictures/wallhaven-vp9eg5.jpg"
+path = "/home/john/Pictures/wallhaven-d8k5rm.jpg"
 
 [[wallpaper.favorite]]
 palette_source = "wallpaper"
