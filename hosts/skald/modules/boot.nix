@@ -32,7 +32,6 @@ in {
       font = "${sidoniaTheme}/fonts/sidonia-t4-1080p.pf2";
     };
 
-    initrd.verbose = false;
     consoleLogLevel = 3;
     kernelParams = [
       "quiet"

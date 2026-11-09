@@ -1,4 +1,4 @@
-config_version = 15
+config_version = 16
 
 [accessibility]
 ui_scale = 1.2
@@ -22,7 +22,7 @@ thickness = 28
     accordion_direction = "end"
     border_width = 1.5
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g1"
     members = [ "notes", "wallpaper", "wallhaven", "kaomoji", "ambient-sounds" ]
     opacity = 0.78000000000000003
@@ -33,7 +33,7 @@ thickness = 28
     accordion_direction = "start"
     border_width = 1.5
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g2"
     members = [ "volume", "input_volume", "brightness", "bluetooth", "power_profile", "indicator" ]
     opacity = 0.78000000000000003
@@ -44,7 +44,7 @@ thickness = 28
     accordion_direction = "start"
     border_width = 1.5
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g3"
     members = [ "tray", "session", "control-center" ]
     opacity = 0.84999999999999998
@@ -55,7 +55,7 @@ thickness = 28
     accordion_direction = "end"
     border_width = 1.5
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g4"
     members = [ "media", "audio_visualizer" ]
     opacity = 0.84999999999999998
@@ -112,7 +112,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false

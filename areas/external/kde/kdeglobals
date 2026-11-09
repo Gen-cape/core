@@ -131,7 +131,7 @@ ForegroundPositive=227,186,219
 ForegroundVisited=222,225,249
 
 [General]
-ColorScheme=Noctalia
+ColorScheme=noctalia
 Name=noctalia
 
 [Icons]
