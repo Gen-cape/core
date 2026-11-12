@@ -43,6 +43,8 @@ audio/mp3=org.gnome.Decibels.desktop
 audio/webm=org.gnome.Decibels.desktop
 x-scheme-handler/affine=affine.desktop
 x-scheme-handler/obsidian=md.obsidian.Obsidian.desktop
+x-scheme-handler/ton=org.telegram.desktop.desktop
 
 [Added Associations]
 x-scheme-handler/obsidian=md.obsidian.Obsidian.desktop;
+x-scheme-handler/ton=org.telegram.desktop.desktop;
