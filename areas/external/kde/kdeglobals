@@ -2,6 +2,7 @@
 ColorScheme=noctalia
 Name=noctalia
 shadeSortColumn=true
+TerminalApplication=ghostty
 
 [KDE]
 colorScheme=noctalia
