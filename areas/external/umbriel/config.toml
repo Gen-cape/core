@@ -101,6 +101,7 @@ duration_ms = 400
 "Mod+V" = "window-toggle-floating"
 "Mod+F" = "window-toggle-fullscreen"
 "Mod+R" = { action = "spawn noctalia msg panel-toggle launcher", repeat = false }
+"Mod+Q" = { action = "spawn sh -c 'env -C ~/scripts ./\"$(fd -C ~/scripts -t f | noctalia dmenu)\"'", repeat = false }
 "Mod+T" = { action = "config-reload", repeat = false }
 "Mod+E" = { action = "spawn ghostty -e yazi", repeat = false }
 "Mod+H" = { action = "spawn wooz --invert-scroll --map-close q", repeat = false }
