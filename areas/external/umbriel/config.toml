@@ -1,14 +1,9 @@
 [include.optional]
-files = [
-  "~/.config/umbriel/noctalia.toml",
-]
+files = ["~/.config/umbriel/binds.toml"]
 
 [general]
 mod_key = "Super"
-autostart = [
-  "noctalia",
-  "wl-clip-persist --clipboard regular",
-]
+autostart = ["noctalia", "wl-clip-persist --clipboard regular"]
 xwayland = true
 # xwayland_native_resolution = true
 show_cheatsheet = false
@@ -22,7 +17,7 @@ STEAM_FORCE_DESKTOPUI_SCALING = "1.6"
 
 [output.eDP-1]
 scale = 1.6
-vrr = "always" # Options: "disabled", "always", or "fullscreen"
+vrr = "always"
 
 [input.keyboard]
 layout = "us,ru"
@@ -54,7 +49,7 @@ bottom = 12
 [layout.scrolling]
 default_extent_fraction = 0.667 # how much space for new window, 2/3
 center_underfull_strip = true
-center_focused = "never" # Options: "never", "on_overflow", "always"
+center_focused = "never"        # "never", "on_overflow", "always"
 
 [layout.master]
 position = "right"
@@ -86,7 +81,6 @@ style = "slide"
 duration_ms = 400
 
 [keybinds]
-# Core Apps & Actions
 "Mod+Ctrl+S" = { action = "spawn sh -c 'satty-screenshot'", repeat = false }
 "Mod+Shift+G" = { action = "workspace-set-layout toggle", repeat = false }
 "Mod+W" = "window-focus-next"
@@ -108,37 +102,30 @@ duration_ms = 400
 "Mod+O" = { action = "spawn alacritty -e nvim ~/.config/umbriel/config.toml", repeat = false }
 "Mod+l" = "spawn sh -c 'xargs umbriel msg < ~/umbriel-test'"
 
-# Directional Focus & Scrolling Strip Navigation
 "Mod+Left" = "window-focus-left"
 "Mod+Right" = "window-focus-right"
 "Mod+Up" = "window-focus-up"
 "Mod+Down" = "window-focus-down"
 
-# Useful Scrolling Layout additions (wheel & column sizing)
 "Mod+WheelUp" = "window-focus-left"
 "Mod+WheelDown" = "window-focus-right"
 "Mod+Shift+WheelUp" = "column-move-left"
 "Mod+Shift+WheelDown" = "column-move-right"
 "Mod+MouseMiddle" = "layout-scroll-drag"
 
-# Extra App / Panel Binds
 "Mod+Z" = { action = "spawn alacritty", repeat = false }
 "Mod+X" = { action = "spawn noctalia msg panel-toggle noctalia/notes:panel", repeat = false }
 "Mod+I" = { action = "spawn noctalia msg plugin alexander/screen-toolkit:service all toggle", repeat = false }
 
-# Screenshots & Annotations
 "Mod+Alt+S" = { action = "spawn noctalia msg screenshot-fullscreen", repeat = false }
 "Mod+Shift+A" = { action = "spawn noctalia msg screenshot-annotate", repeat = false }
 
-# Session / Power Menu
 "Mod+Escape" = { action = "spawn noctalia msg panel-toggle session", repeat = false }
 
-# Overview
 "Mod+Tab" = { action = "overview-toggle", repeat = false }
-"Mod+C" = {action = "cheatsheet-toggle", repeat = false}
+"Mod+C" = { action = "cheatsheet-toggle", repeat = false }
 "Mod+Shift+P" = { action = "spawn sh -c 'spam'", repeat = false }
 
-# Workspaces (1-9)
 "Mod+1" = "workspace-switch 1"
 "Mod+2" = "workspace-switch 2"
 "Mod+3" = "workspace-switch 3"
@@ -149,12 +136,10 @@ duration_ms = 400
 "Mod+8" = "workspace-switch 8"
 "Mod+9" = "workspace-switch 9"
 
-# Scratchpad
-"Mod+D" = "scratchpad-toggle"              # Index finger: Show/hide scratchpad
-"Mod+Shift+D" = "window-toggle-scratchpad" # Stash focused window OR restore it to workspace
-"Mod+A" = "scratchpad-window-show-next"    # Ring finger: Cycle stored windows one by one
+"Mod+D" = "scratchpad-toggle"
+"Mod+Shift+D" = "window-toggle-scratchpad"
+"Mod+A" = "scratchpad-window-show-next"
 
-# Move Window to Workspace
 "Mod+Shift+1" = "window-move-to-workspace-silent 1"
 "Mod+Shift+2" = "window-move-to-workspace-silent 2"
 "Mod+Shift+3" = "window-move-to-workspace-silent 3"
@@ -165,7 +150,6 @@ duration_ms = 400
 "Mod+Shift+8" = "window-move-to-workspace-silent 8"
 "Mod+Shift+9" = "window-move-to-workspace-silent 9"
 
-# Hijacker Controls
 "Mod+Alt+H" = { action = "spawn sh -c 'hijacker-ctl toggle'", repeat = false }
 "Mod+Alt+0" = { action = "spawn pkill hijacker", repeat = false }
 "Mod+Alt+1" = { action = "spawn sh -c 'hijacker-ctl clever-play 1'", repeat = false }
@@ -178,7 +162,6 @@ duration_ms = 400
 "Mod+Alt+8" = { action = "spawn sh -c 'hijacker-ctl clever-play 8'", repeat = false }
 "Mod+Alt+9" = { action = "spawn sh -c 'hijacker-ctl clever-play 9'", repeat = false }
 
-# Media / Brightness Controls
 "XF86AudioRaiseVolume" = "spawn pamixer -i 5 --allow-boost --set-limit 200"
 "XF86AudioLowerVolume" = "spawn pamixer -d 5 --allow-boost --set-limit 200"
 "XF86AudioMute" = { action = "spawn pamixer -t", repeat = false }
