@@ -49,9 +49,9 @@ require("lazy").setup({
             sources = { default = { "lsp", "path", "snippets", "buffer" } },
         },
     },
-    { "echasnovski/mini.pairs",    opts = {} },
-    { "echasnovski/mini.icons",    opts = {} },
-    { "echasnovski/mini.surround", version = "*", opts = {} },
+    { "nvim-mini/mini.pairs",    opts = {} },
+    { "nvim-mini/mini.icons",    opts = {} },
+    { "nvim-mini/mini.surround", version = "*", opts = {} },
     {
         "EdenEast/nightfox.nvim",
         priority = 1000,
