@@ -163,7 +163,7 @@ keyboard_layout = false
 panel_position = "center"
 
 [plugins]
-enabled = [ "noctalia/bongocat", "noctalia/notes", "noctalia/kaomoji", "noctalia/wallhaven", "alexander/screen-toolkit" ]
+enabled = [ "noctalia/bongocat", "noctalia/notes", "noctalia/kaomoji", "noctalia/wallhaven" ]
 
 [shell]
 font_family = "DepartureMono Nerd Font Mono"
