@@ -9,10 +9,12 @@ run-wrapped +cmd:
     read -r -a args <<< "{{cmd}}"
     target="${args[0]}"
 
-    if just -f "{{justfile()}}" --summary | tr ' ' '\n' | grep -qx "$target"; then
-        exec just -f "{{justfile()}}" "${args[@]}"
+    if [[ "$target" =~ ^(subs|nosub|unfree)$ ]]; then
+        exec just -f "{{justfile()}}" -d "{{invocation_directory()}}" "${args[@]}"
     elif just --summary 2>/dev/null | tr ' ' '\n' | grep -qx "$target"; then
         exec just "${args[@]}"
+    elif just -f "{{justfile()}}" --summary | tr ' ' '\n' | grep -qx "$target"; then
+        exec just -f "{{justfile()}}" -d "{{invocation_directory()}}" "${args[@]}"
     else
         exec "${args[@]}"
     fi
@@ -24,21 +26,23 @@ subs +cmd:
     target="${HOME}/subs.conf"
     if [ -f "$target" ]; then
         extra_cfg="$(cat "$target")"
-        export NIX_CONFIG="$(printf '%s\n%s' "${NIX_CONFIG:-}" "$extra_cfg")"
+        export NIX_CONFIG="${NIX_CONFIG:+$NIX_CONFIG$'\n'}$extra_cfg"
     fi
-    exec just -f "{{justfile()}}" run-wrapped {{cmd}}
+    exec just -f "{{justfile()}}" -d "{{invocation_directory()}}" run-wrapped {{cmd}}
 
 # Disable binary substituters (build from source)
 nosub +cmd:
     #!/usr/bin/env bash
-    export NIX_CONFIG="$(printf '%s\n' "${NIX_CONFIG:-}" "substitute = false")"
-    exec just -f "{{justfile()}}" run-wrapped {{cmd}}
+    set -euo pipefail
+    export NIX_CONFIG="${NIX_CONFIG:+$NIX_CONFIG$'\n'}substitute = false"
+    exec just -f "{{justfile()}}" -d "{{invocation_directory()}}" run-wrapped {{cmd}}
 
 # Allow unfree packages
 unfree +cmd:
     #!/usr/bin/env bash
+    set -euo pipefail
     export NIXPKGS_ALLOW_UNFREE="1"
-    exec just -f "{{justfile()}}" run-wrapped {{cmd}}
+    exec just -f "{{justfile()}}" -d "{{invocation_directory()}}" run-wrapped {{cmd}}
 
 # Drop into a temporary shell
 shell +packages:
